@@ -123,7 +123,7 @@ Ordem de prioridade (FR-041):
 | `criar_reserva(...)` | EXECUTE | como na baseline (o app sempre chama como `anon`) | idem |
 | `alterar_quantidade`, `cancelar_reserva`, `definir_estoque_total` [novo] | — | EXECUTE, mas a function recusa (`nao_autorizado`) | EXECUTE |
 | `gerar_codigo_reserva()` | — | — | — (só uso interno) |
-| `eh_admin()` [novo, se a baseline não tiver equivalente] | — | EXECUTE (retorna `false`) | EXECUTE |
+| `is_admin()` [base] | — | EXECUTE (retorna `false`) | EXECUTE |
 | `configuracao` | — | RLS: nada | SELECT; UPDATE (`preco_centavos`, `reservas_abertas`) |
 | `reservas` | — | RLS: nada | SELECT; UPDATE (`status_pagamento`, `status_entrega`, `nome`, `whatsapp`, `endereco`) só com `cancelada_em IS NULL` |
 | `admins` | — | RLS: só a própria linha, se for o meio de checar admin | SELECT |

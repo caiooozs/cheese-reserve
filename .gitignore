@@ -39,6 +39,11 @@ yarn-error.log*
 #supabase
 supabase/.temp
 supabase/.branches
+
+#impeccable
+.impeccable/questions
+.impeccable/review
+
 .claude/settings.local.json
 
 # typescript

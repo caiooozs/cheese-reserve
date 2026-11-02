@@ -7,9 +7,12 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-geist-sans);
+  --font-saudacao: var(--font-grand-hotel);
+  --color-selo: var(--selo);
+  --color-ouro: var(--ouro);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,24 +52,26 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --background: oklch(0.985 0.003 150);
+  --foreground: oklch(0.24 0.012 155);
+  --card: oklch(0.995 0.002 150);
+  --card-foreground: oklch(0.24 0.012 155);
+  --popover: oklch(0.995 0.002 150);
+  --popover-foreground: oklch(0.24 0.012 155);
+  --primary: oklch(0.393 0.09 152.5);
+  --primary-foreground: oklch(0.99 0.004 150);
+  --secondary: oklch(0.955 0.01 150);
+  --secondary-foreground: oklch(0.24 0.012 155);
+  --muted: oklch(0.96 0.006 150);
+  --muted-foreground: oklch(0.46 0.015 155);
+  --accent: oklch(0.9 0.09 88);
+  --accent-foreground: oklch(0.24 0.012 155);
+  --destructive: oklch(0.505 0.19 27.5);
+  --border: oklch(0.9 0.008 150);
+  --input: oklch(0.6 0.02 150);
+  --ring: oklch(0.5 0.1 152.5);
+  --selo: oklch(0.505 0.19 27.5);
+  --ouro: oklch(0.735 0.146 84.3);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -125,6 +130,74 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply bg-primary font-sans;
+  }
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+  input,
+  textarea {
+    caret-color: var(--primary);
+  }
+}
+
+/* Mundo do cartão de Boas Festas (DESIGN.md) */
+@layer components {
+  /* A folha: margem de papel por fora e faixa de correio nos quatro lados. */
+  .folha-correio {
+    border: 7px solid transparent;
+    background:
+      linear-gradient(var(--card) 0 0) padding-box,
+      repeating-linear-gradient(
+          -45deg,
+          var(--selo) 0 11.5px,
+          var(--card) 12px 17.5px,
+          var(--primary) 18px 29.5px,
+          var(--card) 30px 35.5px,
+          var(--selo) 36px
+        )
+        border-box;
+  }
+
+  /* O picote do selo: furos em cima e embaixo aqui, nas laterais no miolo. */
+  .selo-picote,
+  .selo-miolo {
+    --furo: 3.5px;
+    --passo: 11px;
+  }
+  .selo-picote {
+    mask:
+      radial-gradient(circle at 50% 0, #0000 var(--furo), #000 calc(var(--furo) + 0.5px))
+        top / var(--passo) 51% round no-repeat,
+      radial-gradient(circle at 50% 100%, #0000 var(--furo), #000 calc(var(--furo) + 0.5px))
+        bottom / var(--passo) 51% round no-repeat;
+  }
+  .selo-miolo {
+    mask:
+      radial-gradient(circle at 0 50%, #0000 var(--furo), #000 calc(var(--furo) + 0.5px))
+        left / 51% var(--passo) no-repeat round,
+      radial-gradient(circle at 100% 50%, #0000 var(--furo), #000 calc(var(--furo) + 0.5px))
+        right / 51% var(--passo) no-repeat round;
+  }
+
+  .animate-carimbar {
+    animation: carimbar 320ms cubic-bezier(0.16, 1, 0.3, 1) 420ms both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-carimbar {
+      animation: none;
+    }
+  }
+}
+
+@keyframes carimbar {
+  from {
+    opacity: 0;
+    scale: 1.6;
+  }
+  to {
+    opacity: 0.85;
+    scale: 1;
   }
 }

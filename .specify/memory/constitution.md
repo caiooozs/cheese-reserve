@@ -1,22 +1,3 @@
-<!--
-Sync Impact Report
-- Versão: (modelo sem versão) → 1.0.0 — ratificação inicial
-- Princípios (placeholders do modelo → definidos; 5 slots → 7 princípios, conforme pedido):
-  - [PRINCIPLE_1_NAME] → I. Simplicidade
-  - [PRINCIPLE_2_NAME] → II. Mobile-first
-  - [PRINCIPLE_3_NAME] → III. Integridade do Estoque
-  - [PRINCIPLE_4_NAME] → IV. Integridade dos Valores
-  - [PRINCIPLE_5_NAME] → V. Privacidade
-  - (novo) VI. Segurança do Painel
-  - (novo) VII. Português do Brasil e Linguagem Simples
-- Seções adicionadas: Restrições Técnicas; Fluxo de Desenvolvimento e Qualidade
-- Seções removidas: nenhuma
-- Templates dependentes: nenhum alterado (leem a constituição em tempo de execução)
-  - ✅ .specify/templates/plan-template.md — "Constitution Check" passa a avaliar I–VII
-  - ✅ .specify/templates/spec-template.md, tasks-template.md, checklist-template.md
-- TODOs adiados: nenhum
--->
-
 # Cheese Reserve Constitution
 
 App pequeno e de uso pontual para a venda de queijos de fim de ano. Há dois públicos: clientes,
@@ -33,9 +14,10 @@ acompanha e ajusta as reservas pelo painel.
 Nenhuma abstração, camada ou dependência entra no projeto se o escopo atual não exigir.
 "Pode ser útil depois" não é justificativa.
 
-- A arquitetura é um único app Next.js falando com o Supabase. As functions do Postgres são o
-  backend das regras de negócio; NÃO DEVE existir servidor ou API separados, nem camadas de
-  repositório, serviço ou DTO em volta do cliente do Supabase.
+- A arquitetura é um único app Next.js falando com o Supabase, sem servidor ou API separados. As
+  functions do Postgres são o backend das regras de negócio. O código segue a arquitetura descrita
+  em Restrições Técnicas; NÃO DEVEM existir outras camadas (repositórios, adaptadores, injeção de
+  dependência) em volta do cliente do Supabase.
 - Toda nova dependência (pacote npm, serviço externo, extensão do Postgres) DEVE ser justificada
   no `plan.md` (tabela *Complexity Tracking*), dizendo qual alternativa mais simples foi
   descartada e por quê.
@@ -75,9 +57,9 @@ Nunca é possível reservar mais peças do que existem, mesmo com acessos simult
 - Cancelar DEVE devolver as peças ao estoque na mesma transação. Alterar quantidade DEVE
   respeitar a disponibilidade atual. Reduzir o estoque de um produto abaixo do total já
   reservado DEVE ser recusado.
-- O código do Next.js — páginas, componentes, Server Actions e Route Handlers — só exibe dados,
-  valida para dar feedback imediato e chama as functions; NÃO DEVE conter regra de estoque ou de
-  valores. Toda validação do front DEVE ser repetida na function, e a recusa do banco (ex.:
+- O código do Next.js — páginas, componentes, services, Server Actions e Route Handlers — só exibe
+  dados, valida para dar feedback imediato e chama as functions; NÃO DEVE conter regra de estoque
+  ou de valores. Toda validação do front DEVE ser repetida na function, e a recusa do banco (ex.:
   "acabou enquanto você escolhia") DEVE virar uma mensagem clara para o usuário.
 
 *Por quê:* só o banco enxerga todos os acessos ao mesmo tempo; concorrência resolvida em
@@ -163,6 +145,20 @@ implícito mostra horários errados quando o servidor roda em outro fuso.
 - Stack já adotada no repositório: Next.js 16 (App Router), React 19 e TypeScript; Supabase
   (Postgres, Auth e RLS) via `@supabase/ssr`; Tailwind CSS 4 e componentes shadcn/ui. Trocar ou
   acrescentar peças segue o Princípio I.
+- Arquitetura: MVVM com services e containers.
+  - **Service** (`service/<domínio>/`): `<domínio>.service.ts` roda só no servidor (`server-only`)
+    e é o único lugar que chama o Supabase. `<domínio>.actions.ts` guarda as Server Actions, que
+    validam a entrada, conferem a sessão de admin e chamam o service.
+  - **Componente** (`components/<nome>/`): cada um na sua pasta, com todos os arquivos do MVVM.
+    Componente sem estado nem chamada a Server Action pode ter só a View.
+  - **Model** (`<nome>.model.ts`): tipos, schemas e funções puras exclusivos do componente. O que é
+    compartilhado com o service ou com outro componente fica em `lib/`.
+  - **ViewModel** (`<nome>.viewmodel.ts`): hook sem JSX que concentra a lógica da tela. É o único
+    que chama Server Actions no navegador.
+  - **View** (`<nome>.view.tsx`): componente sem estado de negócio, que só desenha as props.
+  - **Container** (`<nome>.container.tsx`): liga ViewModel e View, passando os grupos
+    desestruturados do ViewModel (`dados`, `campos`, `acoes`) como props.
+  - A leitura acontece em Server Components, que chamam o service e passam DTOs ao container.
 - O esquema do banco, as functions, as políticas RLS e os grants DEVEM estar versionados como
   migrações SQL no repositório. Mudança feita só pelo painel do Supabase não conta como entregue.
 - Segredos ficam fora do git (`.env.local`). Só a URL do Supabase e a chave pública podem usar o
@@ -201,4 +197,4 @@ implícito mostra horários errados quando o servidor roda em outro fuso.
 - Orientações de execução para agentes ficam em `AGENTS.md` (por exemplo: consultar a
   documentação local do Next.js em `node_modules/next/dist/docs/` antes de escrever código).
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-10-29
+**Version**: 2.0.0 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-10-30
