@@ -61,6 +61,10 @@ export type DadosFormulario = {
   disponibilidade: string;
   limite: string;
   total: string | null;
+  // Poucas peças sobrando: o chip de disponibilidade fica em âmbar.
+  poucasPecas: boolean;
+  // "2 peças × R$ 50,00", para o resumo do pedido.
+  conta: string | null;
   precoNovo: string | null;
   podeDiminuir: boolean;
   podeAumentar: boolean;

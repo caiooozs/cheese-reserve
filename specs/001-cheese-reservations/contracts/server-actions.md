@@ -23,7 +23,7 @@ Interface entre o navegador e o servidor. Regras gerais:
 
 | Parâmetro | Valores | Efeito |
 |-----------|---------|--------|
-| `codigo` | texto | normalizado (maiúsculas, sem espaços); busca exata |
+| `codigo` | texto | normalizado (maiúsculas, sem espaços); busca exata, em qualquer situação (ignora `situacao`, para achar também reservas canceladas) |
 | `pagamento` | `pendente` \| `pago` | filtra ativas por pagamento |
 | `entrega` | `pendente` \| `entregue` | filtra ativas por entrega |
 | `situacao` | `ativas` (padrão) \| `canceladas` \| `todas` | |
@@ -116,7 +116,7 @@ type ResultadoReserva =
 
 | Action | Entrada | Saída |
 |--------|---------|-------|
-| `entrar` | `{ email: string (e-mail), senha: string (mín. 1) }` | sucesso → `redirect('/admin')`; erro → `{ ok: false, erro: 'credenciais_invalidas' }` (mesmo código para qualquer falha de credencial) |
+| `entrar` | `{ email: string (e-mail), senha: string (mín. 1) }` | sucesso → `redirect('/admin')`; erro → `{ ok: false, erro: 'credenciais_invalidas' }` (mesmo código para qualquer falha de credencial); conta que não é admin → encerra a sessão e devolve `{ ok: false, erro: 'sem_acesso' }`, sem redirecionar |
 | `sair` | — | `signOut()` → `redirect('/admin/login')` |
 
 ## Painel — `service/reservas/reservas.actions.ts` e `service/configuracao/configuracao.actions.ts`
@@ -183,5 +183,6 @@ responder com os dados para pagamento." Sem telefone nem chave Pix (FR-013/015).
 | `reserva_paga` | Esta reserva já está paga. Para mudar a quantidade, marque o pagamento como pendente antes. |
 | `estoque_abaixo_do_reservado` | O total não pode ser menor que as {n} peças já reservadas. (`n` lido de `totais_venda` pela action e devolvido ao ViewModel, FR-035) |
 | `nao_autorizado` | Sua sessão expirou. Entre de novo. |
-| `credenciais_invalidas` | E-mail ou senha incorretos. |
+| `credenciais_invalidas` | E-mail ou senha incorretos. Confira e tente de novo. |
+| `sem_acesso` | Esta conta não tem acesso ao painel. (também mostrada em `/admin/login?erro=sem-acesso`, quando `exigirAdmin()` encontra uma sessão que não é de admin) |
 | (qualquer outro) | Algo deu errado. Tente de novo em instantes. |

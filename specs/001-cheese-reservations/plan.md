@@ -113,7 +113,7 @@ components/
 │   ├── formulario-reserva.viewmodel.ts # estado, envio e chamada de reservar()
 │   └── formulario-reserva.model.ts     # schema do formulário, tipos, estado da vitrine
 ├── comprovante/               # mesmos quatro arquivos: texto, Copiar e Compartilhar
-├── cartao/, selo/, carimbo/, aviso-venda/  # só View: peças visuais sem estado
+├── aviso-venda/, valor-animado/  # só View: peças visuais sem estado
 └── (painel)                   # formulario-login/, busca-filtros/, linha-reserva/, ...
 
 service/                       # único lugar que fala com o Supabase e lê process.env

@@ -2,14 +2,20 @@
 
 import { revalidatePath } from "next/cache";
 import { erroDeRegra } from "@/lib/erros";
-import { schemaReserva } from "@/lib/schemas";
+import {
+  schemaReserva,
+  schemaStatusEntrega,
+  schemaStatusPagamento,
+} from "@/lib/schemas";
 import type {
   CampoReserva,
   CodigoErroPublico,
+  ResultadoAcao,
   ResultadoReserva,
   VitrineDTO,
 } from "@/lib/tipos";
-import { criarReserva } from "@/service/reservas/reservas.service";
+import { obterAdmin } from "@/service/auth/auth.service";
+import { criarReserva, definirStatus } from "@/service/reservas/reservas.service";
 import { registrarErro } from "@/service/supabase/registrar-erro";
 import { obterVitrine } from "@/service/vitrine/vitrine.service";
 
@@ -67,4 +73,49 @@ export async function reservar(entrada: unknown): Promise<ResultadoReserva> {
     erro: erroDeRegra(codigo) ? (codigo as CodigoErroPublico) : "erro_inesperado",
     vitrine: ERROS_COM_VITRINE.includes(codigo) ? await vitrineAtual() : undefined,
   };
+}
+
+// Painel ------------------------------------------------------------
+
+async function salvarStatus(
+  entrada: unknown,
+  schema: typeof schemaStatusPagamento | typeof schemaStatusEntrega,
+  campo: "status_pagamento" | "status_entrega",
+): Promise<ResultadoAcao> {
+  const validacao = schema.safeParse(entrada);
+  if (!validacao.success) {
+    return { ok: false, erro: "dados_invalidos" };
+  }
+
+  const admin = await obterAdmin();
+  if (!admin) {
+    return { ok: false, erro: "nao_autorizado" };
+  }
+
+  const { id, status } = validacao.data;
+  const resultado = await definirStatus(
+    admin.supabase,
+    id,
+    campo === "status_pagamento"
+      ? { campo, valor: status as "pendente" | "pago" }
+      : { campo, valor: status as "pendente" | "entregue" },
+  );
+
+  if (!resultado.ok) {
+    return {
+      ok: false,
+      erro: erroDeRegra(resultado.codigo) ? resultado.codigo : "erro_inesperado",
+    };
+  }
+
+  revalidatePath("/admin");
+  return { ok: true };
+}
+
+export async function definirPagamento(entrada: unknown): Promise<ResultadoAcao> {
+  return salvarStatus(entrada, schemaStatusPagamento, "status_pagamento");
+}
+
+export async function definirEntrega(entrada: unknown): Promise<ResultadoAcao> {
+  return salvarStatus(entrada, schemaStatusEntrega, "status_entrega");
 }

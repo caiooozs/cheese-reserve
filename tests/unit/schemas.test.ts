@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { schemaReservaFormulario } from "@/components/formulario-reserva/formulario-reserva.model";
-import { schemaReserva } from "@/lib/schemas";
+import {
+  schemaFiltrosPainel,
+  schemaReserva,
+  schemaStatusEntrega,
+  schemaStatusPagamento,
+} from "@/lib/schemas";
 
 const valida = {
   nome: "Maria Silva",
@@ -97,5 +102,57 @@ describe("schemaReservaFormulario", () => {
   it("avisa quando só resta uma peça", () => {
     const resultado = schemaReservaFormulario(1).safeParse({ ...formulario, quantidade: 2 });
     expect(resultado.error?.issues[0].message).toBe("Só há 1 peça disponível.");
+  });
+});
+
+describe("schemaFiltrosPainel", () => {
+  it("sem parâmetros mostra só as ativas", () => {
+    expect(schemaFiltrosPainel.parse({})).toEqual({
+      codigo: undefined,
+      pagamento: undefined,
+      entrega: undefined,
+      situacao: "ativas",
+    });
+  });
+
+  it("normaliza o código digitado", () => {
+    expect(schemaFiltrosPainel.parse({ codigo: " k7p 2xq " }).codigo).toBe("K7P2XQ");
+  });
+
+  it("código só com espaços vira busca vazia", () => {
+    expect(schemaFiltrosPainel.parse({ codigo: "   " }).codigo).toBeUndefined();
+  });
+
+  it("combina pagamento, entrega e situação", () => {
+    expect(
+      schemaFiltrosPainel.parse({ pagamento: "pago", entrega: "pendente", situacao: "todas" }),
+    ).toMatchObject({ pagamento: "pago", entrega: "pendente", situacao: "todas" });
+  });
+
+  it("ignora valores inválidos sem quebrar a página", () => {
+    expect(
+      schemaFiltrosPainel.parse({ pagamento: "talvez", entrega: 3, situacao: "apagadas" }),
+    ).toMatchObject({ pagamento: undefined, entrega: undefined, situacao: "ativas" });
+  });
+
+  it("parâmetro repetido usa o primeiro valor", () => {
+    expect(schemaFiltrosPainel.parse({ pagamento: ["pago", "pendente"] }).pagamento).toBe(
+      "pago",
+    );
+  });
+});
+
+describe("status de pagamento e entrega", () => {
+  const id = "6f1c2a7e-3b4d-4e5f-8a9b-0c1d2e3f4a5b";
+
+  it("aceita os status conhecidos", () => {
+    expect(schemaStatusPagamento.safeParse({ id, status: "pago" }).success).toBe(true);
+    expect(schemaStatusEntrega.safeParse({ id, status: "entregue" }).success).toBe(true);
+  });
+
+  it("recusa status trocados e id inválido", () => {
+    expect(schemaStatusPagamento.safeParse({ id, status: "entregue" }).success).toBe(false);
+    expect(schemaStatusEntrega.safeParse({ id, status: "pago" }).success).toBe(false);
+    expect(schemaStatusPagamento.safeParse({ id: "1", status: "pago" }).success).toBe(false);
   });
 });

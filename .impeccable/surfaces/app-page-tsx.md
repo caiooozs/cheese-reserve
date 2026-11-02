@@ -2,23 +2,23 @@
 version: 1
 slug: "app-page-tsx"
 primary_target: "app/page.tsx"
-related_targets: ["components/formulario-reserva/formulario-reserva.view.tsx","components/comprovante/comprovante.view.tsx"]
+related_targets: ["components/formulario-reserva/formulario-reserva.view.tsx","components/comprovante/comprovante.view.tsx","components/aviso-venda/aviso-venda.view.tsx"]
 ---
 
 # Página pública de reserva
 
-Escopo: rota `/`, com formulário, avisos de estado e comprovante. Modo: Operate. Quem chega é uma pessoa conhecida da vendedora, pelo link do WhatsApp, no celular, e precisa reservar peças e sair com um comprovante para enviar. Tema só claro. Sem foto por enquanto: nada de ilustração nem foto genérica no lugar.
+Escopo: rota `/`, com formulário, avisos de estado e comprovante. Modo: Operate. Quem chega é uma pessoa conhecida da vendedora, pelo link do WhatsApp, no celular, de qualquer idade, e precisa reservar peças e sair com um comprovante para enviar. Tema claro e escuro automático. Sem foto por enquanto: nada de ilustração nem foto genérica no lugar. A identidade anterior (cartão de Boas Festas) foi substituída a pedido do usuário: era temática, enfeitada e de cores fortes.
 
 ## Direction contract
 
-THESIS: A página é um cartão de Boas Festas enviado pelo correio, e o comprovante é esse cartão pronto para seguir pelo WhatsApp. Recusa a vitrine de loja e o Natal de neve, trenó e gorro.
+THESIS: O padrão da categoria executado no nível do Stripe Checkout: um formulário de reserva limpo, que qualquer pessoa entende de primeira, sem tema, sem enfeite e sem época do ano. Recusa o cartão temático e qualquer fantasia.
 
-OWN-WORLD: Fundo verde-garrafa cheio, folha branca de cartão, faixa diagonal de correio em verde e vermelho, selo picotado vermelho, carimbo redondo, ouro só em detalhes. Saudação em script de cartão, todo o resto em Geist, código em mono. Campos são linhas de endereço de cartão postal.
+OWN-WORLD: Neutros de uma régua única de cinzas, espelhada no escuro. Geist no texto, Geist Mono só no código da reserva. Campos em caixa de 48 px com borda de 1 px e anel de foco azul; botão principal na cor do texto (preto no claro, branco no escuro); cartões com borda fina e raio de 12 px; verde só para confirmação, âmbar e vermelho só para estados.
 
-STORY: A pessoa recebe um cartão, entende preço e peças na hora, preenche as linhas e toca Reservar. O cartão volta carimbado com a data, e ela o envia para a vendedora.
+STORY: A pessoa vê o produto, o preço e quantas peças restam, preenche quatro campos, confere o total e reserva. Recebe a confirmação com o código e envia pelo WhatsApp.
 
-FIRST VIEWPORT: Folha branca quase de borda a borda sobre o verde. Faixa de correio no topo, "Boas Festas" grande em vermelho à esquerda, nome do produto logo abaixo, selo com o preço no canto superior direito, peças disponíveis sob o título e o primeiro campo já visível.
+FIRST VIEWPORT: Em 360×640: nome do produto e descrição curta no topo, a linha com o preço por peça e as peças disponíveis, e o formulário logo abaixo com Nome e WhatsApp visíveis. No desktop, duas colunas como um checkout: produto e resumo do pedido à esquerda, formulário à direita.
 
-FORM: Cartão de Boas Festas, primeiro da lista ordenada, escolhido pelo usuário como IMPECCABLE'S PICK. Chave do sorteio: baf6cc1e. Interação assinatura: o carimbo com a data bate sobre o selo quando a reserva é confirmada.
+FORM: O padrão da categoria (canon), escolhido pelo usuário na rodada de direção, com o acabamento do Stripe Checkout e do Linear e da Vercel como régua. Chave do sorteio: 451bc8f3. Interação assinatura: o resumo do pedido acompanha a quantidade na hora, e a confirmação entra com o código em destaque.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

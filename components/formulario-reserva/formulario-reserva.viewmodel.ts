@@ -150,6 +150,10 @@ export function useFormularioReservaViewModel(
       }`,
       limite: `Até ${formatarPecas(maximo)} por reserva.`,
       total: pecasValidas ? formatarReais(pecas * vitrineAtual.precoCentavos) : null,
+      poucasPecas: vitrineAtual.disponivel <= 3,
+      conta: pecasValidas
+        ? `${formatarPecas(pecas)} × ${formatarReais(vitrineAtual.precoCentavos)}`
+        : null,
       precoNovo: precoMudou ? formatarReais(vitrineAtual.precoCentavos) : null,
       podeDiminuir: pecasValidas && pecas > 1,
       podeAumentar: !pecasValidas || pecas < maximo,

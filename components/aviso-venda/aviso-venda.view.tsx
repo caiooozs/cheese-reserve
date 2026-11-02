@@ -1,34 +1,34 @@
-import { Carimbo } from "@/components/carimbo/carimbo.view";
-import { SAUDACAO } from "@/lib/produto";
+import { ClockIcon, LockIcon, PackageXIcon } from "lucide-react";
 import type { EstadoVitrine } from "@/lib/tipos";
 
-const AVISOS: Record<
-  Exclude<EstadoVitrine, "aberta">,
-  { carimbo: string[]; texto: string }
-> = {
+const AVISOS = {
   nao_abriu: {
-    carimbo: ["Em", "breve"],
-    texto: "As reservas ainda não abriram. Volte em breve!",
+    Icone: ClockIcon,
+    titulo: "As reservas ainda não abriram.",
+    texto: "Volte em breve!",
   },
   encerrada: {
-    carimbo: ["Encerradas"],
-    texto: "As reservas estão encerradas. Obrigada!",
+    Icone: LockIcon,
+    titulo: "As reservas estão encerradas.",
+    texto: "Obrigada!",
   },
   esgotada: {
-    carimbo: ["Esgotou"],
-    texto: "Esgotou! Todas as peças já foram reservadas.",
+    Icone: PackageXIcon,
+    titulo: "Esgotou!",
+    texto: "Todas as peças já foram reservadas.",
   },
-};
+} satisfies Record<Exclude<EstadoVitrine, "aberta">, unknown>;
 
 export function AvisoVenda({ estado }: { estado: Exclude<EstadoVitrine, "aberta"> }) {
-  const { carimbo, texto } = AVISOS[estado];
+  const { Icone, titulo, texto } = AVISOS[estado];
 
   return (
-    <>
-      <Carimbo arco={SAUDACAO} linhas={carimbo} className="absolute top-5 right-3 size-28" />
-      <p role="status" className="mt-8 text-xl leading-snug font-medium text-balance">
-        {texto}
-      </p>
-    </>
+    <div role="status" className="flex flex-col items-center px-2 py-8 text-center">
+      <span className="flex size-12 items-center justify-center rounded-full bg-muted">
+        <Icone aria-hidden className="size-6 text-muted-foreground" />
+      </span>
+      <p className="mt-4 text-xl font-semibold tracking-tight text-balance">{titulo}</p>
+      <p className="mt-1 text-base text-muted-foreground">{texto}</p>
+    </div>
   );
 }

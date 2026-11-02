@@ -1,13 +1,11 @@
 import { useState } from "react";
 import {
-  carimboDaData,
   textoComprovante,
   type AcoesComprovante,
   type DadosComprovante,
 } from "@/components/comprovante/comprovante.model";
 import { toast } from "@/components/ui/toast";
 import { formatarDataHora, formatarPecas, formatarReais } from "@/lib/formatacao";
-import { SAUDACAO } from "@/lib/produto";
 import type { ComprovanteDTO } from "@/lib/tipos";
 
 // O comprovante só aparece depois de uma ação no navegador,
@@ -25,11 +23,9 @@ export function useComprovanteViewModel(
       nome: comprovante.nome,
       quantidade: formatarPecas(comprovante.quantidade),
       total: formatarReais(comprovante.valorTotalCentavos),
-      entrega: comprovante.endereco ?? "combinar pelo WhatsApp",
+      entrega: comprovante.endereco ?? "Combinar pelo WhatsApp",
       feitaEm: formatarDataHora(comprovante.criadaEm),
-      saudacao: SAUDACAO,
-      entregaLonga: (comprovante.endereco?.length ?? 0) > 28,
-      carimbo: carimboDaData(comprovante.criadaEm),
+      entregaLonga: (comprovante.endereco?.length ?? 0) > 24,
       copiado,
       podeCompartilhar: typeof navigator.share === "function",
     },

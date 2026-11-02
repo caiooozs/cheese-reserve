@@ -39,7 +39,8 @@ describe("traduzirErro", () => {
       "Esta reserva já está paga. Para mudar a quantidade, marque o pagamento como pendente antes.",
     ],
     ["nao_autorizado", "Sua sessão expirou. Entre de novo."],
-    ["credenciais_invalidas", "E-mail ou senha incorretos."],
+    ["credenciais_invalidas", "E-mail ou senha incorretos. Confira e tente de novo."],
+    ["sem_acesso", "Esta conta não tem acesso ao painel."],
   ])("%s", (codigo, mensagem) => {
     expect(traduzirErro(codigo)).toBe(mensagem);
   });

@@ -1,438 +1,797 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-31T01:34:52.666Z",
+  "generatedAt": "2026-11-02T18:00:00.000Z",
   "title": "Design System: Cheese Reserve",
   "extensions": {
     "colorMeta": {
-      "primary": {
-        "role": "primary",
-        "displayName": "Verde-Garrafa",
-        "canonical": "oklch(0.393 0.09 152.5)",
-        "tonalRamp": [
-          "#001003",
-          "#002D13",
-          "#0A4D27",
-          "#306C44",
-          "#518D63",
-          "#72AF83",
-          "#97D5A8",
-          "#C7FFD5"
-        ]
-      },
-      "primary-foreground": {
-        "role": "neutral",
-        "displayName": "Papel Claro",
-        "canonical": "oklch(0.99 0.004 150)",
-        "tonalRamp": [
-          "#0A0C0A",
-          "#232523",
-          "#3E403F",
-          "#5C5E5C",
-          "#7C7E7C",
-          "#9D9F9D",
-          "#C2C5C3",
-          "#EDEFED"
-        ]
-      },
-      "selo": {
-        "role": "secondary",
-        "displayName": "Vermelho-Selo",
-        "canonical": "oklch(0.505 0.19 27.5)",
-        "tonalRamp": [
-          "#210000",
-          "#4C0002",
-          "#7D0006",
-          "#B00D13",
-          "#D73F37",
-          "#FF6559",
-          "#FEABA1",
-          "#FEE9E6"
-        ]
-      },
-      "destructive": {
-        "role": "secondary",
-        "displayName": "Vermelho-Selo (erro)",
-        "canonical": "oklch(0.505 0.19 27.5)",
-        "tonalRamp": [
-          "#210000",
-          "#4C0002",
-          "#7D0006",
-          "#B00D13",
-          "#D73F37",
-          "#FF6559",
-          "#FEABA1",
-          "#FEE9E6"
-        ]
-      },
-      "ouro": {
-        "role": "tertiary",
-        "displayName": "Ouro de Detalhe",
-        "canonical": "oklch(0.735 0.146 84.3)",
-        "tonalRamp": [
-          "#120900",
-          "#302100",
-          "#523C00",
-          "#775801",
-          "#9E7604",
-          "#C79509",
-          "#F0BB42",
-          "#FFECC8"
-        ]
-      },
-      "accent": {
-        "role": "tertiary",
-        "displayName": "Ouro Pálido",
-        "canonical": "oklch(0.9 0.09 88)",
-        "tonalRamp": [
-          "#110A00",
-          "#2F2200",
-          "#503D00",
-          "#735A13",
-          "#947A39",
-          "#B69B5A",
-          "#DCC17F",
-          "#FFEDC3"
-        ]
-      },
-      "card": {
-        "role": "neutral",
-        "displayName": "Papel de Cartão",
-        "canonical": "oklch(0.995 0.002 150)",
-        "tonalRamp": [
-          "#0B0B0B",
-          "#232423",
-          "#3F403F",
-          "#5D5E5D",
-          "#7C7D7C",
-          "#9D9F9E",
-          "#C3C4C3",
-          "#EDEFEE"
-        ]
-      },
       "background": {
         "role": "neutral",
-        "displayName": "Papel de Fundo",
-        "canonical": "oklch(0.985 0.003 150)",
+        "displayName": "Fundo",
+        "canonical": "oklch(0.985 0 0)",
         "tonalRamp": [
-          "#0A0B0A",
-          "#232423",
-          "#3F403F",
-          "#5C5E5D",
-          "#7C7E7C",
-          "#9D9F9D",
-          "#C3C5C3",
-          "#EDEFED"
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
         ]
       },
       "foreground": {
         "role": "neutral",
-        "displayName": "Tinta de Texto",
-        "canonical": "oklch(0.24 0.012 155)",
+        "displayName": "Tinta (texto)",
+        "canonical": "oklch(0.205 0 0)",
         "tonalRamp": [
-          "#070D09",
-          "#202621",
-          "#3B423D",
-          "#59605B",
-          "#787F7A",
-          "#99A19B",
-          "#BEC6C1",
-          "#E9F1EB"
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
         ]
       },
-      "muted-foreground": {
+      "card": {
         "role": "neutral",
-        "displayName": "Tinta Secundária",
-        "canonical": "oklch(0.46 0.015 155)",
+        "displayName": "Cartão",
+        "canonical": "oklch(1 0 0)",
         "tonalRamp": [
-          "#060D08",
-          "#1E2621",
-          "#3A423C",
-          "#57605A",
-          "#778079",
-          "#97A19A",
-          "#BDC7C0",
-          "#E7F2EA"
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Tinta",
+        "canonical": "oklch(0.205 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "primary-foreground": {
+        "role": "neutral",
+        "displayName": "Texto do botão principal",
+        "canonical": "oklch(0.985 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
         ]
       },
       "secondary": {
         "role": "neutral",
-        "displayName": "Papel Sombreado",
-        "canonical": "oklch(0.955 0.01 150)",
+        "displayName": "Cinza Apagado (secundário)",
+        "canonical": "oklch(0.96 0 0)",
         "tonalRamp": [
-          "#080C09",
-          "#212521",
-          "#3C413D",
-          "#5A5F5B",
-          "#797F7A",
-          "#9AA09B",
-          "#C0C6C1",
-          "#EAF0EB"
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
         ]
       },
       "muted": {
         "role": "neutral",
-        "displayName": "Papel Apagado",
-        "canonical": "oklch(0.96 0.006 150)",
+        "displayName": "Cinza Apagado",
+        "canonical": "oklch(0.96 0 0)",
         "tonalRamp": [
-          "#090C0A",
-          "#222522",
-          "#3E413E",
-          "#5B5F5C",
-          "#7B7E7B",
-          "#9C9F9C",
-          "#C1C5C2",
-          "#ECF0EC"
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Cinza de Apoio",
+        "canonical": "oklch(0.46 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "accent": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado (hover)",
+        "canonical": "oklch(0.95 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
         ]
       },
       "border": {
         "role": "neutral",
-        "displayName": "Fio Claro",
-        "canonical": "oklch(0.9 0.008 150)",
+        "displayName": "Fio",
+        "canonical": "oklch(0.91 0 0)",
         "tonalRamp": [
-          "#090C09",
-          "#212522",
-          "#3D413D",
-          "#5B5F5B",
-          "#7A7F7B",
-          "#9BA09C",
-          "#C1C6C1",
-          "#EBF0EC"
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
         ]
       },
       "input": {
         "role": "neutral",
-        "displayName": "Grafite de Linha",
-        "canonical": "oklch(0.6 0.02 150)",
+        "displayName": "Borda de Campo",
+        "canonical": "oklch(0.64 0 0)",
         "tonalRamp": [
-          "#060E07",
-          "#1D271F",
-          "#38433A",
-          "#566158",
-          "#758177",
-          "#96A298",
-          "#BBC8BD",
-          "#E6F3E8"
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
         ]
       },
       "ring": {
-        "role": "neutral",
-        "displayName": "Anel de Foco",
-        "canonical": "oklch(0.5 0.1 152.5)",
+        "role": "secondary",
+        "displayName": "Azul de Foco",
+        "canonical": "oklch(0.55 0.19 259)",
         "tonalRamp": [
-          "#001003",
-          "#002D13",
-          "#004E25",
-          "#286D41",
-          "#4A8E60",
-          "#6CB180",
-          "#91D7A5",
-          "#C7FFD5"
+          "oklch(0.15 0.15 259)",
+          "oklch(0.27 0.15 259)",
+          "oklch(0.39 0.15 259)",
+          "oklch(0.51 0.15 259)",
+          "oklch(0.63 0.15 259)",
+          "oklch(0.75 0.15 259)",
+          "oklch(0.87 0.15 259)",
+          "oklch(0.95 0.15 259)"
+        ]
+      },
+      "destructive": {
+        "role": "tertiary",
+        "displayName": "Vermelho de Erro",
+        "canonical": "oklch(0.53 0.2 27)",
+        "tonalRamp": [
+          "oklch(0.15 0.17 27)",
+          "oklch(0.27 0.17 27)",
+          "oklch(0.39 0.17 27)",
+          "oklch(0.51 0.17 27)",
+          "oklch(0.63 0.17 27)",
+          "oklch(0.75 0.17 27)",
+          "oklch(0.87 0.17 27)",
+          "oklch(0.95 0.17 27)"
+        ]
+      },
+      "sucesso": {
+        "role": "tertiary",
+        "displayName": "Verde de Confirmação",
+        "canonical": "oklch(0.5 0.13 152)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 152)",
+          "oklch(0.27 0.13 152)",
+          "oklch(0.39 0.13 152)",
+          "oklch(0.51 0.13 152)",
+          "oklch(0.63 0.13 152)",
+          "oklch(0.75 0.13 152)",
+          "oklch(0.87 0.13 152)",
+          "oklch(0.95 0.13 152)"
+        ]
+      },
+      "sucesso-fundo": {
+        "role": "tertiary",
+        "displayName": "Fundo do Verde de Confirmação",
+        "canonical": "oklch(0.96 0.04 152)",
+        "tonalRamp": [
+          "oklch(0.15 0.04 152)",
+          "oklch(0.27 0.04 152)",
+          "oklch(0.39 0.04 152)",
+          "oklch(0.51 0.04 152)",
+          "oklch(0.63 0.04 152)",
+          "oklch(0.75 0.04 152)",
+          "oklch(0.87 0.04 152)",
+          "oklch(0.95 0.04 152)"
+        ]
+      },
+      "aviso": {
+        "role": "tertiary",
+        "displayName": "Âmbar de Aviso",
+        "canonical": "oklch(0.5 0.12 65)",
+        "tonalRamp": [
+          "oklch(0.15 0.12 70)",
+          "oklch(0.27 0.12 70)",
+          "oklch(0.39 0.12 70)",
+          "oklch(0.51 0.12 70)",
+          "oklch(0.63 0.12 70)",
+          "oklch(0.75 0.12 70)",
+          "oklch(0.87 0.12 70)",
+          "oklch(0.95 0.12 70)"
+        ]
+      },
+      "aviso-fundo": {
+        "role": "tertiary",
+        "displayName": "Fundo do Âmbar de Aviso",
+        "canonical": "oklch(0.97 0.05 85)",
+        "tonalRamp": [
+          "oklch(0.15 0.05 80)",
+          "oklch(0.27 0.05 80)",
+          "oklch(0.39 0.05 80)",
+          "oklch(0.51 0.05 80)",
+          "oklch(0.63 0.05 80)",
+          "oklch(0.75 0.05 80)",
+          "oklch(0.87 0.05 80)",
+          "oklch(0.95 0.05 80)"
+        ]
+      },
+      "background-escuro": {
+        "role": "neutral",
+        "displayName": "Fundo (escuro)",
+        "canonical": "oklch(0.145 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "foreground-escuro": {
+        "role": "neutral",
+        "displayName": "Tinta (texto) (escuro)",
+        "canonical": "oklch(0.95 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "card-escuro": {
+        "role": "neutral",
+        "displayName": "Cartão (escuro)",
+        "canonical": "oklch(0.185 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "primary-escuro": {
+        "role": "primary",
+        "displayName": "Tinta (escuro)",
+        "canonical": "oklch(0.95 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "primary-foreground-escuro": {
+        "role": "neutral",
+        "displayName": "Texto do botão principal (escuro)",
+        "canonical": "oklch(0.185 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "secondary-escuro": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado (secundário) (escuro)",
+        "canonical": "oklch(0.25 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "muted-escuro": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado (escuro)",
+        "canonical": "oklch(0.235 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "muted-foreground-escuro": {
+        "role": "neutral",
+        "displayName": "Cinza de Apoio (escuro)",
+        "canonical": "oklch(0.72 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "accent-escuro": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado (hover) (escuro)",
+        "canonical": "oklch(0.26 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "border-escuro": {
+        "role": "neutral",
+        "displayName": "Fio (escuro)",
+        "canonical": "oklch(0.27 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "input-escuro": {
+        "role": "neutral",
+        "displayName": "Borda de Campo (escuro)",
+        "canonical": "oklch(0.52 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "ring-escuro": {
+        "role": "secondary",
+        "displayName": "Azul de Foco (escuro)",
+        "canonical": "oklch(0.68 0.16 257)",
+        "tonalRamp": [
+          "oklch(0.15 0.15 259)",
+          "oklch(0.27 0.15 259)",
+          "oklch(0.39 0.15 259)",
+          "oklch(0.51 0.15 259)",
+          "oklch(0.63 0.15 259)",
+          "oklch(0.75 0.15 259)",
+          "oklch(0.87 0.15 259)",
+          "oklch(0.95 0.15 259)"
+        ]
+      },
+      "destructive-escuro": {
+        "role": "tertiary",
+        "displayName": "Vermelho de Erro (escuro)",
+        "canonical": "oklch(0.7 0.18 24)",
+        "tonalRamp": [
+          "oklch(0.15 0.17 27)",
+          "oklch(0.27 0.17 27)",
+          "oklch(0.39 0.17 27)",
+          "oklch(0.51 0.17 27)",
+          "oklch(0.63 0.17 27)",
+          "oklch(0.75 0.17 27)",
+          "oklch(0.87 0.17 27)",
+          "oklch(0.95 0.17 27)"
+        ]
+      },
+      "sucesso-escuro": {
+        "role": "tertiary",
+        "displayName": "Verde de Confirmação (escuro)",
+        "canonical": "oklch(0.76 0.15 152)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 152)",
+          "oklch(0.27 0.13 152)",
+          "oklch(0.39 0.13 152)",
+          "oklch(0.51 0.13 152)",
+          "oklch(0.63 0.13 152)",
+          "oklch(0.75 0.13 152)",
+          "oklch(0.87 0.13 152)",
+          "oklch(0.95 0.13 152)"
+        ]
+      },
+      "sucesso-fundo-escuro": {
+        "role": "tertiary",
+        "displayName": "Fundo do Verde de Confirmação (escuro)",
+        "canonical": "oklch(0.27 0.05 152)",
+        "tonalRamp": [
+          "oklch(0.15 0.04 152)",
+          "oklch(0.27 0.04 152)",
+          "oklch(0.39 0.04 152)",
+          "oklch(0.51 0.04 152)",
+          "oklch(0.63 0.04 152)",
+          "oklch(0.75 0.04 152)",
+          "oklch(0.87 0.04 152)",
+          "oklch(0.95 0.04 152)"
+        ]
+      },
+      "aviso-escuro": {
+        "role": "tertiary",
+        "displayName": "Âmbar de Aviso (escuro)",
+        "canonical": "oklch(0.82 0.13 80)",
+        "tonalRamp": [
+          "oklch(0.15 0.12 70)",
+          "oklch(0.27 0.12 70)",
+          "oklch(0.39 0.12 70)",
+          "oklch(0.51 0.12 70)",
+          "oklch(0.63 0.12 70)",
+          "oklch(0.75 0.12 70)",
+          "oklch(0.87 0.12 70)",
+          "oklch(0.95 0.12 70)"
+        ]
+      },
+      "aviso-fundo-escuro": {
+        "role": "tertiary",
+        "displayName": "Fundo do Âmbar de Aviso (escuro)",
+        "canonical": "oklch(0.28 0.05 75)",
+        "tonalRamp": [
+          "oklch(0.15 0.05 80)",
+          "oklch(0.27 0.05 80)",
+          "oklch(0.39 0.05 80)",
+          "oklch(0.51 0.05 80)",
+          "oklch(0.63 0.05 80)",
+          "oklch(0.75 0.05 80)",
+          "oklch(0.87 0.05 80)",
+          "oklch(0.95 0.05 80)"
         ]
       }
     },
     "typographyMeta": {
-      "saudacao": {
-        "displayName": "Saudação",
-        "purpose": "\"Boas Festas\" em vermelho no topo da folha."
-      },
-      "saudacao-assinatura": {
-        "displayName": "Saudação de assinatura",
-        "purpose": "\"Boas Festas\" alinhado à direita, fechando o comprovante."
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nome do produto e preço por peça; 2.25rem a partir de 768 px."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Nome do produto, \"Reserva confirmada\" e o valor total."
+        "purpose": "\"Reserva confirmada\", \"Entrar no painel\", total do pedido e valores dos cartões de número (1.875rem a partir de 640 px)."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Mensagens de estado."
-      },
-      "campo": {
-        "displayName": "Campo",
-        "purpose": "Texto digitado nas linhas."
-      },
-      "selo-valor": {
-        "displayName": "Selo-valor",
-        "purpose": "Preço dentro do selo."
+        "purpose": "\"Fazer reserva\", \"Painel da venda\", \"Reservas\" e título da lista vazia."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Descrição, instruções e erros de campo."
+        "purpose": "Texto corrido, texto digitado nos campos e dados das linhas."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Rótulos dos campos, sempre visíveis acima da linha."
+        "purpose": "Rótulos de campo da página pública e do login, e texto dos botões."
       },
       "nota": {
         "displayName": "Nota",
-        "purpose": "Ajuda sob o campo, rótulo do selo e \"Código da reserva\"."
+        "purpose": "Ajudas, erros de campo, metadados das linhas e contagem do dia."
+      },
+      "rotulo-painel": {
+        "displayName": "Rótulo do painel",
+        "purpose": "Rótulos da busca, dos filtros e dos cartões de número, cabeçalho de colunas e chips."
       },
       "codigo": {
         "displayName": "Código",
-        "purpose": "Somente o código da reserva."
+        "purpose": "Código da reserva no comprovante."
+      },
+      "codigo-busca": {
+        "displayName": "Código de busca",
+        "purpose": "Texto digitado em \"Buscar pelo código\", em maiúsculas."
+      },
+      "codigo-linha": {
+        "displayName": "Código de linha",
+        "purpose": "Código da reserva em cada linha da lista."
       }
     },
     "shadows": [
       {
-        "name": "papel-sobre-a-mesa",
-        "value": "0 14px 32px -14px color-mix(in oklab, var(--foreground) 60%, transparent)",
-        "purpose": "Sombra da folha sobre o fundo verde. Única sombra do sistema."
+        "name": "xs",
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "purpose": "Única sombra do sistema: cartões, campos, selects, stepper e botões de contorno."
+      },
+      {
+        "name": "anel-de-foco",
+        "value": "0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent)",
+        "purpose": "Foco visível de campos, botões, stepper e interruptores, com a borda em Azul de Foco."
       }
     ],
     "motion": [
       {
-        "name": "carimbar",
-        "value": "320ms cubic-bezier(0.16, 1, 0.3, 1) 420ms both",
-        "purpose": "O carimbo bate de 1,6× até 1× ao confirmar a reserva. Desligado com prefers-reduced-motion."
+        "name": "estado",
+        "value": "150ms",
+        "purpose": "Borda e anel de campo, botões e chave do interruptor."
       },
       {
-        "name": "entrada-comprovante",
-        "value": "300ms ease-out",
-        "purpose": "Fade de entrada do comprovante. Desligado com prefers-reduced-motion."
+        "name": "estado-longo",
+        "value": "200ms ease-out",
+        "purpose": "Entrada do comprovante em fade, altura dos detalhes da linha e giro do chevron."
+      },
+      {
+        "name": "deslize-barra",
+        "value": "500ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "A barra de peças desliza até a nova fração. Desligada com prefers-reduced-motion."
+      },
+      {
+        "name": "deslize-numeros",
+        "value": "500ms, curva quártica 1 - (1 - t)^4",
+        "purpose": "Recebido e A receber contam do valor antigo ao novo. Desligado com prefers-reduced-motion."
       }
     ],
     "breakpoints": [
       {
-        "name": "folha-max",
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "coluna-login",
+        "value": "384px"
+      },
+      {
+        "name": "coluna-comprovante",
         "value": "448px"
       },
       {
-        "name": "sm",
-        "value": "640px"
+        "name": "grade",
+        "value": "1024px"
       }
-    ]
+    ],
+    "themes": {
+      "estrategia": "prefers-color-scheme, sem botão de troca; as chaves com sufixo -escuro valem dentro de @media (prefers-color-scheme: dark)",
+      "themeColor": {
+        "claro": "#fafafa",
+        "escuro": "#0a0a0a"
+      }
+    }
   },
   "components": [
     {
-      "name": "Folha com faixa de correio",
-      "kind": "card",
-      "refersTo": "folha",
-      "description": "O contêiner do sistema: folha branca com faixa de correio nos quatro lados.",
-      "html": "<div class=\"ds-mesa\"><div class=\"ds-margem\"><div class=\"ds-folha\"><p class=\"ds-saudacao\">Boas Festas</p><h2 class=\"ds-titulo\">Queijo artesanal</h2></div></div></div>",
-      "css": ".ds-mesa { background: var(--primary); padding: 12px; } .ds-margem { max-width: 448px; margin: 0 auto; border-radius: 11px; background: var(--card); color: var(--card-foreground); padding: 5px; box-shadow: 0 14px 32px -14px color-mix(in oklab, var(--foreground) 60%, transparent); } .ds-folha { border: 7px solid transparent; background: linear-gradient(var(--card) 0 0) padding-box, repeating-linear-gradient(-45deg, var(--selo) 0 11.5px, var(--card) 12px 17.5px, var(--primary) 18px 29.5px, var(--card) 30px 35.5px, var(--selo) 36px) border-box; border-radius: 8px; padding: 20px 16px 24px; } .ds-saudacao { margin: 0; font-family: \"Grand Hotel\", cursive; font-size: 3.5rem; line-height: 0.9; color: var(--selo); } .ds-titulo { margin: 4px 0 0; font-family: Geist, sans-serif; font-size: 1.5rem; line-height: 1.25; font-weight: 700; letter-spacing: -0.025em; }"
+      "name": "Botão principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal na cor do texto: preto no claro, quase branco no escuro.",
+      "html": "<button class=\"ds-btn-primario\">Reservar</button>",
+      "css": ".ds-btn-primario { width: 100%; height: 48px; padding: 0 16px; border: 1px solid transparent; border-radius: 8px; background: var(--primary); color: var(--primary-foreground); font: 500 1rem/1.5 var(--font-geist-sans, Geist), sans-serif; cursor: pointer; transition: all 150ms; } .ds-btn-primario:hover { background: color-mix(in oklch, var(--primary) 80%, transparent); } .ds-btn-primario:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); border-color: var(--ring); outline: none; } .ds-btn-primario:active { transform: translateY(1px); } .ds-btn-primario:disabled { opacity: 0.5; pointer-events: none; }"
     },
     {
-      "name": "Campo em linha",
+      "name": "Botão de contorno",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Ação secundária: Buscar, Filtros, Copiar e o atalho do WhatsApp.",
+      "html": "<button class=\"ds-btn-contorno\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\"/><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"/></svg>Copiar</button>",
+      "css": ".ds-btn-contorno { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 48px; padding: 0 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--background); color: var(--foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font: 500 1rem/1.5 var(--font-geist-sans, Geist), sans-serif; cursor: pointer; transition: all 150ms; } .ds-btn-contorno:hover { background: var(--muted); } .ds-btn-contorno:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); border-color: var(--ring); outline: none; } .ds-btn-contorno:active { transform: translateY(1px); } @media (prefers-color-scheme: dark) { .ds-btn-contorno { border-color: var(--input); background: color-mix(in oklch, var(--input) 30%, transparent); } }"
+    },
+    {
+      "name": "Campo em caixa",
       "kind": "input",
-      "refersTo": "campo-linha",
-      "description": "Campo como linha de cartão postal: sem caixa, sem raio, com rótulo visível.",
-      "html": "<label class=\"ds-campo\"><span class=\"ds-campo-rotulo\">Nome</span><input class=\"ds-campo-linha\" type=\"text\" /></label>",
-      "css": ".ds-campo { display: flex; flex-direction: column; gap: 4px; font-family: Geist, sans-serif; } .ds-campo-rotulo { font-size: 1rem; line-height: 1.375; font-weight: 500; } .ds-campo-linha { height: 44px; border: 0; border-bottom: 2px solid var(--input); border-radius: 0; background: transparent; padding: 4px 0; font-size: 1.125rem; caret-color: var(--primary); outline: none; transition: background-color 150ms, border-color 150ms; } .ds-campo-linha:focus-visible { border-bottom-color: var(--primary); background: var(--secondary); } .ds-campo-linha[aria-invalid=\"true\"] { border-bottom-color: var(--destructive); }"
-    },
-    {
-      "name": "Botão Reservar",
-      "kind": "button",
-      "refersTo": "botao-reservar",
-      "description": "Ação principal da folha, em largura total.",
-      "html": "<button class=\"ds-btn-reservar\">Reservar</button>",
-      "css": ".ds-btn-reservar { width: 100%; height: 52px; border: 0; border-radius: 10px; background: var(--primary); color: var(--primary-foreground); font-family: Geist, sans-serif; font-size: 1.125rem; font-weight: 500; transition: all 150ms; cursor: pointer; } .ds-btn-reservar:hover { background: color-mix(in oklab, var(--primary) 80%, transparent); } .ds-btn-reservar:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent); } .ds-btn-reservar:active { transform: translateY(1px); }"
-    },
-    {
-      "name": "Botão sobre o verde",
-      "kind": "button",
-      "refersTo": "botao-sobre-verde",
-      "description": "Ação principal fora da folha, invertida em papel.",
-      "html": "<div class=\"ds-verde\"><button class=\"ds-btn-papel\">Compartilhar</button></div>",
-      "css": ".ds-verde { background: var(--primary); padding: 12px; } .ds-btn-papel { width: 100%; height: 48px; border: 0; border-radius: 10px; background: var(--card); color: var(--primary); font-family: Geist, sans-serif; font-size: 1rem; font-weight: 500; transition: all 150ms; cursor: pointer; } .ds-btn-papel:hover { background: color-mix(in oklab, var(--card) 90%, transparent); } .ds-btn-papel:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent); } .ds-btn-papel:active { transform: translateY(1px); }"
+      "refersTo": "campo",
+      "description": "Caixa de 48 px com borda de pelo menos 3:1, texto de 16 px e rótulo sempre visível.",
+      "html": "<div class=\"ds-campo\"><label class=\"ds-campo-rotulo\" for=\"ds-whats\">WhatsApp</label><input id=\"ds-whats\" class=\"ds-campo-caixa\" type=\"tel\" /><p class=\"ds-campo-ajuda\">Com DDD. Exemplo: (11) 98765-4321</p></div>",
+      "css": ".ds-campo { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-campo-rotulo { font-size: 1rem; line-height: 1.5; font-weight: 500; color: var(--foreground); } .ds-campo-caixa { height: 48px; padding: 0 14px; border: 1px solid var(--input); border-radius: 8px; background: var(--card); color: var(--foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font-size: 1rem; caret-color: var(--ring); font-variant-numeric: tabular-nums; outline: none; transition: border-color 150ms, box-shadow 150ms; } .ds-campo-caixa:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); } .ds-campo-caixa[aria-invalid=\"true\"] { border-color: var(--destructive); box-shadow: 0 0 0 3px color-mix(in oklch, var(--destructive) 20%, transparent); } .ds-campo-ajuda { margin: 0; font-size: 0.875rem; line-height: 1.43; color: var(--muted-foreground); }"
     },
     {
       "name": "Stepper de quantidade",
       "kind": "custom",
-      "refersTo": "stepper-botao",
-      "description": "Dois botões com o raio do kit ladeando uma linha sem raio.",
-      "html": "<div class=\"ds-stepper\"><button class=\"ds-stepper-btn\" aria-label=\"Diminuir quantidade\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg></button><input class=\"ds-stepper-linha\" value=\"1\" inputmode=\"numeric\" aria-label=\"Quantidade\" /><button class=\"ds-stepper-btn\" aria-label=\"Aumentar quantidade\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M12 5v14\"/></svg></button></div>",
-      "css": ".ds-stepper { display: flex; align-items: center; gap: 8px; } .ds-stepper-btn { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid var(--input); border-radius: 10px; background: transparent; color: var(--foreground); transition: all 150ms; cursor: pointer; } .ds-stepper-btn:hover { background: var(--muted); } .ds-stepper-btn:focus-visible { outline: none; border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent); } .ds-stepper-linha { width: 64px; height: 48px; border: 0; border-bottom: 2px solid var(--input); border-radius: 0; background: transparent; padding: 0; text-align: center; font-family: Geist, sans-serif; font-size: 1.25rem; font-weight: 600; font-variant-numeric: tabular-nums; outline: none; } .ds-stepper-linha:focus-visible { border-bottom-color: var(--primary); background: var(--secondary); }"
+      "refersTo": "stepper",
+      "description": "Uma caixa só com dois botões de 48 px e o número no meio; o foco do número acende a caixa inteira.",
+      "html": "<div class=\"ds-stepper\"><button class=\"ds-stepper-btn\" aria-label=\"Diminuir quantidade\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg></button><input class=\"ds-stepper-numero\" value=\"1\" inputmode=\"numeric\" aria-label=\"Quantidade de peças\" /><button class=\"ds-stepper-btn\" aria-label=\"Aumentar quantidade\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M12 5v14\"/></svg></button></div>",
+      "css": ".ds-stepper { display: inline-flex; align-items: stretch; border: 1px solid var(--input); border-radius: 8px; background: var(--card); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); overflow: hidden; transition: border-color 150ms, box-shadow 150ms; } .ds-stepper:has(input:focus-visible) { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); } .ds-stepper-btn { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 0; background: transparent; color: var(--foreground); cursor: pointer; transition: background-color 150ms; } .ds-stepper-btn:hover { background: var(--muted); } .ds-stepper-btn:disabled { opacity: 0.5; pointer-events: none; } .ds-stepper-numero { width: 64px; height: 48px; border: 0; border-inline: 1px solid var(--border); background: transparent; color: var(--foreground); text-align: center; font: 600 1.125rem var(--font-geist-sans, Geist), sans-serif; font-variant-numeric: tabular-nums; outline: none; }"
     },
     {
-      "name": "Selo",
-      "kind": "custom",
-      "refersTo": "selo",
-      "description": "Etiqueta de preço picotada, com fio de ouro e leve inclinação.",
-      "html": "<div class=\"ds-selo\"><div class=\"ds-selo-miolo\"><div class=\"ds-selo-moldura\"><span class=\"ds-selo-valor\">R$ 50,00</span><span class=\"ds-selo-rotulo\">por peça</span></div></div></div>",
-      "css": ".ds-selo, .ds-selo-miolo { --furo: 3.5px; --passo: 11px; } .ds-selo { width: 112px; rotate: 2deg; mask: radial-gradient(circle at 50% 0, #0000 var(--furo), #000 calc(var(--furo) + 0.5px)) top / var(--passo) 51% round no-repeat, radial-gradient(circle at 50% 100%, #0000 var(--furo), #000 calc(var(--furo) + 0.5px)) bottom / var(--passo) 51% round no-repeat; } .ds-selo-miolo { background: var(--selo); color: var(--primary-foreground); padding: 8px; text-align: center; mask: radial-gradient(circle at 0 50%, #0000 var(--furo), #000 calc(var(--furo) + 0.5px)) left / 51% var(--passo) no-repeat round, radial-gradient(circle at 100% 50%, #0000 var(--furo), #000 calc(var(--furo) + 0.5px)) right / 51% var(--passo) no-repeat round; } .ds-selo-moldura { display: flex; flex-direction: column; align-items: center; padding: 12px 0; border-radius: 2px; box-shadow: 0 0 0 1px var(--ouro); font-family: Geist, sans-serif; } .ds-selo-valor { font-size: 1.125rem; line-height: 1.25; font-weight: 700; letter-spacing: -0.025em; white-space: nowrap; font-variant-numeric: tabular-nums; } .ds-selo-rotulo { font-size: 0.875rem; line-height: 1.25; }"
+      "name": "Chip de disponibilidade",
+      "kind": "chip",
+      "refersTo": "chip-disponibilidade",
+      "description": "Neutro no caso normal, âmbar com 3 peças ou menos, vermelho quando esgota.",
+      "html": "<div class=\"ds-chips\"><span class=\"ds-chip\">13 peças disponíveis</span><span class=\"ds-chip ds-chip-poucas\">3 peças disponíveis</span><span class=\"ds-chip ds-chip-esgotado\">Esgotado</span></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; } .ds-chip { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid var(--border); border-radius: 9999px; background: var(--card); color: var(--muted-foreground); font: 500 0.875rem/1.43 var(--font-geist-sans, Geist), sans-serif; font-variant-numeric: tabular-nums; } .ds-chip-poucas { border-color: color-mix(in oklch, var(--aviso) 40%, transparent); background: var(--aviso-fundo); color: var(--aviso); } .ds-chip-esgotado { border-color: color-mix(in oklch, var(--destructive) 30%, transparent); background: color-mix(in oklch, var(--destructive) 5%, transparent); color: var(--destructive); }"
     },
     {
-      "name": "Carimbo",
-      "kind": "custom",
-      "refersTo": "carimbo",
-      "description": "Carimbo redondo em tinta verde a 85% com multiply, com data ou estado.",
-      "html": "<svg class=\"ds-carimbo\" viewBox=\"0 0 100 100\" aria-hidden=\"true\"><defs><path id=\"ds-arco\" d=\"M 11 50 A 39 39 0 0 1 89 50\" fill=\"none\"/></defs><circle cx=\"50\" cy=\"50\" r=\"47\" fill=\"none\" stroke-width=\"2.5\"/><circle cx=\"50\" cy=\"50\" r=\"35\" fill=\"none\" stroke-width=\"1\"/><text stroke=\"none\" font-size=\"9\" letter-spacing=\"1.4\" text-anchor=\"middle\"><textPath href=\"#ds-arco\" startOffset=\"50%\">Boas Festas</textPath></text><text x=\"50\" y=\"49\" stroke=\"none\" font-size=\"13\" text-anchor=\"middle\">30 out</text><text x=\"50\" y=\"64\" stroke=\"none\" font-size=\"13\" text-anchor=\"middle\">22:28</text></svg>",
-      "css": ".ds-carimbo { width: 88px; height: 88px; rotate: -12deg; fill: currentColor; stroke: currentColor; color: var(--primary); font-family: Geist, sans-serif; font-weight: 700; text-transform: uppercase; opacity: 0.85; mix-blend-mode: multiply; }"
+      "name": "Resumo do pedido",
+      "kind": "card",
+      "refersTo": "cartao",
+      "description": "Cartão fixo à esquerda no desktop; acompanha a quantidade na hora. Separação interna por fio fino.",
+      "html": "<div class=\"ds-resumo\"><h2 class=\"ds-resumo-titulo\">Resumo do pedido</h2><div class=\"ds-resumo-item\"><div><p class=\"ds-resumo-produto\">Queijo artesanal</p><p class=\"ds-resumo-conta\">2 peças × R$ 50,00</p></div><p>R$ 100,00</p></div><div class=\"ds-resumo-total\"><span>Total</span><strong>R$ 100,00</strong></div></div>",
+      "css": ".ds-resumo { max-width: 400px; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--card-foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font-family: var(--font-geist-sans, Geist), sans-serif; font-variant-numeric: tabular-nums; } .ds-resumo p { margin: 0; } .ds-resumo-titulo { margin: 0; font-size: 1rem; font-weight: 600; } .ds-resumo-item { margin-top: 16px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font-size: 1rem; } .ds-resumo-produto { font-weight: 500; } .ds-resumo-conta { font-size: 0.875rem; color: var(--muted-foreground); } .ds-resumo-total { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-weight: 500; } .ds-resumo-total strong { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.025em; }"
     },
     {
-      "name": "Código da reserva",
+      "name": "Comprovante",
+      "kind": "card",
+      "refersTo": "marca-confirmacao",
+      "description": "Marca de confirmação em verde, único uso do verde, e o código em Geist Mono dentro de um cartão com dados separados por fio.",
+      "html": "<div class=\"ds-comprovante\"><div class=\"ds-confirmado\"><span class=\"ds-marca\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m9 12 2 2 4-4\"/></svg></span><h2>Reserva confirmada</h2></div><div class=\"ds-cartao-codigo\"><p class=\"ds-codigo-rotulo\">Código da reserva</p><p class=\"ds-codigo\">K7P2XQ</p><dl><div><dt>Nome</dt><dd>Ana Beatriz Moura</dd></div><div><dt>Total</dt><dd class=\"ds-destaque\">R$ 100,00</dd></div></dl></div></div>",
+      "css": ".ds-comprovante { max-width: 448px; display: flex; flex-direction: column; gap: 12px; font-family: var(--font-geist-sans, Geist), sans-serif; color: var(--foreground); } .ds-confirmado { display: flex; align-items: center; gap: 12px; } .ds-confirmado h2 { margin: 0; font-size: 1.5rem; line-height: 1.333; font-weight: 600; letter-spacing: -0.025em; } .ds-marca { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 9999px; background: var(--sucesso-fundo); color: var(--sucesso); } .ds-cartao-codigo { padding: 12px 16px 4px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); } .ds-codigo-rotulo { margin: 0; font-size: 0.875rem; color: var(--muted-foreground); } .ds-codigo { margin: 2px 0 0; font: 600 2.25rem/1.11 var(--font-geist-mono, 'Geist Mono'), monospace; letter-spacing: 0.14em; } .ds-cartao-codigo dl { margin: 8px 0 0; border-top: 1px solid var(--border); } .ds-cartao-codigo dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 8px 0; } .ds-cartao-codigo dl div + div { border-top: 1px solid var(--border); } .ds-cartao-codigo dt { color: var(--muted-foreground); } .ds-cartao-codigo dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums; } .ds-cartao-codigo .ds-destaque { font-size: 1.125rem; font-weight: 600; }"
+    },
+    {
+      "name": "Cartão de número",
+      "kind": "card",
+      "refersTo": "cartao-numero",
+      "description": "Rótulo pequeno, valor grande em algarismos tabulares e nota no pé; o cartão Peças traz a barra de 6 px que desliza em 500 ms.",
+      "html": "<dl class=\"ds-numeros\"><div class=\"ds-numero\"><dt>Recebido</dt><dd class=\"ds-numero-valor\">R$ 760,00</dd><dd class=\"ds-numero-nota\">Já pago</dd></div><div class=\"ds-numero\"><dt>Peças</dt><dd class=\"ds-numero-valor\">29<span> de 40 reservadas</span></dd><dd class=\"ds-numero-nota\"><span class=\"ds-barra\"><span class=\"ds-barra-cheia\"></span></span>11 disponíveis</dd></div></dl>",
+      "css": ".ds-numeros { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-numero { display: flex; flex-direction: column; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--card-foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); } .ds-numero dt { font-size: 0.875rem; font-weight: 500; color: var(--muted-foreground); } .ds-numero dd { margin: 0; } .ds-numero .ds-numero-valor { margin-top: 4px; font-size: 1.5rem; line-height: 1.333; font-weight: 600; letter-spacing: -0.025em; font-variant-numeric: tabular-nums; } .ds-numero-valor span { font-size: 1rem; font-weight: 400; letter-spacing: 0; color: var(--muted-foreground); } .ds-numero .ds-numero-nota { margin-top: auto; padding-top: 4px; font-size: 0.875rem; color: var(--muted-foreground); font-variant-numeric: tabular-nums; } .ds-barra { display: block; height: 6px; margin: 4px 0 8px; border-radius: 9999px; background: var(--muted); overflow: hidden; } .ds-barra-cheia { display: block; height: 100%; border-radius: 9999px; background: var(--foreground); transform-origin: left; transform: scaleX(0.725); transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-numeros:hover .ds-barra-cheia { transform: scaleX(0.8); } @media (prefers-reduced-motion: reduce) { .ds-barra-cheia { transition: none; } }"
+    },
+    {
+      "name": "Linha de reserva",
       "kind": "custom",
-      "refersTo": "codigo",
-      "description": "Único uso de mono no sistema, com o tracejado que separa os dados.",
-      "html": "<div class=\"ds-codigo\"><p class=\"ds-codigo-rotulo\">Código da reserva</p><p class=\"ds-codigo-valor\">5FF6NR</p></div>",
-      "css": ".ds-codigo { border-bottom: 2px dashed var(--input); padding-bottom: 16px; } .ds-codigo-rotulo { margin: 0; font-family: Geist, sans-serif; font-size: 0.875rem; line-height: 1.5; color: var(--muted-foreground); } .ds-codigo-valor { margin: 0; font-family: \"Geist Mono\", monospace; font-size: 2.25rem; line-height: 1.11; font-weight: 600; letter-spacing: 0.12em; }"
+      "refersTo": "linha-reserva",
+      "description": "Linhas separadas por fio num cartão por dia; Pago e Entregue com a chave do kit dentro de um rótulo de 48 px, separados por fio, sem cartão dentro do cartão.",
+      "html": "<ul class=\"ds-lista\"><li class=\"ds-linha\"><p class=\"ds-linha-nome\">Ana Beatriz Moura</p><p class=\"ds-linha-total\">R$ 100,00</p><p class=\"ds-linha-meta\"><span class=\"ds-linha-codigo\">K7P2XQ</span>2 peças, às 11:14</p><div class=\"ds-linha-status\"><label class=\"ds-interruptor\">Pago<button role=\"switch\" aria-checked=\"true\" class=\"ds-chave\"><span></span></button></label><label class=\"ds-interruptor\">Entregue<button role=\"switch\" aria-checked=\"false\" class=\"ds-chave\"><span></span></button></label></div></li></ul>",
+      "css": ".ds-lista { list-style: none; margin: 0; padding: 0; max-width: 400px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--card-foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); overflow: hidden; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-linha { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; row-gap: 4px; padding: 14px 16px; } .ds-linha + .ds-linha { border-top: 1px solid var(--border); } .ds-linha p { margin: 0; } .ds-linha-nome { font-size: 1rem; line-height: 1.375; font-weight: 600; } .ds-linha-total { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; } .ds-linha-meta { grid-column: 1 / -1; display: flex; gap: 8px; font-size: 0.875rem; color: var(--muted-foreground); font-variant-numeric: tabular-nums; } .ds-linha-codigo { font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-weight: 500; letter-spacing: 0.08em; color: var(--foreground); } .ds-linha-status { grid-column: 1 / -1; margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); } .ds-interruptor { display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 48px; font-size: 1rem; font-weight: 500; cursor: pointer; } .ds-interruptor:first-child { padding-right: 12px; border-right: 1px solid var(--border); } .ds-interruptor:last-child { padding-left: 12px; } .ds-chave { position: relative; width: 32px; height: 18.4px; padding: 0; border: 1px solid transparent; border-radius: 9999px; background: var(--input); cursor: pointer; transition: all 150ms; } .ds-chave span { position: absolute; top: 0.2px; left: 0; width: 16px; height: 16px; border-radius: 9999px; background: var(--background); transition: transform 150ms; } .ds-chave[aria-checked=\"true\"] { background: var(--primary); } .ds-chave[aria-checked=\"true\"] span { transform: translateX(14px); } .ds-chave:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); border-color: var(--ring); outline: none; } @media (prefers-color-scheme: dark) { .ds-chave span { background: var(--foreground); } .ds-chave[aria-checked=\"true\"] span { background: var(--primary-foreground); } }"
     }
   ],
   "narrative": {
-    "northStar": "O Cartão pelo Correio",
-    "overview": "Tudo aqui é papelaria de fim de ano. Um fundo verde-garrafa cheio faz o papel de mesa, e sobre ele fica uma folha branca de cartão com a faixa diagonal de correio em vermelho e verde. O preço vem num selo picotado, a confirmação vem num carimbo redondo com a data, e os campos são as linhas de endereço de um cartão postal. Quem reserva preenche um cartão e o recebe de volta carimbado, pronto para seguir pelo WhatsApp.\n\nA densidade é a de um cartão lido no celular: uma coluna, texto grande, alvos de toque generosos. A personalidade vem de poucas peças físicas e não de ornamento: faixa, selo, carimbo e saudação manuscrita. Todo o resto é Geist sóbria sobre papel. O mundo recusa a vitrine de loja e o Natal de neve, trenó e gorro. Por decisão do responsável, o tema é só claro, e a paleta verde `#14532D`, vermelho `#B91C1C` e ouro `#D4A017` foi a escolhida por ele na rodada de direção.",
+    "northStar": "O Checkout Bem-Feito",
+    "overview": "O sistema é o padrão da categoria executado com acabamento: a página pública se comporta como um checkout no nível do Stripe Checkout, e o painel da vendedora como os painéis do Linear e da Vercel. Não há tema, enfeite nem referência a época do ano. A personalidade está na precisão: uma régua só de cinzas, Geist bem espaçada, campos em caixa grandes, cartões de borda fina e números que se movem quando mudam.\n\nClaro e escuro seguem o aparelho de cada pessoa, sem botão de troca, e o escuro espelha a mesma régua. A cor existe para dizer alguma coisa: azul para o foco, verde para a confirmação, âmbar para aviso, vermelho para erro. O resto é tinta sobre papel neutro, com o botão principal na cor do texto.\n\nO público é qualquer pessoa, de qualquer idade, quase sempre no celular. Por isso a densidade é generosa e os pisos são fixos: toque de 44 px ou mais, texto de campo de 16 px ou mais, contraste AA no texto e bordas de campo com pelo menos 3:1 contra o fundo.",
     "keyCharacteristics": [
-      "Fundo verde-garrafa cheio, com a folha branca por cima.",
-      "Faixa de correio diagonal nos quatro lados da folha.",
-      "Campos como linhas de cartão postal, sem caixa.",
-      "Selo picotado para o preço, carimbo redondo para o estado e a data.",
-      "Saudação em script como única voz display; Geist em todo o resto.",
-      "Tema só claro."
+      "Régua única de cinzas sem croma, espelhada no escuro.",
+      "Claro e escuro automáticos, por `prefers-color-scheme`.",
+      "Geist em todo o texto; Geist Mono só nos códigos de reserva.",
+      "Botão principal na cor do texto: preto no claro, quase branco no escuro.",
+      "Cartões com borda fina, raio de 12 px e sombra xs; campos e botões com 8 px.",
+      "Cor só para estado: azul no foco, verde na confirmação, âmbar no aviso, vermelho no erro.",
+      "Números com algarismos tabulares, que deslizam até o novo valor no painel."
     ],
     "rules": [
       {
-        "name": "A Regra do Tema Claro",
-        "body": "O tema é só claro, por decisão do responsável. O bloco `.dark` em `app/globals.css` é resíduo do kit e não faz parte do sistema.",
+        "name": "A Regra da Régua Única",
+        "body": "Todo neutro sai de uma régua de cinzas com croma 0, espelhada no escuro. Nenhum cinza ganha matiz quente ou frio.",
         "section": "colors"
       },
       {
-        "name": "A Regra do Ouro Pequeno",
-        "body": "O ouro aparece em fios e detalhes, nunca em superfície, texto ou botão. Sua raridade é o que faz o selo parecer impresso.",
+        "name": "A Regra da Cor com Função",
+        "body": "Cor nunca é decoração. Verde só confirma, e só no comprovante. Âmbar avisa e marca poucas peças (3 ou menos). Vermelho marca erro e esgotado. No caso normal, o chip de disponibilidade é neutro.",
         "section": "colors"
       },
       {
-        "name": "A Regra da Voz Única",
-        "body": "Grand Hotel é só voz display: a saudação, em tamanho de 30 px para cima. Nunca em rótulo, botão, dado ou texto corrido.",
-        "section": "typography"
+        "name": "A Regra dos 3:1",
+        "body": "A borda de todo campo tem pelo menos 3:1 contra o fundo e contra o cartão, nos dois temas, para quem enxerga pouco também achar o campo.",
+        "section": "colors"
       },
       {
         "name": "A Regra do Mono no Código",
-        "body": "Geist Mono aparece somente no código da reserva. Datas, valores, telefones e quantidades ficam em Geist com algarismos tabulares.",
+        "body": "Geist Mono aparece só no código da reserva: no comprovante, na linha da lista e no campo de busca. Preço, data, telefone e quantidade ficam em Geist.",
         "section": "typography"
       },
       {
-        "name": "A Regra dos Algarismos Alinhados",
-        "body": "Todo número de preço, estoque, telefone, total ou data usa algarismos tabulares.",
+        "name": "A Regra dos Algarismos Tabulares",
+        "body": "Todo número de preço, total, quantidade, telefone, data ou contagem usa algarismos tabulares, para não dançar quando muda.",
         "section": "typography"
       },
       {
-        "name": "A Regra do Papel Solto",
-        "body": "Só a folha tem sombra. Dentro dela tudo é impressão, e impressão não projeta sombra. Sobreposições passageiras do kit, como o toast, mantêm a sombra própria.",
+        "name": "A Regra dos 16 px",
+        "body": "Texto digitado em campo nunca fica abaixo de 16 px, em nenhuma largura. O kit reduz para 14 px no desktop; o sistema desfaz essa redução.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra do Checkout",
+        "body": "No desktop, produto e resumo do pedido ficam à esquerda e o formulário à direita; no celular, tudo numa coluna, com o formulário logo depois do preço.",
+        "section": "layout"
+      },
+      {
+        "name": "A Regra dos 44 px",
+        "body": "Todo alvo de toque tem pelo menos 44 px: campos, stepper e botões principais com 48 px, botões ghost, gatilho de detalhes e interruptores no desktop com 44 px, e interruptores no celular com 48 px.",
+        "section": "layout"
+      },
+      {
+        "name": "A Regra da Sombra Única",
+        "body": "Só existe a sombra xs. Nenhum elemento ganha sombra maior, sombra colorida ou elevação no hover.",
         "section": "elevation"
       },
       {
-        "name": "A Regra das Três Formas",
-        "body": "Folha com 8 px, botão e stepper com 10 px, campo com 0 px. Nenhum campo ganha caixa, e nenhum botão perde o raio.",
+        "name": "A Regra dos Dois Raios",
+        "body": "Campo e botão com 8 px, cartão com 12 px, chip e interruptor em pílula. Nada fora dessas três formas.",
         "section": "shapes"
+      },
+      {
+        "name": "A Regra do Cartão Único",
+        "body": "Nada de cartão dentro de cartão. Dentro do comprovante e dentro de uma linha da lista, a separação é por fio fino.",
+        "section": "shapes"
+      },
+      {
+        "name": "A Regra do Nome Constante",
+        "body": "O nome acessível do interruptor é sempre o que ele controla (\"Pago\", \"Entregue\") e nunca muda com o estado; a situação visível no desktop é só visual.",
+        "section": "components"
       }
     ],
     "dos": [
-      "Do colocar todo conteúdo sobre a folha, com a faixa de correio, em cima do fundo verde cheio.",
-      "Do usar a regra de forma: folha com 8 px, botão e stepper com 10 px, campo com 0 px.",
-      "Do manter o rótulo do campo visível e o texto do campo com pelo menos 16 px.",
-      "Do manter alvos de toque com pelo menos 44 px.",
-      "Do escrever números de preço, estoque, telefone, total e data com algarismos tabulares.",
-      "Do carimbar sempre com a tinta verde a 85% em multiply.",
-      "Do deixar o carimbo morder a borda do selo sem cobrir o valor: o comprovante precisa ser legível num print."
+      "Do tirar todo neutro da régua única de cinzas sem croma, e espelhar no escuro.",
+      "Do seguir o tema do aparelho, claro ou escuro, sem botão de troca.",
+      "Do usar o botão principal na cor do texto, com 48 px de altura.",
+      "Do desenhar campos como caixas de 48 px, borda de 1 px com pelo menos 3:1, texto de 16 px e rótulo sempre visível.",
+      "Do manter todo alvo de toque com pelo menos 44 px.",
+      "Do usar cartões com borda de 1 px, raio de 12 px e sombra xs, e 8 px em campos e botões.",
+      "Do separar o conteúdo dentro de um cartão por fio fino.",
+      "Do escrever todo número com algarismos tabulares.",
+      "Do mostrar no desktop a situação ao lado do interruptor (\"Pago\" ou \"Pendente\", \"Entregue\" ou \"A entregar\"), mantendo o nome acessível constante.",
+      "Do fazer o resumo do pedido acompanhar a quantidade e os números dos cartões deslizarem até o novo valor em 500 ms.",
+      "Do manter as transições de estado entre 150 e 200 ms e parar todo movimento com `prefers-reduced-motion`."
     ],
     "donts": [
-      "Don't criar tema escuro: o tema é só claro, por decisão do responsável.",
+      "Don't usar tema, enfeite ou qualquer referência a datas do ano.",
       "Don't usar foto de banco de imagens nem ilustração no lugar da foto do queijo.",
-      "Don't usar neve, trenó, gorro ou a estética de vitrine de loja.",
-      "Don't usar Grand Hotel fora da saudação, nem Geist Mono fora do código da reserva.",
-      "Don't usar ouro em texto, superfície ou botão.",
-      "Don't colocar sombra em peças impressas na folha, como campos, botões, selo e carimbo.",
-      "Don't desenhar campos como caixas."
+      "Don't usar verde fora da confirmação do comprovante, nem dar cor ao chip de disponibilidade no caso normal.",
+      "Don't usar Geist Mono fora dos códigos de reserva.",
+      "Don't colocar cartão dentro de cartão.",
+      "Don't colocar kicker ou eyebrow acima de títulos.",
+      "Don't usar sombra maior que xs nem elevar elementos no hover.",
+      "Don't baixar o texto de campo para menos de 16 px, nem no desktop.",
+      "Don't trocar o nome acessível do interruptor conforme o estado."
     ]
   }
 }

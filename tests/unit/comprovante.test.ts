@@ -1,8 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  carimboDaData,
-  textoComprovante,
-} from "@/components/comprovante/comprovante.model";
+import { textoComprovante } from "@/components/comprovante/comprovante.model";
 import type { ComprovanteDTO } from "@/lib/tipos";
 
 const comprovante: ComprovanteDTO = {
@@ -13,15 +10,6 @@ const comprovante: ComprovanteDTO = {
   endereco: "Rua A, 10",
   criadaEm: "2026-10-29T18:02:00Z",
 };
-
-describe("carimboDaData", () => {
-  it("usa o dia no horário de Brasília e o mês em letras", () => {
-    expect(carimboDaData("2026-12-25T02:30:00Z")).toEqual({
-      data: "24 DEZ 2026",
-      hora: "23:30",
-    });
-  });
-});
 
 describe("textoComprovante", () => {
   it("monta o texto completo com endereço", () => {

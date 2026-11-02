@@ -13,7 +13,7 @@ export async function Vitrine() {
     vitrine = await obterVitrine();
   } catch {
     return (
-      <p role="alert" className="mt-8 text-lg">
+      <p role="alert" className="rounded-xl border bg-card p-4 text-lg [grid-area:formulario] md:self-start">
         {MENSAGEM_GENERICA}
       </p>
     );

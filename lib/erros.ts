@@ -17,7 +17,8 @@ const MENSAGENS: Record<string, string> = {
   estoque_abaixo_do_reservado:
     "O total não pode ser menor que as {n} peças já reservadas.",
   nao_autorizado: "Sua sessão expirou. Entre de novo.",
-  credenciais_invalidas: "E-mail ou senha incorretos.",
+  credenciais_invalidas: "E-mail ou senha incorretos. Confira e tente de novo.",
+  sem_acesso: "Esta conta não tem acesso ao painel.",
 };
 
 export const MENSAGEM_GENERICA = "Algo deu errado. Tente de novo em instantes.";

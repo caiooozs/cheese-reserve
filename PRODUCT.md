@@ -38,7 +38,7 @@ Organizar a venda de queijos de fim de ano: um único produto, vendido por peça
 
 ## Brand Commitments
 
-Nenhuma marca, logotipo ou paleta existente. Tema só claro, por decisão do responsável.
+Nenhuma marca, logotipo ou paleta existente. Por escolha do responsável (2026-11-02), o visual segue o padrão da categoria, executado no nível de acabamento do Stripe Checkout (formulário) e do Linear e da Vercel (painel): simples, sem tema e sem nenhuma referência a fim de ano. Tema claro e escuro automático, seguindo o aparelho de cada pessoa. Substitui a identidade anterior de cartão de Boas Festas.
 
 ## Evidence on Hand
 

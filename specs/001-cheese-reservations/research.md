@@ -146,6 +146,9 @@ isso, ler `cookies()` ou buscar dados sem cache fora de um `<Suspense>` é erro 
   por `searchParams`, lidos dentro do mesmo limite.
 - `/admin/login`: formulário estático; a action faz o login.
 - Mutações: Server Actions com `revalidatePath('/')` e/ou `revalidatePath('/admin')`.
+- `exigirAdmin()` chama `connection()` antes de `getClaims()`: o `getClaims` compara a hora atual com a
+  expiração do token, e com `partialPrefetching` ler `cookies()` não basta para tirar esse trecho da
+  pré-renderização (o Next acusa `Date.now()` em desenvolvimento). Achado na Phase 4.
 - Plano B, se algum trecho brigar com a validação de navegação instantânea:
   `export const instant = false` na página (previsto na doc de migração).
 

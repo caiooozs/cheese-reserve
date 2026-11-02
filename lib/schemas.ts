@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { normalizarCodigoBusca } from "@/lib/codigo";
 import { LIMITE_POR_RESERVA } from "@/lib/constantes";
 import { normalizarWhatsapp, whatsappValido } from "@/lib/whatsapp";
 
@@ -40,4 +41,36 @@ export const schemaReserva = z.object({
   precoEsperadoCentavos: z.number().int().positive(),
   chaveEnvio: z.uuid(),
   site: z.string().optional(),
+});
+
+// Painel ------------------------------------------------------------
+
+export const PAGAMENTOS = ["pendente", "pago"] as const;
+export const ENTREGAS = ["pendente", "entregue"] as const;
+export const SITUACOES = ["ativas", "canceladas", "todas"] as const;
+
+// A URL pode trazer o parâmetro repetido (?a=1&a=2): vale o primeiro.
+const primeiro = (valor: unknown) => (Array.isArray(valor) ? valor[0] : valor);
+
+// Filtros vêm da URL, que qualquer um pode editar: valor estranho é ignorado.
+export const schemaFiltrosPainel = z.object({
+  codigo: z
+    .preprocess(primeiro, z.string().optional())
+    .catch(undefined)
+    .transform((valor) => (valor ? normalizarCodigoBusca(valor) || undefined : undefined)),
+  pagamento: z.preprocess(primeiro, z.enum(PAGAMENTOS).optional()).catch(undefined),
+  entrega: z.preprocess(primeiro, z.enum(ENTREGAS).optional()).catch(undefined),
+  situacao: z.preprocess(primeiro, z.enum(SITUACOES)).catch("ativas"),
+});
+
+export type FiltrosPainel = z.output<typeof schemaFiltrosPainel>;
+
+export const schemaStatusPagamento = z.object({
+  id: z.uuid(),
+  status: z.enum(PAGAMENTOS),
+});
+
+export const schemaStatusEntrega = z.object({
+  id: z.uuid(),
+  status: z.enum(ENTREGAS),
 });

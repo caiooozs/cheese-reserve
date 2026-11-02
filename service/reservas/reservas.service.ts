@@ -1,10 +1,10 @@
 import "server-only";
 import type { z } from "zod";
 import { erroDeRegra } from "@/lib/erros";
-import type { schemaReserva } from "@/lib/schemas";
-import type { ComprovanteDTO } from "@/lib/tipos";
+import type { FiltrosPainel, schemaReserva } from "@/lib/schemas";
+import type { ComprovanteDTO, ReservaPainelDTO, ResumoPainelDTO } from "@/lib/tipos";
 import { registrarErro } from "@/service/supabase/registrar-erro";
-import { clientePublico } from "@/service/supabase/clientes";
+import { clientePublico, type ClienteSupabase } from "@/service/supabase/clientes";
 
 type DadosReserva = z.output<typeof schemaReserva>;
 
@@ -40,4 +40,117 @@ export async function criarReserva(
       criadaEm: data.criada_em,
     },
   };
+}
+
+// Painel ------------------------------------------------------------
+// Recebem o client da sessão já conferido como admin (obterAdmin/exigirAdmin).
+// O banco confere de novo: as políticas só deixam a admin ler e alterar.
+
+// Nunca `*`: o painel não precisa de chave de envio nem do preço unitário.
+const COLUNAS_PAINEL =
+  "id, codigo, nome, whatsapp, endereco, quantidade, valor_total_centavos, created_at, status_pagamento, status_entrega, cancelada_em";
+
+export async function listarReservas(
+  supabase: ClienteSupabase,
+  filtros: FiltrosPainel,
+): Promise<ReservaPainelDTO[]> {
+  let consulta = supabase
+    .from("reservas")
+    .select(COLUNAS_PAINEL)
+    .order("created_at", { ascending: false });
+
+  // O código é único: acha a reserva mesmo cancelada (ela aparece marcada).
+  if (filtros.codigo) {
+    consulta = consulta.eq("codigo", filtros.codigo);
+  } else if (filtros.situacao === "ativas") {
+    consulta = consulta.is("cancelada_em", null);
+  } else if (filtros.situacao === "canceladas") {
+    consulta = consulta.not("cancelada_em", "is", null);
+  }
+  if (filtros.pagamento) consulta = consulta.eq("status_pagamento", filtros.pagamento);
+  if (filtros.entrega) consulta = consulta.eq("status_entrega", filtros.entrega);
+
+  const { data, error } = await consulta;
+  if (error) {
+    registrarErro("listar_reservas", error);
+    throw error;
+  }
+
+  return data.map((r) => ({
+    id: r.id,
+    codigo: r.codigo,
+    nome: r.nome,
+    whatsapp: r.whatsapp,
+    endereco: r.endereco,
+    quantidade: r.quantidade,
+    valorTotalCentavos: r.valor_total_centavos ?? 0,
+    criadaEm: r.created_at,
+    statusPagamento: r.status_pagamento === "pago" ? "pago" : "pendente",
+    statusEntrega: r.status_entrega === "entregue" ? "entregue" : "pendente",
+    cancelada: r.cancelada_em !== null,
+  }));
+}
+
+// Totais sobre todas as reservas ativas, sem olhar para os filtros (FR-025).
+export async function resumoPainel(supabase: ClienteSupabase): Promise<ResumoPainelDTO> {
+  const [totais, configuracao] = await Promise.all([
+    supabase
+      .from("totais_venda")
+      .select("recebido_centavos, a_receber_centavos, pecas_reservadas")
+      .single(),
+    supabase
+      .from("configuracao")
+      .select("preco_centavos, estoque_disponivel, reservas_abertas")
+      .single(),
+  ]);
+
+  if (totais.error || configuracao.error) {
+    const erro = totais.error ?? configuracao.error;
+    registrarErro("resumo_painel", erro);
+    throw erro;
+  }
+
+  const { recebido_centavos, a_receber_centavos, pecas_reservadas } = totais.data;
+  const { preco_centavos, estoque_disponivel, reservas_abertas } = configuracao.data;
+  const reservadas = pecas_reservadas ?? 0;
+
+  return {
+    recebidoCentavos: recebido_centavos ?? 0,
+    aReceberCentavos: a_receber_centavos ?? 0,
+    precoCentavos: preco_centavos,
+    disponivel: estoque_disponivel,
+    reservadas,
+    total: estoque_disponivel + reservadas,
+    reservasAbertas: reservas_abertas,
+  };
+}
+
+type Status =
+  | { campo: "status_pagamento"; valor: ReservaPainelDTO["statusPagamento"] }
+  | { campo: "status_entrega"; valor: ReservaPainelDTO["statusEntrega"] };
+
+export async function definirStatus(
+  supabase: ClienteSupabase,
+  id: string,
+  status: Status,
+): Promise<{ ok: true } | { ok: false; codigo: string }> {
+  const { data, error } = await supabase
+    .from("reservas")
+    .update(
+      status.campo === "status_pagamento"
+        ? { status_pagamento: status.valor }
+        : { status_entrega: status.valor },
+    )
+    .eq("id", id)
+    .select("id");
+
+  if (error) {
+    registrarErro("definir_status", error);
+    return { ok: false, codigo: "erro_inesperado" };
+  }
+  // A política só deixa alterar reservas ativas: nenhuma linha = cancelada.
+  if (data.length === 0) {
+    return { ok: false, codigo: "reserva_cancelada" };
+  }
+  return { ok: true };
 }
