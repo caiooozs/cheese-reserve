@@ -1,17 +1,25 @@
 import { TriangleAlertIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { ValorAnimado } from "@/components/valor-animado/valor-animado.view";
-import { formatarReais } from "@/lib/formatacao";
 import type { ResumoPainelDTO } from "@/lib/tipos";
 import { cn } from "@/lib/utils";
 
-// Só o que foge do normal ganha aviso: preço e abertura ficam nas configurações.
+// Só o que foge do normal ganha aviso, e o aviso diz onde resolver. A ordem
+// segue a da página pública: sem preço não abre; encerrada vem antes de sem queijos.
+const ONDE = "em Configurações da venda, logo abaixo.";
+
 function avisoDaVenda(resumo: ResumoPainelDTO) {
+  if (resumo.precoCentavos === 0 && resumo.total === 0) {
+    return `Falta definir o preço e o total de queijos: a página pública ainda não aceita reservas. Defina os dois ${ONDE}`;
+  }
   if (resumo.precoCentavos === 0) {
-    return "Preço ainda não definido: a página mostra que as reservas não abriram.";
+    return `Preço ainda não definido: a página pública ainda não aceita reservas. Defina o preço ${ONDE}`;
   }
   if (!resumo.reservasAbertas) {
-    return `Reservas encerradas. Preço: ${formatarReais(resumo.precoCentavos)} por peça.`;
+    return `Reservas encerradas: a página pública não aceita novas reservas. Para reabrir, use a chave ${ONDE}`;
+  }
+  if (resumo.total === 0) {
+    return `Total de queijos ainda não definido: a página pública ainda não aceita reservas. Defina o total ${ONDE}`;
   }
   return null;
 }

@@ -1,4 +1,5 @@
 import { BuscaFiltros } from "@/components/busca-filtros/busca-filtros.container";
+import { ConfiguracoesVenda } from "@/components/configuracoes-venda/configuracoes-venda.container";
 import { ListaReservas } from "@/components/lista-reservas/lista-reservas";
 import { ResumoPainel } from "@/components/resumo-painel/resumo-painel.view";
 import { MENSAGEM_GENERICA } from "@/lib/erros";
@@ -41,6 +42,7 @@ export async function Painel({
   return (
     <>
       <ResumoPainel resumo={resumo} />
+      <ConfiguracoesVenda resumo={resumo} />
       <section aria-labelledby="titulo-reservas" className="flex flex-col gap-3">
         <h2 id="titulo-reservas" className="text-lg font-semibold tracking-tight">
           Reservas
@@ -52,6 +54,7 @@ export async function Painel({
           hoje={hoje}
           filtrando={filtrando}
           buscaPorCodigo={Boolean(filtros.codigo)}
+          disponivel={resumo.disponivel}
         />
       </section>
     </>

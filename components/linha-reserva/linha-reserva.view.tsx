@@ -1,6 +1,12 @@
-import { ChevronDownIcon, MessageCircleIcon } from "lucide-react";
+import {
+  ChevronDownIcon,
+  CircleXIcon,
+  MessageCircleIcon,
+  PencilLineIcon,
+  UserPenIcon,
+} from "lucide-react";
 import type { LinhaReservaViewProps } from "@/components/linha-reserva/linha-reserva.model";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
@@ -36,6 +42,9 @@ function Interruptor({
     </label>
   );
 }
+
+// Ações dentro dos detalhes: 44 px, como o atalho do WhatsApp.
+const ACAO = "h-11 shrink-0 px-4 text-base";
 
 // No celular: nome e total, depois código e horário, depois os interruptores.
 // No desktop: uma linha só, nas colunas do cabeçalho da lista.
@@ -106,8 +115,8 @@ export function LinhaReservaView({ dados, acoes }: LinhaReservaViewProps) {
       </CollapsibleTrigger>
 
       <CollapsibleContent className="col-span-full h-(--collapsible-panel-height) overflow-hidden transition-[height] duration-200 ease-out data-ending-style:h-0 data-starting-style:h-0 motion-reduce:transition-none">
-        <div className="mt-1 flex flex-col gap-4 border-t pt-3 pb-1 text-foreground md:mt-3 md:flex-row md:items-end md:justify-between">
-          <dl className="grid gap-3 text-base sm:grid-cols-3 md:flex-1">
+        <div className="mt-1 flex flex-col gap-4 border-t pt-3 pb-1 text-foreground md:mt-3">
+          <dl className="grid gap-3 text-base sm:grid-cols-3">
             <div>
               <dt className="text-sm text-muted-foreground">WhatsApp</dt>
               <dd className="tabular-nums">{dados.whatsapp}</dd>
@@ -121,18 +130,62 @@ export function LinhaReservaView({ dados, acoes }: LinhaReservaViewProps) {
               <dd className="tabular-nums">{dados.feitaEm}</dd>
             </div>
           </dl>
-          <a
-            href={dados.linkWhatsApp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              buttonVariants({ variant: "outline" }),
-              "h-11 shrink-0 px-4 text-base shadow-xs",
+
+          {/* No celular, uma ação por linha; no desktop, lado a lado e Cancelar no fim. */}
+          <div className="grid gap-2 md:flex md:flex-wrap md:items-center">
+            <a
+              href={dados.linkWhatsApp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(buttonVariants({ variant: "outline" }), ACAO, "shadow-xs")}
+            >
+              <MessageCircleIcon aria-hidden className="size-5" />
+              Abrir conversa no WhatsApp
+            </a>
+            {!dados.cancelada && (
+              <>
+                <Button
+                  variant="outline"
+                  disabled={dados.pago}
+                  focusableWhenDisabled
+                  aria-describedby={dados.pago ? `${dados.idDetalhes}-pago` : undefined}
+                  onClick={() => acoes.abrirDialogo("quantidade")}
+                  className={cn(ACAO, "shadow-xs")}
+                >
+                  <PencilLineIcon aria-hidden className="size-5" />
+                  Alterar quantidade
+                </Button>
+                {/* O motivo fica logo abaixo do botão que ele explica; no desktop, numa linha própria no fim. */}
+                {dados.pago && (
+                  <p
+                    id={`${dados.idDetalhes}-pago`}
+                    className="-mt-1 mb-1 text-sm text-pretty text-muted-foreground md:order-last md:my-0 md:basis-full"
+                  >
+                    {dados.avisoPago}
+                  </p>
+                )}
+                <Button
+                  variant="outline"
+                  onClick={() => acoes.abrirDialogo("dados")}
+                  className={cn(ACAO, "shadow-xs")}
+                >
+                  <UserPenIcon aria-hidden className="size-5" />
+                  Corrigir dados
+                </Button>
+                <Button
+                  variant="ghost"
+                  onClick={() => acoes.abrirDialogo("cancelar")}
+                  className={cn(
+                    ACAO,
+                    "text-destructive hover:bg-destructive/10 hover:text-destructive md:ml-auto dark:hover:bg-destructive/15",
+                  )}
+                >
+                  <CircleXIcon aria-hidden className="size-5" />
+                  Cancelar reserva
+                </Button>
+              </>
             )}
-          >
-            <MessageCircleIcon aria-hidden className="size-5" />
-            Abrir conversa no WhatsApp
-          </a>
+          </div>
         </div>
       </CollapsibleContent>
     </Collapsible>

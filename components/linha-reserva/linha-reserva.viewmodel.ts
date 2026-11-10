@@ -2,6 +2,7 @@ import { useRouter } from "next/navigation";
 import { useId, useOptimistic, useState, useTransition } from "react";
 import {
   textosDaReserva,
+  type Dialogo,
   type LinhaReservaViewProps,
   type StatusReserva,
 } from "@/components/linha-reserva/linha-reserva.model";
@@ -17,6 +18,10 @@ export function useLinhaReservaViewModel(reserva: ReservaPainelDTO): LinhaReserv
   const router = useRouter();
   const idDetalhes = useId();
   const [aberta, setAberta] = useState(false);
+  // Qual diálogo está montado, e se está aberto: fecha com animação e só
+  // depois desmonta, para abrir da próxima vez com os dados atuais.
+  const [dialogo, setDialogo] = useState<Dialogo | null>(null);
+  const [dialogoAberto, setDialogoAberto] = useState(false);
   const [, iniciar] = useTransition();
 
   // O interruptor muda na hora; se a action falhar, volta sozinho ao que veio do servidor.
@@ -46,6 +51,9 @@ export function useLinhaReservaViewModel(reserva: ReservaPainelDTO): LinhaReserv
       pago: status.pagamento === "pago",
       entregue: status.entrega === "entregue",
       aberta,
+      avisoPago: traduzirErro("reserva_paga"),
+      dialogo,
+      dialogoAberto,
     },
     acoes: {
       alternarDetalhes: setAberta,
@@ -57,6 +65,12 @@ export function useLinhaReservaViewModel(reserva: ReservaPainelDTO): LinhaReserv
         const entrega = marcado ? "entregue" : "pendente";
         salvar({ entrega }, () => definirEntrega({ id: reserva.id, status: entrega }));
       },
+      abrirDialogo(novo) {
+        setDialogo(novo);
+        setDialogoAberto(true);
+      },
+      mudarDialogo: setDialogoAberto,
+      terminarDialogo: () => setDialogo(null),
     },
   };
 }

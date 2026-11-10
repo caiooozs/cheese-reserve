@@ -193,6 +193,13 @@ components:
     rounded: "{rounded.pilula}"
     height: "18.4px"
     width: "32px"
+  linha-interruptor:
+    backgroundColor: "transparent"
+    textColor: "{colors.foreground}"
+    typography: "{typography.body}"
+    rounded: "{rounded.campo}"
+    padding: "0 12px"
+    height: "48px"
   barra-pecas:
     backgroundColor: "{colors.muted}"
     rounded: "{rounded.pilula}"
@@ -201,6 +208,31 @@ components:
     backgroundColor: "{colors.foreground}"
     rounded: "{rounded.pilula}"
     height: "6px"
+  button-destrutivo:
+    backgroundColor: "oklch(0.53 0.2 27 / 0.1)"
+    textColor: "{colors.destructive}"
+    typography: "{typography.label}"
+    rounded: "{rounded.campo}"
+    padding: "0 20px"
+    height: "48px"
+  button-ghost-destrutivo:
+    backgroundColor: "transparent"
+    textColor: "{colors.destructive}"
+    typography: "{typography.label}"
+    rounded: "{rounded.campo}"
+    padding: "0 16px"
+    height: "44px"
+  dialogo:
+    backgroundColor: "{colors.card}"
+    textColor: "{colors.foreground}"
+    typography: "{typography.body}"
+    rounded: "{rounded.cartao}"
+    padding: "16px"
+    width: "448px"
+  dialogo-rodape:
+    backgroundColor: "oklch(0.96 0 0 / 0.5)"
+    rounded: "{rounded.cartao}"
+    padding: "16px"
 ---
 
 # Design System: Cheese Reserve
@@ -221,7 +253,7 @@ O público é qualquer pessoa, de qualquer idade, quase sempre no celular. Por i
 - Geist em todo o texto; Geist Mono só nos códigos de reserva.
 - Botão principal na cor do texto: preto no claro, quase branco no escuro.
 - Cartões com borda fina, raio de 12 px e sombra xs; campos e botões com 8 px.
-- Cor só para estado: azul no foco, verde na confirmação, âmbar no aviso, vermelho no erro.
+- Cor só para estado: azul no foco, verde na confirmação, âmbar no aviso, vermelho no erro e na ação destrutiva.
 - Números com algarismos tabulares, que deslizam até o novo valor no painel.
 
 ## Colors
@@ -237,7 +269,7 @@ Uma régua neutra de croma zero, mais quatro cores com função fixa. Os valores
 ### Tertiary
 - **Verde de Confirmação** (`sucesso` sobre `sucesso-fundo`): só a marca redonda de "Reserva confirmada" no comprovante.
 - **Âmbar de Aviso** (`aviso` sobre `aviso-fundo`): o aviso de preço alterado, o aviso do painel quando a venda foge do normal e o chip de disponibilidade quando restam 3 peças ou menos.
-- **Vermelho de Erro** (`destructive`): erros de campo, a borda do campo inválido, o aviso de sessão no login e o chip "Esgotado", este com fundo de vermelho a 5% e borda a 30%.
+- **Vermelho de Erro** (`destructive`): erros de campo, a borda do campo inválido, o aviso de sessão no login e o chip "Esgotado", este com fundo de vermelho a 5% e borda a 30%. Também marca a ação destrutiva: o texto do botão ghost "Cancelar reserva" nos detalhes da linha, com hover de vermelho a 10% (15% no escuro), e o botão destrutivo suave da confirmação, com fundo de vermelho a 10% (20% no escuro) e texto vermelho.
 
 ### Neutral
 - **Fundo** (`background`): a página inteira e a cor de tema do navegador (#fafafa no claro, #0a0a0a no escuro).
@@ -250,7 +282,7 @@ Uma régua neutra de croma zero, mais quatro cores com função fixa. Os valores
 ### Named Rules
 **A Regra da Régua Única.** Todo neutro sai de uma régua de cinzas com croma 0, espelhada no escuro. Nenhum cinza ganha matiz quente ou frio.
 
-**A Regra da Cor com Função.** Cor nunca é decoração. Verde só confirma, e só no comprovante. Âmbar avisa e marca poucas peças (3 ou menos). Vermelho marca erro e esgotado. No caso normal, o chip de disponibilidade é neutro.
+**A Regra da Cor com Função.** Cor nunca é decoração. Verde só confirma, e só no comprovante. Âmbar avisa e marca poucas peças (3 ou menos). Vermelho marca erro, esgotado e ação destrutiva; na ação destrutiva fica no texto, com fundo de no máximo 20%, nunca em bloco sólido. No caso normal, o chip de disponibilidade é neutro.
 
 **A Regra dos 3:1.** A borda de todo campo tem pelo menos 3:1 contra o fundo e contra o cartão, nos dois temas, para quem enxerga pouco também achar o campo.
 
@@ -265,7 +297,7 @@ Uma régua neutra de croma zero, mais quatro cores com função fixa. Os valores
 ### Hierarchy
 - **Display** (600, 1.875rem, 1.2, -0.025em; 2.25rem a partir de 768 px): o nome do produto e o preço por peça, este com algarismos tabulares.
 - **Headline** (600, 1.5rem, 1.333, -0.025em): "Reserva confirmada", "Entrar no painel", o total do pedido e os valores dos cartões de número, que sobem para 1.875rem a partir de 640 px.
-- **Title** (600, 1.125rem, 1.556, -0.025em): "Fazer reserva", "Painel da venda", "Reservas" e o título da lista vazia. Os títulos de aviso ("Esgotou!") sobem para 1.25rem.
+- **Title** (600, 1.125rem, 1.556, -0.025em): "Fazer reserva", "Painel da venda", "Reservas" e o título da lista vazia. Os títulos de aviso ("Esgotou!") sobem para 1.25rem. Também é o título dos diálogos do painel.
 - **Body** (400, 1rem, 1.5): texto corrido, o texto digitado nos campos e os dados das linhas. A descrição do produto sobe para 1.125rem a partir de 768 px, com entrelinha de 1.625 e largura de leitura limitada.
 - **Label** (500, 1rem, 1.5): rótulos de campo na página pública e no login, sempre visíveis acima da caixa, e o texto dos botões.
 - **Nota** (400, 0.875rem, 1.43): ajudas sob o campo, mensagens de erro, metadados das linhas e a contagem de reservas do dia.
@@ -289,15 +321,15 @@ No formulário, rótulo e campo ficam a 6 px, campos a 20 px entre si, e o cart�
 
 O comprovante cobre a tela inteira numa coluna de até 448 px, centrada na vertical, para o print pegar só ele. O login é uma coluna de até 384 px, também centrada.
 
-O painel tem um cabeçalho de 64 px em cartão com fio inferior e o conteúdo na mesma largura de 1024 px. Os cartões de número ficam em duas colunas no celular (Recebido e A receber lado a lado, Peças na largura toda) e em três a partir de 768 px, a 12 px entre si. Abaixo vêm "Reservas", a busca com filtros e a lista, agrupada por dia, com 20 px entre os dias. No celular os filtros abrem por um botão; no desktop ficam na mesma linha da busca. A partir de 768 px a lista ganha cabeçalho de colunas e cada reserva vira uma linha só, nas colunas reserva, total (8rem), pagamento (9rem), entrega (10rem) e detalhes (2.75rem).
+O painel tem um cabeçalho de 64 px em cartão com fio inferior e o conteúdo na mesma largura de 1024 px, numa coluna com 20 px entre os blocos, nesta ordem: o aviso (só quando a venda foge do normal), os cartões de número, a faixa "Configurações da venda" e "Reservas". Os cartões de número ficam em duas colunas no celular (Recebido e A receber lado a lado, Peças na largura toda) e em três a partir de 768 px, a 12 px entre si. Logo abaixo, a faixa de configurações ocupa a largura toda; aberta, seus três ajustes se empilham no celular, viram duas colunas a partir de 768 px e três a partir de 1024 px. Abaixo vêm "Reservas", a busca com filtros e a lista, agrupada por dia, com 20 px entre os dias. No celular os filtros abrem por um botão; no desktop ficam na mesma linha da busca. A partir de 768 px a lista ganha cabeçalho de colunas e cada reserva vira uma linha só, nas colunas reserva, total (8rem), pagamento (9rem), entrega (10rem) e detalhes (2.75rem).
 
 **A Regra do Checkout.** No desktop, produto e resumo do pedido ficam à esquerda e o formulário à direita; no celular, tudo numa coluna, com o formulário logo depois do preço.
 
-**A Regra dos 44 px.** Todo alvo de toque tem pelo menos 44 px: campos, stepper e botões principais com 48 px, botões ghost, gatilho de detalhes e interruptores no desktop com 44 px, e interruptores no celular com 48 px.
+**A Regra dos 44 px.** Todo alvo de toque tem pelo menos 44 px: campos, stepper e botões principais com 48 px, botões ghost, gatilho de detalhes, ações dos detalhes da linha e interruptores no desktop com 44 px, botões dos diálogos com 48 px, e interruptores no celular e a linha de interruptor da faixa de configurações com 48 px.
 
 ## Elevation & Depth
 
-O sistema é quase plano. A profundidade vem da diferença entre Fundo e Cartão e do fio fino de borda; a sombra é só um acabamento, a menor da escala, igual em tudo que a usa. Nada se eleva no hover.
+O sistema é quase plano. A profundidade vem da diferença entre Fundo e Cartão e do fio fino de borda; a sombra é só um acabamento, a menor da escala, igual em tudo que a usa. Nada se eleva no hover. Os diálogos também não ganham sombra: a página atrás escurece com preto a 10% e um desfoque leve, e o diálogo tem só um contorno fino (a cor do texto a 10%).
 
 ### Shadow Vocabulary
 - **Sombra xs** (`box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05)`): cartões, campos, selects, stepper e botões de contorno.
@@ -308,7 +340,7 @@ O sistema é quase plano. A profundidade vem da diferença entre Fundo e Cartão
 
 ## Shapes
 
-Duas medidas de canto e a pílula. O que se aperta ou se preenche tem 8 px: campos, selects, stepper, botões e caixas de aviso. O que contém tem 12 px: cartões do formulário, do resumo, do comprovante, do login, cartões de número e o grupo de linhas de cada dia. Chips, interruptores, a barra de peças e os círculos de ícone são pílulas ou círculos.
+Duas medidas de canto e a pílula. O que se aperta ou se preenche tem 8 px: campos, selects, stepper, botões e caixas de aviso. O que contém tem 12 px: cartões do formulário, do resumo, do comprovante, do login, cartões de número, o grupo de linhas de cada dia e os diálogos do painel. Chips, interruptores, a barra de peças e os círculos de ícone são pílulas ou círculos.
 
 As bordas são sempre de 1 px. Dentro de um cartão, as divisões são fios de 1 px em Fio, nunca outro contêiner.
 
@@ -325,7 +357,10 @@ Grandes, diretos, sem ornamento.
 - **Hover / Focus:** o fundo clareia para 80%, o foco ganha a borda e o anel em Azul de Foco, e ao pressionar desce 1 px. Desabilitado fica a 50% de opacidade.
 - **Contorno:** fundo de página, borda em Fio (Borda de Campo no escuro), sombra xs e 48 px; usado em Buscar, Filtros, Copiar e no atalho do WhatsApp (44 px).
 - **Ghost:** sem fundo, 44 px; usado em Sair, Limpar filtros, mostrar ou esconder a senha e no gatilho de detalhes da linha.
-- **Enviando:** spinner antes do rótulo e o texto "Reservando…" ou "Entrando…".
+- **Ghost destrutivo:** o ghost de 44 px com texto e ícone em Vermelho de Erro e hover de vermelho a 10% (15% no escuro). Só em "Cancelar reserva", nos detalhes da linha.
+- **Destrutivo suave:** a variante destrutiva do kit, com fundo de vermelho a 10% (20% no escuro), texto vermelho, hover a 20% (30% no escuro) e anel de foco vermelho. Só no botão que confirma a ação destrutiva, dentro do diálogo; nunca vermelho sólido.
+- **Enviando:** spinner antes do rótulo e o texto "Reservando…", "Entrando…" ou "Salvando…".
+- **Salvar só com mudança:** os botões de salvar de um ajuste (contorno, 48 px, ao lado do campo) ficam desabilitados, a 50%, até o campo diferir do valor salvo, e voltam a desabilitar depois de salvar.
 - **Link:** "Fazer outra reserva" é texto sublinhado na cor do texto, com 44 px de alvo.
 
 ### Chips
@@ -343,10 +378,11 @@ Grandes, diretos, sem ornamento.
 - **Style:** caixa de 48 px em Cartão, borda de 1 px em Borda de Campo, 8 px de canto, 14 px de margem lateral, sombra xs e texto de 16 px. Rótulo sempre visível acima, ajuda abaixo em Nota.
 - **Focus:** borda em Azul de Foco com anel de 3 px a 50%; borda e anel mudam em 150 ms.
 - **Error:** borda em vermelho com anel de vermelho a 20%, e a mensagem em Nota vermelha abaixo do campo.
-- **Stepper de quantidade:** uma caixa só, do tamanho dos botões, com dois botões ghost de 48 px e o número no meio (64 px, 1.125rem em 600), separados por fios. O foco do número acende a caixa inteira.
+- **Stepper de quantidade:** uma caixa só, do tamanho dos botões, com dois botões ghost de 48 px e o número no meio (64 px, 1.125rem em 600), separados por fios. O foco do número acende a caixa inteira. É o mesmo no formulário público e no diálogo "Alterar quantidade" do painel.
 - **Select:** select nativo com a mesma caixa de 48 px, seta de 20 px à direita.
 - **Busca:** a caixa leva a lupa de 20 px à esquerda e o texto em Código de busca.
 - **Senha:** a caixa reserva 48 px à direita para o botão ghost de 44 px.
+- **Prefixo de moeda:** "R$" em Cinza de Apoio, 16 px, dentro da caixa à esquerda; o texto digitado começa a 44 px da borda.
 
 ### Navigation
 O painel tem só um cabeçalho de 64 px em Cartão com fio inferior: "Painel da venda" em Title, o nome do produto em Nota abaixo e o botão ghost Sair à direita. A página pública não tem navegação.
@@ -366,20 +402,41 @@ Rótulo em Rótulo do painel e Cinza de Apoio, valor em Headline com algarismos 
 Um cartão por dia, com o cabeçalho do dia ("Hoje", "Ontem", "30 de outubro") em 1rem 600 e a contagem em Nota fora do cartão, e as reservas separadas por fio.
 - **Linha no celular:** nome em 1rem 600 e total à direita; abaixo, o código em Código de linha e o resumo; abaixo de um fio, Pago e Entregue em duas metades separadas por fio vertical, cada uma com 48 px.
 - **Linha no desktop:** uma linha só nas colunas do cabeçalho, com os interruptores em 44 px.
-- **Detalhes:** o gatilho ghost de 44 px abre, abaixo de um fio, WhatsApp, entrega e hora em pares de rótulo e valor, e o botão de contorno "Abrir conversa no WhatsApp". A altura anima em 200 ms `ease-out`.
-- **Cancelada:** a linha passa a Cinza de Apoio e os interruptores dão lugar ao chip "Cancelada" e a "Fora dos totais".
+- **Detalhes:** o gatilho ghost de 44 px abre, abaixo de um fio, WhatsApp, entrega e hora em pares de rótulo e valor, e abaixo as ações da reserva, todas com 44 px e ícone de 20 px: "Abrir conversa no WhatsApp", "Alterar quantidade" e "Corrigir dados" em contorno com sombra xs, e "Cancelar reserva" em ghost destrutivo. No celular cada ação ocupa uma linha inteira, a 8 px entre si; a partir de 768 px ficam lado a lado e "Cancelar reserva" vai para a ponta direita. A altura anima em 200 ms `ease-out`.
+- **Paga:** "Alterar quantidade" fica desabilitado, a 50%, mas continua focável, e a razão aparece logo abaixo das ações em Nota e Cinza de Apoio ("Esta reserva já está paga. Para mudar a quantidade, marque o pagamento como pendente antes."), ligada ao botão por `aria-describedby`.
+- **Cancelada:** a linha passa a Cinza de Apoio e os interruptores dão lugar ao chip "Cancelada" e a "Fora dos totais". Nos detalhes sobra só o atalho do WhatsApp.
 - **Vazia:** o mesmo cartão com o ícone num círculo de Cinza Apagado, título em Title e a explicação em Cinza de Apoio.
 
 ### Interruptor
 A chave do kit (32 px por 18,4 px, em pílula, ligada na cor do texto e desligada em Borda de Campo) dentro de um rótulo que é o alvo de toque inteiro. No celular o rótulo diz o que a chave controla ("Pago", "Entregue"). No desktop, onde o cabeçalho da coluna já diz isso, o texto ao lado mostra a situação: "Pago" ou "Pendente", "Entregue" ou "A entregar", com a situação desligada em peso normal e Cinza de Apoio.
+- **Linha de interruptor:** a variante da faixa de configurações. Um rótulo nu de 48 px em toda largura, com 8 px de canto e 12 px de margem lateral que avançam sobre o recuo do bloco: a situação à esquerda em Body e a chave à direita, hover em Cinza Apagado a 60% em 150 ms, sem borda de campo nem sombra. O título do ajuste fica acima, como um rótulo de campo, e a ajuda abaixo em Nota.
 
-**A Regra do Nome Constante.** O nome acessível do interruptor é sempre o que ele controla ("Pago", "Entregue") e nunca muda com o estado; a situação visível no desktop é só visual.
+**A Regra do Nome Constante.** O nome acessível do interruptor é sempre o que ele controla ("Pago", "Entregue", "Receber reservas") e nunca muda com o estado; a situação visível ao lado é só visual.
 
 ### Aviso
-Caixa de 8 px com borda de 1 px, 12 px de margem e ícone de 20 px à esquerda: âmbar para preço alterado e venda fora do normal, vermelho para aviso de sessão no login.
+Caixa de 8 px com borda de 1 px, 12 px de margem e ícone de 20 px à esquerda: âmbar para preço alterado e venda fora do normal, vermelho para aviso de sessão no login. No painel, o âmbar aparece quando faltam preço e total, quando falta só o preço, quando as reservas estão encerradas e quando falta só o total, nessa ordem, e cada frase diz o que a página pública faz e termina apontando onde resolver ("em Configurações da venda, logo abaixo").
+
+### Configurações da venda
+Uma faixa recolhível em cartão (12 px, borda em Fio, sombra xs) entre os cartões de número e "Reservas".
+- **Fechada:** um gatilho de pelo menos 64 px com 12 px por 16 px de margem, a mesma margem lateral dos cartões de número e das linhas da lista: "Configurações da venda" em 1rem 600, abaixo o estado salvo numa frase só em Nota e Cinza de Apoio ("R$ 50,00 por peça, 60 queijos, aceitando reservas") e o chevron de 20 px à direita, que gira 180 graus em 200 ms. Hover em Cinza Apagado a 60%. Abre sozinha enquanto falta preço ou total.
+- **Aberta:** abaixo de um fio, 20 px de margem e três ajustes com o mesmo ritmo: rótulo em Label, controle de 48 px e ajuda em Nota, a 6 px entre si. No celular os ajustes se empilham separados por fio, com 20 px acima e abaixo de cada fio; a partir de 768 px viram colunas a 24 px, sem fio. A altura anima em 200 ms `ease-out`.
+- **Preço por peça:** campo com prefixo "R$" e o botão de contorno "Salvar preço" ao lado.
+- **Total de queijos:** campo e "Salvar total"; a ajuda termina numa linha na cor do texto com a prévia "Reservadas: N · Disponíveis: M", que vira "Disponíveis: M depois de salvar" enquanto o número digitado muda o estoque.
+- **Receber reservas:** a linha de interruptor. O texto ao lado da chave diz o que a página pública faz de fato, na ordem dela: "Abre quando houver preço", "Reservas encerradas", "Abre quando houver queijos", "Esgotado" ou "Aceitando reservas". Só "Aceitando reservas" fica na cor do texto; o resto, em Cinza de Apoio. A chave muda na hora e volta se o servidor recusar.
+- **Retorno:** erro de campo fica abaixo do campo, como em todo formulário; sucesso e erro do servidor viram aviso passageiro (toast).
+
+### Diálogos do painel
+As ações da linha que mudam a reserva abrem um diálogo centrado sobre a página.
+- **Casca:** Cartão com 12 px de canto e contorno fino, sem sombra, até 448 px de largura (a tela menos 32 px no celular), 16 px de margem interna (24 px a partir de 640 px) e 20 px entre os blocos. Título em Title, a 8 px do texto em Body e Cinza de Apoio, os dois alinhados à esquerda. A altura vai até a tela menos 32 px (em `dvh`) e, com tela baixa ou teclado aberto, o diálogo rola por dentro em vez de cortar.
+- **Fechar:** sem X no canto. Fecha por "Voltar", Esc ou toque no fundo.
+- **Rodapé:** a faixa do kit, que encosta nas bordas do diálogo: Cinza Apagado a 50%, fio superior e 16 px de margem (16 px por 24 px a partir de 640 px). Botões de 48 px em Label. No celular se empilham na largura toda com a ação principal em cima; a partir de 640 px ficam lado a lado à direita, com "Voltar" (contorno) à esquerda da ação.
+- **Alterar quantidade:** título "Alterar quantidade", o texto com código e nome, o stepper com o rótulo "Quantidade de peças" e, abaixo, o limite em Nota ("Até N peças: X desta reserva e mais Y disponíveis."). Depois, um bloco em Cinza Apagado com 8 px de canto e 12 px por 16 px de margem: "Total atual" enquanto nada muda e "Novo total" quando muda, a conta em Nota, o total em Headline à direita e, abaixo de um fio, o efeito no estoque e "Vale o preço da reserva: R$ ... por peça." O bloco é anunciado (`aria-live`). "Salvar quantidade" fica desabilitado até a quantidade mudar.
+- **Corrigir dados:** título "Corrigir dados do cliente", o texto dizendo o que não muda, e os campos Nome, WhatsApp (com máscara e a ajuda "Com DDD") e "Endereço de entrega (opcional)", a 20 px entre si, todos no Campo em caixa. Erro de campo abaixo do campo. "Salvar dados" fica desabilitado até algum campo mudar.
+- **Cancelar reserva:** diálogo de alerta. O título é a pergunta com código, nome e peças ("Cancelar a reserva K7P2XQ de Ana (2 peças)?") e o texto diz a consequência ("As peças voltam para o estoque. Isso não pode ser desfeito."). Se a reserva já foi paga, um Aviso âmbar diz quanto devolver e a quem ("Esta reserva já foi paga. Devolva R$ ... para Ana."). Botões "Cancelar reserva" (destrutivo suave) e "Voltar".
+- **Retorno:** enquanto salva, o botão mostra o spinner e "Salvando…" ou "Cancelando…". Ao terminar, o diálogo fecha e um aviso passageiro (toast) diz o que mudou, com o código da reserva; no cancelamento, diz também onde a reserva foi parar ("Para vê-la, filtre Situação: Canceladas.").
 
 ### Movimento
-Transições de estado (borda e anel de campo, botões, chevron, entrada do comprovante, altura dos detalhes) ficam entre 150 e 200 ms. Só o deslize dos números e da barra leva 500 ms. Com `prefers-reduced-motion`, nada se move: os números pulam direto para o valor final, a barra e os detalhes mudam sem transição e o comprovante aparece parado.
+Transições de estado (borda e anel de campo, botões, chevron, entrada do comprovante, entrada e saída dos diálogos, altura dos detalhes e da faixa de configurações) ficam entre 150 e 200 ms. Os diálogos entram e saem em 150 ms, com fade e zoom de 95%, e o fundo escurece em fade no mesmo tempo. Só o deslize dos números e da barra leva 500 ms. Com `prefers-reduced-motion`, nada se move: os números pulam direto para o valor final, a barra e os detalhes mudam sem transição, o comprovante aparece parado e os diálogos surgem e somem sem animação.
 
 ## Do's and Don'ts
 
@@ -395,6 +452,10 @@ Transições de estado (borda e anel de campo, botões, chevron, entrada do comp
 - **Do** mostrar no desktop a situação ao lado do interruptor ("Pago" ou "Pendente", "Entregue" ou "A entregar"), mantendo o nome acessível constante.
 - **Do** fazer o resumo do pedido acompanhar a quantidade e os números dos cartões deslizarem até o novo valor em 500 ms.
 - **Do** manter as transições de estado entre 150 e 200 ms e parar todo movimento com `prefers-reduced-motion`.
+- **Do** deixar o botão de salvar de um ajuste ou de um diálogo desabilitado até o campo diferir do valor salvo.
+- **Do** nomear a ação destrutiva pelo que ela atinge ("Cancelar reserva") e confirmar num diálogo que diz o código, o nome, as peças e a consequência.
+- **Do** manter focável a ação desabilitada por regra de negócio e mostrar a razão logo abaixo, ligada por `aria-describedby`.
+- **Do** fechar os diálogos do painel por "Voltar", Esc ou toque no fundo, com rodapé de botões de 48 px e rolagem interna em tela baixa.
 
 ### Don't:
 - **Don't** usar tema, enfeite ou qualquer referência a datas do ano.
@@ -406,3 +467,6 @@ Transições de estado (borda e anel de campo, botões, chevron, entrada do comp
 - **Don't** usar sombra maior que xs nem elevar elementos no hover.
 - **Don't** baixar o texto de campo para menos de 16 px, nem no desktop.
 - **Don't** trocar o nome acessível do interruptor conforme o estado.
+- **Don't** dar borda de campo a uma linha de interruptor: ela é um rótulo nu de 48 px, com hover em Cinza Apagado.
+- **Don't** escrever "Cancelar" sozinho num botão: a ação destrutiva diz o objeto, e o botão que fecha sem fazer nada é "Voltar".
+- **Don't** pintar ação destrutiva em vermelho sólido: o vermelho fica no texto, com fundo de no máximo 20%.

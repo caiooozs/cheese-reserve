@@ -1,8 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import type { z } from "zod";
 import { erroDeRegra } from "@/lib/erros";
 import {
+  schemaAlterarQuantidade,
+  schemaCorrigirDados,
+  schemaIdReserva,
   schemaReserva,
   schemaStatusEntrega,
   schemaStatusPagamento,
@@ -15,7 +19,8 @@ import type {
   VitrineDTO,
 } from "@/lib/tipos";
 import { obterAdmin } from "@/service/auth/auth.service";
-import { criarReserva, definirStatus } from "@/service/reservas/reservas.service";
+import * as reservas from "@/service/reservas/reservas.service";
+import type { ClienteSupabase } from "@/service/supabase/clientes";
 import { registrarErro } from "@/service/supabase/registrar-erro";
 import { obterVitrine } from "@/service/vitrine/vitrine.service";
 
@@ -59,7 +64,7 @@ export async function reservar(entrada: unknown): Promise<ResultadoReserva> {
     return { ok: true, comprovante: null };
   }
 
-  const resultado = await criarReserva(validacao.data);
+  const resultado = await reservas.criarReserva(validacao.data);
 
   if (resultado.ok) {
     revalidatePath("/");
@@ -77,10 +82,15 @@ export async function reservar(entrada: unknown): Promise<ResultadoReserva> {
 
 // Painel ------------------------------------------------------------
 
-async function salvarStatus(
+type ResultadoServico = { ok: true } | { ok: false; codigo: string };
+
+// Valida, confere a sessão, executa e atualiza as páginas afetadas. Mudanças
+// de quantidade e cancelamento mexem no disponível, que a página pública mostra.
+async function noPainel<Schema extends z.ZodType>(
   entrada: unknown,
-  schema: typeof schemaStatusPagamento | typeof schemaStatusEntrega,
-  campo: "status_pagamento" | "status_entrega",
+  schema: Schema,
+  executar: (supabase: ClienteSupabase, dados: z.output<Schema>) => Promise<ResultadoServico>,
+  { mudaVitrine = false }: { mudaVitrine?: boolean } = {},
 ): Promise<ResultadoAcao> {
   const validacao = schema.safeParse(entrada);
   if (!validacao.success) {
@@ -92,15 +102,7 @@ async function salvarStatus(
     return { ok: false, erro: "nao_autorizado" };
   }
 
-  const { id, status } = validacao.data;
-  const resultado = await definirStatus(
-    admin.supabase,
-    id,
-    campo === "status_pagamento"
-      ? { campo, valor: status as "pendente" | "pago" }
-      : { campo, valor: status as "pendente" | "entregue" },
-  );
-
+  const resultado = await executar(admin.supabase, validacao.data);
   if (!resultado.ok) {
     return {
       ok: false,
@@ -109,13 +111,44 @@ async function salvarStatus(
   }
 
   revalidatePath("/admin");
+  if (mudaVitrine) {
+    revalidatePath("/");
+  }
   return { ok: true };
 }
 
 export async function definirPagamento(entrada: unknown): Promise<ResultadoAcao> {
-  return salvarStatus(entrada, schemaStatusPagamento, "status_pagamento");
+  return noPainel(entrada, schemaStatusPagamento, (supabase, { id, status }) =>
+    reservas.definirStatus(supabase, id, { campo: "status_pagamento", valor: status }),
+  );
 }
 
 export async function definirEntrega(entrada: unknown): Promise<ResultadoAcao> {
-  return salvarStatus(entrada, schemaStatusEntrega, "status_entrega");
+  return noPainel(entrada, schemaStatusEntrega, (supabase, { id, status }) =>
+    reservas.definirStatus(supabase, id, { campo: "status_entrega", valor: status }),
+  );
+}
+
+export async function alterarQuantidade(entrada: unknown): Promise<ResultadoAcao> {
+  return noPainel(
+    entrada,
+    schemaAlterarQuantidade,
+    (supabase, { id, quantidade }) => reservas.alterarQuantidade(supabase, id, quantidade),
+    { mudaVitrine: true },
+  );
+}
+
+export async function cancelarReserva(entrada: unknown): Promise<ResultadoAcao> {
+  return noPainel(
+    entrada,
+    schemaIdReserva,
+    (supabase, { id }) => reservas.cancelarReserva(supabase, id),
+    { mudaVitrine: true },
+  );
+}
+
+export async function corrigirDados(entrada: unknown): Promise<ResultadoAcao> {
+  return noPainel(entrada, schemaCorrigirDados, (supabase, { id, ...dados }) =>
+    reservas.corrigirDados(supabase, id, dados),
+  );
 }

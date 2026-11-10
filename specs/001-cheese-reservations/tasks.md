@@ -203,7 +203,7 @@ reservado; encerrar e reabrir.
 
 ### Tests for User Story 3
 
-- [ ] T049 [P] [US3] Criar `tests/integracao/configuracao.test.ts`:
+- [X] T049 [P] [US3] Criar `tests/integracao/configuracao.test.ts`:
   - `definir_estoque_total(30)` com 10 reservadas → disponível 20
   - Total abaixo do reservado → `estoque_abaixo_do_reservado`, nada muda; total negativo → `quantidade_invalida`; usuário comum → `nao_autorizado`
   - `definir_estoque_total` em paralelo com várias `criar_reserva` mantém `total = disponível + reservadas`
@@ -213,13 +213,13 @@ reservado; encerrar e reabrir.
 
 ### Implementation for User Story 3
 
-- [ ] T050 [P] [US3] Criar `lib/dinheiro.ts` com `reaisParaCentavos(texto): number | null` (só manipulação de texto, sem `parseFloat`; aceita `"45,90"`, `"45,9"`, `"45"`, `"1.234,56"`, `"R$ 10,00"`; recusa negativos, letras e mais de 2 casas) e `centavosParaCampo(centavos)` (`4590` → `"45,90"`); testes em `tests/unit/dinheiro.test.ts`
-- [ ] T051 [US3] Acrescentar a `lib/schemas.ts`: `schemaPreco` (`{ preco: string }` → `reaisParaCentavos` → inteiro > 0, "Informe um preço maior que zero."), `schemaEstoqueTotal` (`{ total: inteiro >= 0 }`) e `schemaAbertura` (`{ abertas: boolean }`); testes em `tests/unit/schemas.test.ts`
-- [ ] T052 [US3] Criar `service/configuracao/configuracao.service.ts` com `import 'server-only'`: `definirPreco(supabase, centavos)` (`update` em `configuracao`), `definirEstoqueTotal(supabase, total)` (`rpc('definir_estoque_total')`; em `estoque_abaixo_do_reservado`, lê `pecas_reservadas` de `totais_venda` para a mensagem) e `definirReservasAbertas(supabase, abertas)`
-- [ ] T053 [US3] Criar `service/configuracao/configuracao.actions.ts` com as actions `definirPreco`, `definirEstoqueTotal` e `definirReservasAbertas` (`obterAdmin`, zod, devolvendo o código de erro e `n`; `revalidatePath('/admin')` e `revalidatePath('/')`)
-- [ ] T054 [US3] Criar a pasta `components/configuracoes-venda/` (container, view, viewmodel e model), recebendo `ResumoPainelDTO`: campo de preço (`inputMode="decimal"`, valor inicial `centavosParaCampo`, botão "Salvar preço"); campo "Total de queijos" (`inputMode="numeric"`, com "Reservadas: Y · Disponíveis: Z"); `Switch` "Aceitando reservas" / "Reservas encerradas"; toasts de sucesso e erro
-- [ ] T055 [US3] Em `app/admin/page.tsx`, incluir `<Configuracoes>` numa seção "Configurações da venda" (pode ser recolhível com `components/ui/collapsible.tsx`), passando o `ResumoPainelDTO`
-- [ ] T056 [US3] Validar US3: `npm run test:integracao` (`configuracao`) verde; roteiro "História 3" de `specs/001-cheese-reservations/quickstart.md` §7
+- [X] T050 [P] [US3] Criar `lib/dinheiro.ts` com `reaisParaCentavos(texto): number | null` (só manipulação de texto, sem `parseFloat`; aceita `"45,90"`, `"45,9"`, `"45"`, `"1.234,56"`, `"R$ 10,00"`; recusa negativos, letras e mais de 2 casas) e `centavosParaCampo(centavos)` (`4590` → `"45,90"`); testes em `tests/unit/dinheiro.test.ts`
+- [X] T051 [US3] Acrescentar a `lib/schemas.ts`: `schemaPreco` (`{ preco: string }` → `reaisParaCentavos` → inteiro > 0, "Informe um preço maior que zero."), `schemaEstoqueTotal` (`{ total: inteiro >= 0 }`) e `schemaAbertura` (`{ abertas: boolean }`); testes em `tests/unit/schemas.test.ts`
+- [X] T052 [US3] Criar `service/configuracao/configuracao.service.ts` com `import 'server-only'`: `definirPreco(supabase, centavos)` (`update` em `configuracao`), `definirEstoqueTotal(supabase, total)` (`rpc('definir_estoque_total')`; em `estoque_abaixo_do_reservado`, lê `pecas_reservadas` de `totais_venda` para a mensagem) e `definirReservasAbertas(supabase, abertas)`
+- [X] T053 [US3] Criar `service/configuracao/configuracao.actions.ts` com as actions `definirPreco`, `definirEstoqueTotal` e `definirReservasAbertas` (`obterAdmin`, zod, devolvendo o código de erro e `n`; `revalidatePath('/admin')` e `revalidatePath('/')`)
+- [X] T054 [US3] Criar a pasta `components/configuracoes-venda/` (container, view, viewmodel e model), recebendo `ResumoPainelDTO`: campo de preço (`inputMode="decimal"`, valor inicial `centavosParaCampo`, botão "Salvar preço"); campo "Total de queijos" (`inputMode="numeric"`, com "Reservadas: Y · Disponíveis: Z"); `Switch` "Aceitando reservas" / "Reservas encerradas"; toasts de sucesso e erro
+- [X] T055 [US3] Em `app/admin/page.tsx`, incluir `<Configuracoes>` numa seção "Configurações da venda" (pode ser recolhível com `components/ui/collapsible.tsx`), passando o `ResumoPainelDTO`. Ajustes que vieram da implementação: faixa recolhível entre os cards de números e a lista (escolha do usuário em 2026-11-10), renderizada em `components/painel/painel.tsx`; fechada mostra o estado salvo numa frase e abre sozinha enquanto falta preço ou total; o texto ao lado da chave diz o que a página pública faz de fato; "Salvar" só fica ativo com mudança; o aviso do resumo também cobre total 0
+- [X] T056 [US3] Validar US3: `npm run test:integracao` (`configuracao`) verde; roteiro "História 3" de `specs/001-cheese-reservations/quickstart.md` §7
 
 **Checkpoint**: a vendedora abre a venda sozinha pelo painel.
 
@@ -236,7 +236,7 @@ totais e sem ações.
 
 ### Tests for User Story 4
 
-- [ ] T057 [P] [US4] Criar `tests/integracao/correcoes.test.ts`:
+- [X] T057 [P] [US4] Criar `tests/integracao/correcoes.test.ts`:
   - `alterar_quantidade`: aumentar com estoque desconta só a diferença, e o total fica `nova × preço original` mesmo depois de mudar o preço do produto; aumentar sem estoque → `estoque_insuficiente`, nada muda; diminuir devolve peças; 0 → `quantidade_invalida`; 12 peças é aceito (acima do limite público); reserva paga → `reserva_paga`; cancelada → `reserva_cancelada`
   - `cancelar_reserva`: devolve estoque; repetir não muda nada; a reserva sai de `recebido`/`a_receber`
   - Usuário comum → `nao_autorizado` nas duas functions
@@ -244,14 +244,14 @@ totais e sem ações.
 
 ### Implementation for User Story 4
 
-- [ ] T058 [US4] Acrescentar a `lib/schemas.ts`: `schemaIdReserva` (`{ id: uuid }`), `schemaAlterarQuantidade` (`{ id: uuid, quantidade: inteiro >= 1 }`, sem o limite de 10) e `schemaCorrigirDados` (`{ id: uuid }` + campos `nome`, `whatsapp`, `endereco` de T021); testes em `tests/unit/schemas.test.ts`
-- [ ] T059 [US4] Acrescentar a `service/reservas/reservas.service.ts`: `alterarQuantidade(supabase, id, quantidade)` (`rpc('alterar_quantidade', { p_reserva_id, p_nova_quantidade })`), `cancelarReserva(supabase, id)` (`rpc('cancelar_reserva', { p_reserva_id })`) e `corrigirDados(supabase, id, dados)` (`update({ nome, whatsapp, endereco }).eq('id', id).select('id')`, com retorno vazio → `reserva_cancelada`); erros via `registrarErro` e código
-- [ ] T060 [US4] Acrescentar a `service/reservas/reservas.actions.ts` as actions `alterarQuantidade`, `cancelarReserva` e `corrigirDados` (`obterAdmin`, zod, devolvendo o código de erro; `revalidatePath('/admin')`, e `revalidatePath('/')` em quantidade e cancelamento)
-- [ ] T061 [P] [US4] Criar a pasta `components/dialogo-quantidade/` (container, view, viewmodel e model, `components/ui/dialog.tsx`): campo numérico (mínimo 1, botões − e +), mostra o novo total como prévia (`nova × preço unitário`, só exibição) e chama `alterarQuantidade`; erro em toast ou no campo
-- [ ] T062 [P] [US4] Criar a pasta `components/dialogo-dados-cliente/` (container, view, viewmodel e model, `Dialog`): RHF + zod com os campos de nome, WhatsApp (máscara) e endereço preenchidos; erros por campo; chama `corrigirDados`
-- [ ] T063 [P] [US4] Criar a pasta `components/dialogo-cancelar/` (container, view, viewmodel e model, `components/ui/alert-dialog.tsx`) com o texto "Cancelar a reserva <código> de <nome> (<N> peças)? As peças voltam para o estoque. Isso não pode ser desfeito." e, se paga, também "Esta reserva já foi paga: lembre de devolver <valor> ao cliente."; botões "Voltar" e "Cancelar reserva"; chama `cancelarReserva`
-- [ ] T064 [US4] Em `components/linha-reserva/`, adicionar as ações: "Alterar quantidade" (só ativa com pagamento pendente; se paga, mostrar o texto de `reserva_paga`), "Corrigir dados" (só ativa) e "Cancelar" (só ativa), abrindo os diálogos de T061–T063
-- [ ] T065 [US4] Validar US4: `npm run test:integracao` (`correcoes`) verde; roteiro "História 4" de `specs/001-cheese-reservations/quickstart.md` §7
+- [X] T058 [US4] Acrescentar a `lib/schemas.ts`: `schemaIdReserva` (`{ id: uuid }`), `schemaAlterarQuantidade` (`{ id: uuid, quantidade: inteiro >= 1 }`, sem o limite de 10) e `schemaCorrigirDados` (`{ id: uuid }` + campos `nome`, `whatsapp`, `endereco` de T021); testes em `tests/unit/schemas.test.ts`
+- [X] T059 [US4] Acrescentar a `service/reservas/reservas.service.ts`: `alterarQuantidade(supabase, id, quantidade)` (`rpc('alterar_quantidade', { p_reserva_id, p_nova_quantidade })`), `cancelarReserva(supabase, id)` (`rpc('cancelar_reserva', { p_reserva_id })`) e `corrigirDados(supabase, id, dados)` (`update({ nome, whatsapp, endereco }).eq('id', id).select('id')`, com retorno vazio → `reserva_cancelada`); erros via `registrarErro` e código
+- [X] T060 [US4] Acrescentar a `service/reservas/reservas.actions.ts` as actions `alterarQuantidade`, `cancelarReserva` e `corrigirDados` (`obterAdmin`, zod, devolvendo o código de erro; `revalidatePath('/admin')`, e `revalidatePath('/')` em quantidade e cancelamento)
+- [X] T061 [P] [US4] Criar a pasta `components/dialogo-quantidade/` (container, view, viewmodel e model, `components/ui/dialog.tsx`): campo numérico (mínimo 1, botões − e +), mostra o novo total como prévia (`nova × preço unitário`, só exibição) e chama `alterarQuantidade`; erro em toast ou no campo
+- [X] T062 [P] [US4] Criar a pasta `components/dialogo-dados-cliente/` (container, view, viewmodel e model, `Dialog`): RHF + zod com os campos de nome, WhatsApp (máscara) e endereço preenchidos; erros por campo; chama `corrigirDados`
+- [X] T063 [P] [US4] Criar a pasta `components/dialogo-cancelar/` (container, view, viewmodel e model, `components/ui/alert-dialog.tsx`) com o texto "Cancelar a reserva <código> de <nome> (<N> peças)? As peças voltam para o estoque. Isso não pode ser desfeito." e, se paga, também "Esta reserva já foi paga: lembre de devolver <valor> ao cliente."; botões "Voltar" e "Cancelar reserva"; chama `cancelarReserva`
+- [X] T064 [US4] Em `components/linha-reserva/`, adicionar as ações: "Alterar quantidade" (só ativa com pagamento pendente; se paga, mostrar o texto de `reserva_paga`), "Corrigir dados" (só ativa) e "Cancelar" (só ativa), abrindo os diálogos de T061–T063. Ajustes que vieram da implementação: as ações ficam dentro dos detalhes da reserva (escolha do usuário em 2026-11-10); "Alterar quantidade" de reserva paga fica inativo mas alcançável pelo teclado, com o motivo logo abaixo; o aviso de devolução usa o nome da reserva; o toast do cancelamento diz que a reserva fica em Situação: Canceladas; os diálogos rolam por dentro em tela baixa
+- [X] T065 [US4] Validar US4: `npm run test:integracao` (`correcoes`) verde; roteiro "História 4" de `specs/001-cheese-reservations/quickstart.md` §7
 
 **Checkpoint**: todas as histórias funcionam de forma independente.
 

@@ -21,11 +21,14 @@ export function ListaReservas({
   hoje,
   filtrando,
   buscaPorCodigo,
+  disponivel,
 }: {
   reservas: ReservaPainelDTO[];
   hoje: string;
   filtrando: boolean;
   buscaPorCodigo: boolean;
+  // Peças livres agora: limite para aumentar a quantidade de uma reserva.
+  disponivel: number;
 }) {
   if (reservas.length === 0) {
     return (
@@ -79,7 +82,7 @@ export function ListaReservas({
           <ul className="divide-y overflow-hidden rounded-xl border bg-card shadow-xs">
             {doDia.map((reserva) => (
               <li key={reserva.id}>
-                <LinhaReserva reserva={reserva} />
+                <LinhaReserva reserva={reserva} disponivel={disponivel} />
               </li>
             ))}
           </ul>

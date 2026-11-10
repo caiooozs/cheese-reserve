@@ -2,12 +2,12 @@
 version: 1
 slug: "app-admin-page-tsx"
 primary_target: "app/admin/page.tsx"
-related_targets: ["app/admin/login/page.tsx","components/resumo-painel/resumo-painel.view.tsx","components/busca-filtros/busca-filtros.view.tsx","components/lista-reservas/lista-reservas.tsx","components/linha-reserva/linha-reserva.view.tsx","components/formulario-login/formulario-login.view.tsx"]
+related_targets: ["app/admin/login/page.tsx","components/resumo-painel/resumo-painel.view.tsx","components/busca-filtros/busca-filtros.view.tsx","components/lista-reservas/lista-reservas.tsx","components/linha-reserva/linha-reserva.view.tsx","components/formulario-login/formulario-login.view.tsx","components/configuracoes-venda/configuracoes-venda.view.tsx","components/dialogo-quantidade/dialogo-quantidade.view.tsx","components/dialogo-dados-cliente/dialogo-dados-cliente.view.tsx","components/dialogo-cancelar/dialogo-cancelar.view.tsx"]
 ---
 
 # Painel da vendedora
 
-Escopo: rotas `/admin/login` e `/admin`, com login, totais, peças, busca por código, filtros e a lista de reservas com Pago, Entregue e atalho de WhatsApp. Modo: Operate. Quem usa é a vendedora, sozinha, no celular, várias vezes por dia. Espera de 30 a 80 reservas. O uso mais comum é ver como está a venda. Não pode ter letra ou toque pequeno. Tema claro e escuro automático. Configurações de preço, estoque e abertura entram na Phase 5, na mesma página; correções e cancelamento entram na Phase 6, nas linhas. A identidade anterior (placar e diário no cartão de Boas Festas) foi substituída a pedido do usuário.
+Escopo: rotas `/admin/login` e `/admin`, com login, totais, peças, busca por código, filtros e a lista de reservas com Pago, Entregue e atalho de WhatsApp. Modo: Operate. Quem usa é a vendedora, sozinha, no celular, várias vezes por dia. Espera de 30 a 80 reservas. O uso mais comum é ver como está a venda. Não pode ter letra ou toque pequeno. Tema claro e escuro automático. Configurações de preço, estoque e abertura (Phase 5) ficam numa faixa recolhível entre os cards de números e a lista, escolha do usuário em 2026-11-10: fechada, mostra o estado salvo numa frase; abre sozinha enquanto falta preço ou total; correções e cancelamento (Phase 6) ficam dentro dos detalhes de cada reserva, escolha do usuário em 2026-11-10, e abrem diálogos de confirmação. A identidade anterior (placar e diário no cartão de Boas Festas) foi substituída a pedido do usuário.
 
 ## Direction contract
 

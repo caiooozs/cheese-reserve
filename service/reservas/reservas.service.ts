@@ -1,7 +1,7 @@
 import "server-only";
 import type { z } from "zod";
 import { erroDeRegra } from "@/lib/erros";
-import type { FiltrosPainel, schemaReserva } from "@/lib/schemas";
+import type { FiltrosPainel, schemaDadosCliente, schemaReserva } from "@/lib/schemas";
 import type { ComprovanteDTO, ReservaPainelDTO, ResumoPainelDTO } from "@/lib/tipos";
 import { registrarErro } from "@/service/supabase/registrar-erro";
 import { clientePublico, type ClienteSupabase } from "@/service/supabase/clientes";
@@ -147,6 +147,65 @@ export async function definirStatus(
   if (error) {
     registrarErro("definir_status", error);
     return { ok: false, codigo: "erro_inesperado" };
+  }
+  // A política só deixa alterar reservas ativas: nenhuma linha = cancelada.
+  if (data.length === 0) {
+    return { ok: false, codigo: "reserva_cancelada" };
+  }
+  return { ok: true };
+}
+
+// Correções ---------------------------------------------------------
+
+type ResultadoServico = { ok: true } | { ok: false; codigo: string };
+
+// Erro de regra volta como código; o resto vira erro inesperado e vai para o log.
+function falhaDoBanco(contexto: string, erro: { message: string }): ResultadoServico {
+  if (erroDeRegra(erro.message)) {
+    return { ok: false, codigo: erro.message };
+  }
+  registrarErro(contexto, erro);
+  return { ok: false, codigo: "erro_inesperado" };
+}
+
+// A função confere admin, reserva paga ou cancelada e estoque, tudo sob trava.
+export async function alterarQuantidade(
+  supabase: ClienteSupabase,
+  id: string,
+  quantidade: number,
+): Promise<ResultadoServico> {
+  const { error } = await supabase.rpc("alterar_quantidade", {
+    p_reserva_id: id,
+    p_nova_quantidade: quantidade,
+  });
+  return error ? falhaDoBanco("alterar_quantidade", error) : { ok: true };
+}
+
+// Devolve as peças ao estoque. Cancelar de novo não faz nada.
+export async function cancelarReserva(
+  supabase: ClienteSupabase,
+  id: string,
+): Promise<ResultadoServico> {
+  const { error } = await supabase.rpc("cancelar_reserva", { p_reserva_id: id });
+  return error ? falhaDoBanco("cancelar_reserva", error) : { ok: true };
+}
+
+// Só nome, WhatsApp e endereço: o banco não deixa mudar o resto por aqui.
+export async function corrigirDados(
+  supabase: ClienteSupabase,
+  id: string,
+  dados: z.output<typeof schemaDadosCliente>,
+): Promise<ResultadoServico> {
+  const { data, error } = await supabase
+    .from("reservas")
+    .update({ nome: dados.nome, whatsapp: dados.whatsapp, endereco: dados.endereco })
+    .eq("id", id)
+    .select("id");
+
+  if (error) {
+    registrarErro("corrigir_dados", error);
+    // CHECK do banco: os dados passaram pelo zod, então isso é raro.
+    return { ok: false, codigo: error.code === "23514" ? "dados_invalidos" : "erro_inesperado" };
   }
   // A política só deixa alterar reservas ativas: nenhuma linha = cancelada.
   if (data.length === 0) {

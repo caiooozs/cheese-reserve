@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { schemaReservaFormulario } from "@/components/formulario-reserva/formulario-reserva.model";
 import {
+  schemaAbertura,
+  schemaAlterarQuantidade,
+  schemaCorrigirDados,
+  schemaIdReserva,
+  schemaEstoqueTotal,
   schemaFiltrosPainel,
+  schemaPreco,
   schemaReserva,
   schemaStatusEntrega,
   schemaStatusPagamento,
@@ -154,5 +160,114 @@ describe("status de pagamento e entrega", () => {
     expect(schemaStatusPagamento.safeParse({ id, status: "entregue" }).success).toBe(false);
     expect(schemaStatusEntrega.safeParse({ id, status: "pago" }).success).toBe(false);
     expect(schemaStatusPagamento.safeParse({ id: "1", status: "pago" }).success).toBe(false);
+  });
+});
+
+describe("schemaPreco", () => {
+  function erroDoPreco(preco: string) {
+    const resultado = schemaPreco.safeParse({ preco });
+    return resultado.success ? null : resultado.error.issues[0].message;
+  }
+
+  it.each([
+    ["45,90", 4590],
+    [" R$ 50 ", 5000],
+    ["1.234,56", 123456],
+  ])("%j vira %i centavos", (preco, centavos) => {
+    expect(schemaPreco.parse({ preco })).toEqual({ preco: centavos });
+  });
+
+  it.each([
+    ["", "Informe o preço por peça."],
+    ["   ", "Informe o preço por peça."],
+    ["0", "Informe um preço maior que zero."],
+    ["0,00", "Informe um preço maior que zero."],
+    ["-10", "Use só números, com vírgula nos centavos. Exemplo: 45,90"],
+    ["dez reais", "Use só números, com vírgula nos centavos. Exemplo: 45,90"],
+    ["45,901", "Use só números, com vírgula nos centavos. Exemplo: 45,90"],
+    ["21.474.836,48", "Preço alto demais. Confira o valor."],
+  ])("%j → %s", (preco, erro) => {
+    expect(erroDoPreco(preco)).toBe(erro);
+  });
+
+  it("recusa preço que não chega como texto", () => {
+    expect(schemaPreco.safeParse({ preco: 4590 }).success).toBe(false);
+  });
+});
+
+describe("schemaEstoqueTotal", () => {
+  it.each([0, 1, 60])("aceita %i", (total) => {
+    expect(schemaEstoqueTotal.safeParse({ total }).success).toBe(true);
+  });
+
+  it.each([
+    [-1, "O total não pode ser negativo."],
+    [2.5, "Use um número inteiro de queijos."],
+    [Number.NaN, "Informe o total de queijos."],
+    ["30", "Informe o total de queijos."],
+    [2_147_483_648, "Total alto demais. Confira o número."],
+  ])("%j → %s", (total, erro) => {
+    const resultado = schemaEstoqueTotal.safeParse({ total });
+    expect(resultado.error?.issues[0].message).toBe(erro);
+  });
+});
+
+describe("schemaAbertura", () => {
+  it("aceita só verdadeiro ou falso", () => {
+    expect(schemaAbertura.safeParse({ abertas: true }).success).toBe(true);
+    expect(schemaAbertura.safeParse({ abertas: false }).success).toBe(true);
+    expect(schemaAbertura.safeParse({ abertas: "false" }).success).toBe(false);
+    expect(schemaAbertura.safeParse({}).success).toBe(false);
+  });
+});
+
+describe("correções de reserva", () => {
+  const id = "6f1c2a7e-3b4d-4e5f-8a9b-0c1d2e3f4a5b";
+
+  it("id precisa ser UUID", () => {
+    expect(schemaIdReserva.safeParse({ id }).success).toBe(true);
+    expect(schemaIdReserva.safeParse({ id: "abc" }).success).toBe(false);
+  });
+
+  it.each([1, 10, 12, 50])("aceita %i peças, sem o limite público", (quantidade) => {
+    expect(schemaAlterarQuantidade.safeParse({ id, quantidade }).success).toBe(true);
+  });
+
+  it.each([
+    [0, "A quantidade mínima é 1 peça. Para desistir, cancele a reserva."],
+    [-2, "A quantidade mínima é 1 peça. Para desistir, cancele a reserva."],
+    [1.5, "Use um número inteiro de peças."],
+    [Number.NaN, "Escolha a quantidade."],
+    [2_147_483_648, "Quantidade alta demais. Confira o número."],
+  ])("quantidade %s → %s", (quantidade, erro) => {
+    const resultado = schemaAlterarQuantidade.safeParse({ id, quantidade });
+    expect(resultado.error?.issues[0].message).toBe(erro);
+  });
+
+  it("corrige dados com as regras do formulário público", () => {
+    expect(
+      schemaCorrigirDados.parse({
+        id,
+        nome: "  Joana Lima ",
+        whatsapp: "(21) 99887-7665",
+        endereco: "  ",
+      }),
+    ).toEqual({ id, nome: "Joana Lima", whatsapp: "21998877665", endereco: null });
+  });
+
+  it("recusa nome curto e WhatsApp sem DDD", () => {
+    const resultado = schemaCorrigirDados.safeParse({
+      id,
+      nome: "J",
+      whatsapp: "98765-4321",
+      endereco: "",
+    });
+    const mensagens = Object.fromEntries(
+      resultado.error!.issues.map((i) => [String(i.path[0]), i.message]),
+    );
+    expect(mensagens).toEqual({
+      nome: "Informe o nome do cliente.",
+      whatsapp: "WhatsApp inválido. Informe DDD e número.",
+    });
   });
 });

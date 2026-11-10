@@ -47,6 +47,7 @@ function CarregandoPainel() {
         <Skeleton className="h-24 rounded-xl" />
         <Skeleton className="col-span-2 h-24 rounded-xl md:col-span-1" />
       </div>
+      <Skeleton className="h-16 rounded-xl" />
       <Skeleton className="h-12 rounded-lg" />
       <Skeleton className="h-72 rounded-xl" />
     </div>

@@ -7,7 +7,7 @@ import { Field, FieldDescription, FieldError, FieldLabel } from "@/components/ui
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
-import { CAMPO } from "@/lib/estilos";
+import { CAMPO, STEPPER_CAIXA, STEPPER_NUMERO } from "@/lib/estilos";
 import { PRODUTO } from "@/lib/produto";
 import type { EstadoVitrine } from "@/lib/tipos";
 import { cn } from "@/lib/utils";
@@ -170,7 +170,7 @@ export function FormularioReservaView({
               >
                 {/* O Field estica os filhos; o invólucro deixa a caixa só do tamanho dos botões. */}
                 <div>
-                <div className="flex w-fit items-stretch rounded-lg border border-input bg-card shadow-xs has-[input:focus-visible]:border-ring has-[input:focus-visible]:ring-3 has-[input:focus-visible]:ring-ring/50 has-[input[aria-invalid=true]]:border-destructive">
+                <div className={STEPPER_CAIXA}>
                   <Button
                     type="button"
                     variant="ghost"
@@ -187,7 +187,7 @@ export function FormularioReservaView({
                     inputMode="numeric"
                     autoComplete="off"
                     aria-invalid={Boolean(campos.quantidade.erro)}
-                    className="h-12 w-16 rounded-none border-0 border-x border-border bg-transparent text-center text-lg font-semibold tabular-nums shadow-none focus-visible:ring-0 aria-invalid:ring-0 md:text-lg dark:bg-transparent"
+                    className={STEPPER_NUMERO}
                   />
                   <Button
                     type="button"

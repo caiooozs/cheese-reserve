@@ -114,7 +114,7 @@ components/
 │   └── formulario-reserva.model.ts     # schema do formulário, tipos, estado da vitrine
 ├── comprovante/               # mesmos quatro arquivos: texto, Copiar e Compartilhar
 ├── aviso-venda/, valor-animado/  # só View: peças visuais sem estado
-└── (painel)                   # formulario-login/, busca-filtros/, linha-reserva/, ...
+└── (painel)                   # formulario-login/, busca-filtros/, linha-reserva/, configuracoes-venda/, dialogo-*/ ...
 
 service/                       # único lugar que fala com o Supabase e lê process.env
 ├── supabase/clientes.ts       # clientePublico(), clienteDaSessao()
@@ -135,7 +135,7 @@ lib/                           # funções puras, usadas no cliente, no servidor
 ├── whatsapp.ts                # normalizar, formatar (máscara), linkWhatsApp
 ├── codigo.ts                  # normalizarCodigoBusca
 ├── formatacao.ts              # formatarReais, formatarDataHora
-├── dinheiro.ts                # reaisParaCentavos
+├── dinheiro.ts                # reaisParaCentavos, centavosParaCampo
 ├── erros.ts                   # traduzirErro
 ├── database.types.ts          # gerado: supabase gen types
 └── utils.ts                   # (existente)

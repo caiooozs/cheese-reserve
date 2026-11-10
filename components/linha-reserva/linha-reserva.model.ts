@@ -26,18 +26,34 @@ export function textosDaReserva(reserva: ReservaPainelDTO) {
   };
 }
 
+export type Dialogo = "quantidade" | "dados" | "cancelar";
+
+// O que a linha passa para cada diálogo: abrir, fechar e desmontar no fim.
+export type ControleDialogo = {
+  aberto: boolean;
+  aoMudarAberto: (aberto: boolean) => void;
+  aoTerminar: () => void;
+};
+
 export type DadosLinha = ReturnType<typeof textosDaReserva> & {
   idDetalhes: string;
   cancelada: boolean;
   pago: boolean;
   entregue: boolean;
   aberta: boolean;
+  // Reserva paga não muda de quantidade (FR-030): o texto diz o que fazer.
+  avisoPago: string;
+  dialogo: Dialogo | null;
+  dialogoAberto: boolean;
 };
 
 export type AcoesLinha = {
   alternarDetalhes: (aberta: boolean) => void;
   marcarPago: (marcado: boolean) => void;
   marcarEntregue: (marcado: boolean) => void;
+  abrirDialogo: (dialogo: Dialogo) => void;
+  mudarDialogo: (aberto: boolean) => void;
+  terminarDialogo: () => void;
 };
 
 export type LinhaReservaViewProps = {
