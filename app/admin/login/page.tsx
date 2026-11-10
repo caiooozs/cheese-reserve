@@ -15,7 +15,7 @@ export default function PaginaLogin() {
       <div className="w-full max-w-sm">
         <h1 className="text-2xl font-semibold tracking-tight">Entrar no painel</h1>
         <p className="mt-1 text-base text-muted-foreground">
-          Área da vendedora, para acompanhar as reservas de {PRODUTO.nome.toLowerCase()}.
+          Área da vendedora, para acompanhar as reservas de {PRODUTO.nome}.
         </p>
 
         <div className="mt-6 rounded-xl border bg-card p-4 shadow-xs sm:p-6">

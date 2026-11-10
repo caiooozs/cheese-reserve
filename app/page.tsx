@@ -16,9 +16,6 @@ export default function Home() {
           <h1 className="text-3xl font-semibold tracking-tight text-balance md:text-4xl">
             {PRODUTO.nome}
           </h1>
-          <p className="mt-2 max-w-prose text-base leading-relaxed text-pretty text-muted-foreground md:text-lg">
-            {PRODUTO.descricao}
-          </p>
         </header>
 
         <Suspense fallback={<CarregandoVitrine />}>

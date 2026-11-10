@@ -34,7 +34,7 @@ Organizar a venda de queijos de fim de ano: um único produto, vendido por peça
 - Interface em português do Brasil, com linguagem simples; valores em R$; datas no horário de Brasília.
 - Uso de 360 px de largura para cima, com alvos de toque de pelo menos 44 px.
 - Fora do escopo: pagamento online, múltiplos produtos, conta de cliente, notificações automáticas, gráficos.
-- Ainda não definidos: nome da venda, tipo e origem do queijo. O texto atual é provisório.
+- O produto é o Queijo do Reino (definido pelo responsável em 2026-11-10). Ainda não definidos: nome da venda e origem do queijo.
 
 ## Brand Commitments
 

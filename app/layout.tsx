@@ -16,10 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: PRODUTO.nome,
-  description: PRODUTO.descricao,
   openGraph: {
     title: PRODUTO.nome,
-    description: PRODUTO.descricao,
     locale: "pt_BR",
     type: "website",
   },
