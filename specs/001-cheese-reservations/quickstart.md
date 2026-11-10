@@ -11,18 +11,19 @@ e [contracts/server-actions.md](./contracts/server-actions.md).
 - Supabase CLI como dependência de desenvolvimento (`npx supabase ...`).
 - Acesso ao projeto Supabase remoto (ref do projeto e senha do banco).
 
-## 1. Trazer o banco remoto para o repositório (uma vez)
+## 1. Ligar o repositório ao banco remoto (uma vez)
+
+A baseline são os três arquivos que rodaram no SQL Editor, já em `supabase/migrations/`.
 
 ```bash
-npx supabase init                      # cria supabase/ (config.toml)
 npx supabase link --project-ref <ref>
-npx supabase db pull                   # gera supabase/migrations/<ts>_remote_schema.sql
-                                       # e marca como aplicada no histórico remoto
+npx supabase migration repair --status applied \
+  20261029180000 20261029180100 20261029180200
+npx supabase migration list --linked
 ```
 
-Esperado: um arquivo de baseline em `supabase/migrations/`. Conferir os itens V1–V10 de
-[research.md](./research.md#r1-o-schema-do-banco-ainda-não-está-no-repositório) e anotar
-qualquer lacuna para a migration de ajustes.
+Esperado: as três migrations aparecem como aplicadas no remoto. O resultado da conferência dos
+itens V1–V10 está em [research.md](./research.md#resultado-da-verificação-da-baseline).
 
 ## 2. Variáveis de ambiente
 
@@ -89,7 +90,8 @@ encontra os valores de `SUPABASE_URL` nem de `SUPABASE_PUBLISHABLE_KEY` em `.nex
 
 1. Supabase Auth: criar a usuária da vendedora (e-mail e senha).
 2. SQL: `insert into admins (user_id) values ('<uuid da usuária>');`
-3. Auth → desativar novos cadastros (sign-ups).
+3. Auth → desativar "Allow new users to sign up". **Não** desligue o provedor Email: isso impede
+   também o login da vendedora.
 4. Vercel: `SUPABASE_URL` e `SUPABASE_PUBLISHABLE_KEY`.
 5. GitHub: secrets `SUPABASE_URL` e `SUPABASE_PUBLISHABLE_KEY`; rodar o workflow
    `manter-ativo` manualmente uma vez e confirmar sucesso.

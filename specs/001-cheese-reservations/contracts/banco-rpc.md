@@ -30,9 +30,9 @@ levantados com `RAISE EXCEPTION '<codigo>'`.
 | `p_nome` | `text` | 2–80 após `trim` |
 | `p_whatsapp` | `text` | 10 ou 11 dígitos |
 | `p_quantidade` | `integer` | 1–10 |
-| `p_endereco` | `text NULL` | até 200; `NULL` se vazio |
 | `p_preco_esperado_centavos` | `integer` | [novo] preço que o cliente viu |
 | `p_chave_envio` | `uuid` | [novo] idempotência |
+| `p_endereco` | `text DEFAULT NULL` | até 200; omitido quando vazio (último parâmetro, para poder ter padrão) |
 
 Ordem das checagens (tudo numa transação, com a linha de `configuracao` travada):
 
@@ -87,9 +87,10 @@ Todas `SECURITY DEFINER`, `SET search_path`, `EXECUTE` revogado de `PUBLIC` e co
 - Efeito: `estoque_disponivel = p_total − pecas_reservadas`, sob a trava de `configuracao`.
 - Retorno: `estoque_disponivel integer`, `pecas_reservadas integer`.
 
-### `eh_admin()` — [novo, só se a baseline não tiver equivalente executável]
+### `is_admin()` — [base]
 
-- Retorno: `boolean` (`auth.uid()` está em `admins`). Usada por `exigirAdmin()`.
+- Retorno: `boolean` (`auth.uid()` está em `admins`). Usada pelas políticas, pelas functions do
+  painel e por `exigirAdmin()`.
 
 ## Acesso direto às tabelas (só admin, via RLS)
 

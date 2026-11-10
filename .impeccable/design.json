@@ -1,0 +1,833 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T12:00:00.000Z",
+  "title": "Design System: Cheese Reserve",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Fundo",
+        "canonical": "oklch(0.985 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Tinta (texto)",
+        "canonical": "oklch(0.205 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Cartão",
+        "canonical": "oklch(1 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Tinta",
+        "canonical": "oklch(0.205 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "primary-foreground": {
+        "role": "neutral",
+        "displayName": "Texto do botão principal",
+        "canonical": "oklch(0.985 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado (secundário)",
+        "canonical": "oklch(0.96 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado",
+        "canonical": "oklch(0.96 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Cinza de Apoio",
+        "canonical": "oklch(0.46 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "accent": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado (hover)",
+        "canonical": "oklch(0.95 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Fio",
+        "canonical": "oklch(0.91 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "input": {
+        "role": "neutral",
+        "displayName": "Borda de Campo",
+        "canonical": "oklch(0.64 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "ring": {
+        "role": "secondary",
+        "displayName": "Azul de Foco",
+        "canonical": "oklch(0.55 0.19 259)",
+        "tonalRamp": [
+          "oklch(0.15 0.15 259)",
+          "oklch(0.27 0.15 259)",
+          "oklch(0.39 0.15 259)",
+          "oklch(0.51 0.15 259)",
+          "oklch(0.63 0.15 259)",
+          "oklch(0.75 0.15 259)",
+          "oklch(0.87 0.15 259)",
+          "oklch(0.95 0.15 259)"
+        ]
+      },
+      "destructive": {
+        "role": "tertiary",
+        "displayName": "Vermelho de Erro",
+        "canonical": "oklch(0.53 0.2 27)",
+        "tonalRamp": [
+          "oklch(0.15 0.17 27)",
+          "oklch(0.27 0.17 27)",
+          "oklch(0.39 0.17 27)",
+          "oklch(0.51 0.17 27)",
+          "oklch(0.63 0.17 27)",
+          "oklch(0.75 0.17 27)",
+          "oklch(0.87 0.17 27)",
+          "oklch(0.95 0.17 27)"
+        ]
+      },
+      "sucesso": {
+        "role": "tertiary",
+        "displayName": "Verde de Confirmação",
+        "canonical": "oklch(0.5 0.13 152)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 152)",
+          "oklch(0.27 0.13 152)",
+          "oklch(0.39 0.13 152)",
+          "oklch(0.51 0.13 152)",
+          "oklch(0.63 0.13 152)",
+          "oklch(0.75 0.13 152)",
+          "oklch(0.87 0.13 152)",
+          "oklch(0.95 0.13 152)"
+        ]
+      },
+      "sucesso-fundo": {
+        "role": "tertiary",
+        "displayName": "Fundo do Verde de Confirmação",
+        "canonical": "oklch(0.96 0.04 152)",
+        "tonalRamp": [
+          "oklch(0.15 0.04 152)",
+          "oklch(0.27 0.04 152)",
+          "oklch(0.39 0.04 152)",
+          "oklch(0.51 0.04 152)",
+          "oklch(0.63 0.04 152)",
+          "oklch(0.75 0.04 152)",
+          "oklch(0.87 0.04 152)",
+          "oklch(0.95 0.04 152)"
+        ]
+      },
+      "aviso": {
+        "role": "tertiary",
+        "displayName": "Âmbar de Aviso",
+        "canonical": "oklch(0.5 0.12 65)",
+        "tonalRamp": [
+          "oklch(0.15 0.12 70)",
+          "oklch(0.27 0.12 70)",
+          "oklch(0.39 0.12 70)",
+          "oklch(0.51 0.12 70)",
+          "oklch(0.63 0.12 70)",
+          "oklch(0.75 0.12 70)",
+          "oklch(0.87 0.12 70)",
+          "oklch(0.95 0.12 70)"
+        ]
+      },
+      "aviso-fundo": {
+        "role": "tertiary",
+        "displayName": "Fundo do Âmbar de Aviso",
+        "canonical": "oklch(0.97 0.05 85)",
+        "tonalRamp": [
+          "oklch(0.15 0.05 80)",
+          "oklch(0.27 0.05 80)",
+          "oklch(0.39 0.05 80)",
+          "oklch(0.51 0.05 80)",
+          "oklch(0.63 0.05 80)",
+          "oklch(0.75 0.05 80)",
+          "oklch(0.87 0.05 80)",
+          "oklch(0.95 0.05 80)"
+        ]
+      },
+      "background-escuro": {
+        "role": "neutral",
+        "displayName": "Fundo (escuro)",
+        "canonical": "oklch(0.145 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "foreground-escuro": {
+        "role": "neutral",
+        "displayName": "Tinta (texto) (escuro)",
+        "canonical": "oklch(0.95 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "card-escuro": {
+        "role": "neutral",
+        "displayName": "Cartão (escuro)",
+        "canonical": "oklch(0.185 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "primary-escuro": {
+        "role": "primary",
+        "displayName": "Tinta (escuro)",
+        "canonical": "oklch(0.95 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "primary-foreground-escuro": {
+        "role": "neutral",
+        "displayName": "Texto do botão principal (escuro)",
+        "canonical": "oklch(0.185 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "secondary-escuro": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado (secundário) (escuro)",
+        "canonical": "oklch(0.25 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "muted-escuro": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado (escuro)",
+        "canonical": "oklch(0.235 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "muted-foreground-escuro": {
+        "role": "neutral",
+        "displayName": "Cinza de Apoio (escuro)",
+        "canonical": "oklch(0.72 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "accent-escuro": {
+        "role": "neutral",
+        "displayName": "Cinza Apagado (hover) (escuro)",
+        "canonical": "oklch(0.26 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "border-escuro": {
+        "role": "neutral",
+        "displayName": "Fio (escuro)",
+        "canonical": "oklch(0.27 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "input-escuro": {
+        "role": "neutral",
+        "displayName": "Borda de Campo (escuro)",
+        "canonical": "oklch(0.52 0 0)",
+        "tonalRamp": [
+          "oklch(0.15 0 0)",
+          "oklch(0.27 0 0)",
+          "oklch(0.39 0 0)",
+          "oklch(0.51 0 0)",
+          "oklch(0.63 0 0)",
+          "oklch(0.75 0 0)",
+          "oklch(0.87 0 0)",
+          "oklch(0.95 0 0)"
+        ]
+      },
+      "ring-escuro": {
+        "role": "secondary",
+        "displayName": "Azul de Foco (escuro)",
+        "canonical": "oklch(0.68 0.16 257)",
+        "tonalRamp": [
+          "oklch(0.15 0.15 259)",
+          "oklch(0.27 0.15 259)",
+          "oklch(0.39 0.15 259)",
+          "oklch(0.51 0.15 259)",
+          "oklch(0.63 0.15 259)",
+          "oklch(0.75 0.15 259)",
+          "oklch(0.87 0.15 259)",
+          "oklch(0.95 0.15 259)"
+        ]
+      },
+      "destructive-escuro": {
+        "role": "tertiary",
+        "displayName": "Vermelho de Erro (escuro)",
+        "canonical": "oklch(0.7 0.18 24)",
+        "tonalRamp": [
+          "oklch(0.15 0.17 27)",
+          "oklch(0.27 0.17 27)",
+          "oklch(0.39 0.17 27)",
+          "oklch(0.51 0.17 27)",
+          "oklch(0.63 0.17 27)",
+          "oklch(0.75 0.17 27)",
+          "oklch(0.87 0.17 27)",
+          "oklch(0.95 0.17 27)"
+        ]
+      },
+      "sucesso-escuro": {
+        "role": "tertiary",
+        "displayName": "Verde de Confirmação (escuro)",
+        "canonical": "oklch(0.76 0.15 152)",
+        "tonalRamp": [
+          "oklch(0.15 0.13 152)",
+          "oklch(0.27 0.13 152)",
+          "oklch(0.39 0.13 152)",
+          "oklch(0.51 0.13 152)",
+          "oklch(0.63 0.13 152)",
+          "oklch(0.75 0.13 152)",
+          "oklch(0.87 0.13 152)",
+          "oklch(0.95 0.13 152)"
+        ]
+      },
+      "sucesso-fundo-escuro": {
+        "role": "tertiary",
+        "displayName": "Fundo do Verde de Confirmação (escuro)",
+        "canonical": "oklch(0.27 0.05 152)",
+        "tonalRamp": [
+          "oklch(0.15 0.04 152)",
+          "oklch(0.27 0.04 152)",
+          "oklch(0.39 0.04 152)",
+          "oklch(0.51 0.04 152)",
+          "oklch(0.63 0.04 152)",
+          "oklch(0.75 0.04 152)",
+          "oklch(0.87 0.04 152)",
+          "oklch(0.95 0.04 152)"
+        ]
+      },
+      "aviso-escuro": {
+        "role": "tertiary",
+        "displayName": "Âmbar de Aviso (escuro)",
+        "canonical": "oklch(0.82 0.13 80)",
+        "tonalRamp": [
+          "oklch(0.15 0.12 70)",
+          "oklch(0.27 0.12 70)",
+          "oklch(0.39 0.12 70)",
+          "oklch(0.51 0.12 70)",
+          "oklch(0.63 0.12 70)",
+          "oklch(0.75 0.12 70)",
+          "oklch(0.87 0.12 70)",
+          "oklch(0.95 0.12 70)"
+        ]
+      },
+      "aviso-fundo-escuro": {
+        "role": "tertiary",
+        "displayName": "Fundo do Âmbar de Aviso (escuro)",
+        "canonical": "oklch(0.28 0.05 75)",
+        "tonalRamp": [
+          "oklch(0.15 0.05 80)",
+          "oklch(0.27 0.05 80)",
+          "oklch(0.39 0.05 80)",
+          "oklch(0.51 0.05 80)",
+          "oklch(0.63 0.05 80)",
+          "oklch(0.75 0.05 80)",
+          "oklch(0.87 0.05 80)",
+          "oklch(0.95 0.05 80)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nome do produto e preço por peça; 2.25rem a partir de 768 px."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "\"Reserva confirmada\", \"Entrar no painel\", total do pedido e valores dos cartões de número (1.875rem a partir de 640 px)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "\"Fazer reserva\", \"Painel da venda\", \"Reservas\" e título da lista vazia."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido, texto digitado nos campos e dados das linhas."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Rótulos de campo da página pública e do login, e texto dos botões."
+      },
+      "nota": {
+        "displayName": "Nota",
+        "purpose": "Ajudas, erros de campo, metadados das linhas e contagem do dia."
+      },
+      "rotulo-painel": {
+        "displayName": "Rótulo do painel",
+        "purpose": "Rótulos da busca, dos filtros e dos cartões de número, cabeçalho de colunas e chips."
+      },
+      "codigo": {
+        "displayName": "Código",
+        "purpose": "Código da reserva no comprovante."
+      },
+      "codigo-busca": {
+        "displayName": "Código de busca",
+        "purpose": "Texto digitado em \"Buscar pelo código\", em maiúsculas."
+      },
+      "codigo-linha": {
+        "displayName": "Código de linha",
+        "purpose": "Código da reserva em cada linha da lista."
+      }
+    },
+    "shadows": [
+      {
+        "name": "xs",
+        "value": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "purpose": "Única sombra do sistema: cartões, campos, selects, stepper e botões de contorno. Os diálogos não têm sombra: fundo escurecido a 10% com desfoque leve e contorno fino."
+      },
+      {
+        "name": "anel-de-foco",
+        "value": "0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent)",
+        "purpose": "Foco visível de campos, botões, stepper e interruptores, com a borda em Azul de Foco."
+      }
+    ],
+    "motion": [
+      {
+        "name": "estado",
+        "value": "150ms",
+        "purpose": "Borda e anel de campo, botões, chave do interruptor e hover da linha de interruptor, do gatilho da faixa de configurações e dos botões destrutivos."
+      },
+      {
+        "name": "estado-longo",
+        "value": "200ms ease-out",
+        "purpose": "Entrada do comprovante em fade, altura dos detalhes da linha e da faixa de configurações, e giro do chevron."
+      },
+      {
+        "name": "dialogo",
+        "value": "150ms, fade e zoom de 95%",
+        "purpose": "Entrada e saída dos diálogos do painel, com o fundo escurecendo em fade no mesmo tempo. Com prefers-reduced-motion, surgem e somem sem animação."
+      },
+      {
+        "name": "deslize-barra",
+        "value": "500ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "A barra de peças desliza até a nova fração. Desligada com prefers-reduced-motion."
+      },
+      {
+        "name": "deslize-numeros",
+        "value": "500ms, curva quártica 1 - (1 - t)^4",
+        "purpose": "Recebido e A receber contam do valor antigo ao novo. Desligado com prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "coluna-login",
+        "value": "384px"
+      },
+      {
+        "name": "coluna-comprovante",
+        "value": "448px"
+      },
+      {
+        "name": "grade",
+        "value": "1024px"
+      }
+    ],
+    "themes": {
+      "estrategia": "prefers-color-scheme, sem botão de troca; as chaves com sufixo -escuro valem dentro de @media (prefers-color-scheme: dark)",
+      "themeColor": {
+        "claro": "#fafafa",
+        "escuro": "#0a0a0a"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Botão principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal na cor do texto: preto no claro, quase branco no escuro.",
+      "html": "<button class=\"ds-btn-primario\">Reservar</button>",
+      "css": ".ds-btn-primario { width: 100%; height: 48px; padding: 0 16px; border: 1px solid transparent; border-radius: 8px; background: var(--primary); color: var(--primary-foreground); font: 500 1rem/1.5 var(--font-geist-sans, Geist), sans-serif; cursor: pointer; transition: all 150ms; } .ds-btn-primario:hover { background: color-mix(in oklch, var(--primary) 80%, transparent); } .ds-btn-primario:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); border-color: var(--ring); outline: none; } .ds-btn-primario:active { transform: translateY(1px); } .ds-btn-primario:disabled { opacity: 0.5; pointer-events: none; }"
+    },
+    {
+      "name": "Botão de contorno",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Ação secundária: Buscar, Filtros, Copiar e o atalho do WhatsApp.",
+      "html": "<button class=\"ds-btn-contorno\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\"/><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"/></svg>Copiar</button>",
+      "css": ".ds-btn-contorno { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 48px; padding: 0 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--background); color: var(--foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font: 500 1rem/1.5 var(--font-geist-sans, Geist), sans-serif; cursor: pointer; transition: all 150ms; } .ds-btn-contorno:hover { background: var(--muted); } .ds-btn-contorno:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); border-color: var(--ring); outline: none; } .ds-btn-contorno:active { transform: translateY(1px); } @media (prefers-color-scheme: dark) { .ds-btn-contorno { border-color: var(--input); background: color-mix(in oklch, var(--input) 30%, transparent); } }"
+    },
+    {
+      "name": "Campo em caixa",
+      "kind": "input",
+      "refersTo": "campo",
+      "description": "Caixa de 48 px com borda de pelo menos 3:1, texto de 16 px e rótulo sempre visível.",
+      "html": "<div class=\"ds-campo\"><label class=\"ds-campo-rotulo\" for=\"ds-whats\">WhatsApp</label><input id=\"ds-whats\" class=\"ds-campo-caixa\" type=\"tel\" /><p class=\"ds-campo-ajuda\">Com DDD. Exemplo: (11) 98765-4321</p></div>",
+      "css": ".ds-campo { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-campo-rotulo { font-size: 1rem; line-height: 1.5; font-weight: 500; color: var(--foreground); } .ds-campo-caixa { height: 48px; padding: 0 14px; border: 1px solid var(--input); border-radius: 8px; background: var(--card); color: var(--foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font-size: 1rem; caret-color: var(--ring); font-variant-numeric: tabular-nums; outline: none; transition: border-color 150ms, box-shadow 150ms; } .ds-campo-caixa:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); } .ds-campo-caixa[aria-invalid=\"true\"] { border-color: var(--destructive); box-shadow: 0 0 0 3px color-mix(in oklch, var(--destructive) 20%, transparent); } .ds-campo-ajuda { margin: 0; font-size: 0.875rem; line-height: 1.43; color: var(--muted-foreground); }"
+    },
+    {
+      "name": "Stepper de quantidade",
+      "kind": "custom",
+      "refersTo": "stepper",
+      "description": "Uma caixa só com dois botões de 48 px e o número no meio; o foco do número acende a caixa inteira. O mesmo no formulário público e no diálogo Alterar quantidade.",
+      "html": "<div class=\"ds-stepper\"><button class=\"ds-stepper-btn\" aria-label=\"Diminuir quantidade\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/></svg></button><input class=\"ds-stepper-numero\" value=\"1\" inputmode=\"numeric\" aria-label=\"Quantidade de peças\" /><button class=\"ds-stepper-btn\" aria-label=\"Aumentar quantidade\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M12 5v14\"/></svg></button></div>",
+      "css": ".ds-stepper { display: inline-flex; align-items: stretch; border: 1px solid var(--input); border-radius: 8px; background: var(--card); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); overflow: hidden; transition: border-color 150ms, box-shadow 150ms; } .ds-stepper:has(input:focus-visible) { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); } .ds-stepper-btn { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 0; background: transparent; color: var(--foreground); cursor: pointer; transition: background-color 150ms; } .ds-stepper-btn:hover { background: var(--muted); } .ds-stepper-btn:disabled { opacity: 0.5; pointer-events: none; } .ds-stepper-numero { width: 64px; height: 48px; border: 0; border-inline: 1px solid var(--border); background: transparent; color: var(--foreground); text-align: center; font: 600 1.125rem var(--font-geist-sans, Geist), sans-serif; font-variant-numeric: tabular-nums; outline: none; }"
+    },
+    {
+      "name": "Chip de disponibilidade",
+      "kind": "chip",
+      "refersTo": "chip-disponibilidade",
+      "description": "Neutro no caso normal, âmbar com 3 peças ou menos, vermelho quando esgota.",
+      "html": "<div class=\"ds-chips\"><span class=\"ds-chip\">13 peças disponíveis</span><span class=\"ds-chip ds-chip-poucas\">3 peças disponíveis</span><span class=\"ds-chip ds-chip-esgotado\">Esgotado</span></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; } .ds-chip { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid var(--border); border-radius: 9999px; background: var(--card); color: var(--muted-foreground); font: 500 0.875rem/1.43 var(--font-geist-sans, Geist), sans-serif; font-variant-numeric: tabular-nums; } .ds-chip-poucas { border-color: color-mix(in oklch, var(--aviso) 40%, transparent); background: var(--aviso-fundo); color: var(--aviso); } .ds-chip-esgotado { border-color: color-mix(in oklch, var(--destructive) 30%, transparent); background: color-mix(in oklch, var(--destructive) 5%, transparent); color: var(--destructive); }"
+    },
+    {
+      "name": "Resumo do pedido",
+      "kind": "card",
+      "refersTo": "cartao",
+      "description": "Cartão fixo à esquerda no desktop; acompanha a quantidade na hora. Separação interna por fio fino.",
+      "html": "<div class=\"ds-resumo\"><h2 class=\"ds-resumo-titulo\">Resumo do pedido</h2><div class=\"ds-resumo-item\"><div><p class=\"ds-resumo-produto\">Queijo artesanal</p><p class=\"ds-resumo-conta\">2 peças × R$ 50,00</p></div><p>R$ 100,00</p></div><div class=\"ds-resumo-total\"><span>Total</span><strong>R$ 100,00</strong></div></div>",
+      "css": ".ds-resumo { max-width: 400px; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--card-foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font-family: var(--font-geist-sans, Geist), sans-serif; font-variant-numeric: tabular-nums; } .ds-resumo p { margin: 0; } .ds-resumo-titulo { margin: 0; font-size: 1rem; font-weight: 600; } .ds-resumo-item { margin-top: 16px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font-size: 1rem; } .ds-resumo-produto { font-weight: 500; } .ds-resumo-conta { font-size: 0.875rem; color: var(--muted-foreground); } .ds-resumo-total { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-weight: 500; } .ds-resumo-total strong { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.025em; }"
+    },
+    {
+      "name": "Comprovante",
+      "kind": "card",
+      "refersTo": "marca-confirmacao",
+      "description": "Marca de confirmação em verde, único uso do verde, e o código em Geist Mono dentro de um cartão com dados separados por fio.",
+      "html": "<div class=\"ds-comprovante\"><div class=\"ds-confirmado\"><span class=\"ds-marca\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m9 12 2 2 4-4\"/></svg></span><h2>Reserva confirmada</h2></div><div class=\"ds-cartao-codigo\"><p class=\"ds-codigo-rotulo\">Código da reserva</p><p class=\"ds-codigo\">K7P2XQ</p><dl><div><dt>Nome</dt><dd>Ana Beatriz Moura</dd></div><div><dt>Total</dt><dd class=\"ds-destaque\">R$ 100,00</dd></div></dl></div></div>",
+      "css": ".ds-comprovante { max-width: 448px; display: flex; flex-direction: column; gap: 12px; font-family: var(--font-geist-sans, Geist), sans-serif; color: var(--foreground); } .ds-confirmado { display: flex; align-items: center; gap: 12px; } .ds-confirmado h2 { margin: 0; font-size: 1.5rem; line-height: 1.333; font-weight: 600; letter-spacing: -0.025em; } .ds-marca { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 9999px; background: var(--sucesso-fundo); color: var(--sucesso); } .ds-cartao-codigo { padding: 12px 16px 4px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); } .ds-codigo-rotulo { margin: 0; font-size: 0.875rem; color: var(--muted-foreground); } .ds-codigo { margin: 2px 0 0; font: 600 2.25rem/1.11 var(--font-geist-mono, 'Geist Mono'), monospace; letter-spacing: 0.14em; } .ds-cartao-codigo dl { margin: 8px 0 0; border-top: 1px solid var(--border); } .ds-cartao-codigo dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 8px 0; } .ds-cartao-codigo dl div + div { border-top: 1px solid var(--border); } .ds-cartao-codigo dt { color: var(--muted-foreground); } .ds-cartao-codigo dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums; } .ds-cartao-codigo .ds-destaque { font-size: 1.125rem; font-weight: 600; }"
+    },
+    {
+      "name": "Cartão de número",
+      "kind": "card",
+      "refersTo": "cartao-numero",
+      "description": "Rótulo pequeno, valor grande em algarismos tabulares e nota no pé; o cartão Peças traz a barra de 6 px que desliza em 500 ms.",
+      "html": "<dl class=\"ds-numeros\"><div class=\"ds-numero\"><dt>Recebido</dt><dd class=\"ds-numero-valor\">R$ 760,00</dd><dd class=\"ds-numero-nota\">Já pago</dd></div><div class=\"ds-numero\"><dt>Peças</dt><dd class=\"ds-numero-valor\">29<span> de 40 reservadas</span></dd><dd class=\"ds-numero-nota\"><span class=\"ds-barra\"><span class=\"ds-barra-cheia\"></span></span>11 disponíveis</dd></div></dl>",
+      "css": ".ds-numeros { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-numero { display: flex; flex-direction: column; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--card-foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); } .ds-numero dt { font-size: 0.875rem; font-weight: 500; color: var(--muted-foreground); } .ds-numero dd { margin: 0; } .ds-numero .ds-numero-valor { margin-top: 4px; font-size: 1.5rem; line-height: 1.333; font-weight: 600; letter-spacing: -0.025em; font-variant-numeric: tabular-nums; } .ds-numero-valor span { font-size: 1rem; font-weight: 400; letter-spacing: 0; color: var(--muted-foreground); } .ds-numero .ds-numero-nota { margin-top: auto; padding-top: 4px; font-size: 0.875rem; color: var(--muted-foreground); font-variant-numeric: tabular-nums; } .ds-barra { display: block; height: 6px; margin: 4px 0 8px; border-radius: 9999px; background: var(--muted); overflow: hidden; } .ds-barra-cheia { display: block; height: 100%; border-radius: 9999px; background: var(--foreground); transform-origin: left; transform: scaleX(0.725); transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-numeros:hover .ds-barra-cheia { transform: scaleX(0.8); } @media (prefers-reduced-motion: reduce) { .ds-barra-cheia { transition: none; } }"
+    },
+    {
+      "name": "Linha de reserva",
+      "kind": "custom",
+      "refersTo": "linha-reserva",
+      "description": "Linhas separadas por fio num cartão por dia; Pago e Entregue com a chave do kit dentro de um rótulo de 48 px, separados por fio, sem cartão dentro do cartão. Nos detalhes, ações de 44 px: WhatsApp, Alterar quantidade e Corrigir dados em contorno e Cancelar reserva em ghost destrutivo à direita; paga, Alterar quantidade fica desabilitado e focável com a razão abaixo; cancelada, só o WhatsApp.",
+      "html": "<ul class=\"ds-lista\"><li class=\"ds-linha\"><p class=\"ds-linha-nome\">Ana Beatriz Moura</p><p class=\"ds-linha-total\">R$ 100,00</p><p class=\"ds-linha-meta\"><span class=\"ds-linha-codigo\">K7P2XQ</span>2 peças, às 11:14</p><div class=\"ds-linha-status\"><label class=\"ds-interruptor\">Pago<button role=\"switch\" aria-checked=\"true\" class=\"ds-chave\"><span></span></button></label><label class=\"ds-interruptor\">Entregue<button role=\"switch\" aria-checked=\"false\" class=\"ds-chave\"><span></span></button></label></div></li></ul>",
+      "css": ".ds-lista { list-style: none; margin: 0; padding: 0; max-width: 400px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--card-foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); overflow: hidden; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-linha { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; row-gap: 4px; padding: 14px 16px; } .ds-linha + .ds-linha { border-top: 1px solid var(--border); } .ds-linha p { margin: 0; } .ds-linha-nome { font-size: 1rem; line-height: 1.375; font-weight: 600; } .ds-linha-total { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; } .ds-linha-meta { grid-column: 1 / -1; display: flex; gap: 8px; font-size: 0.875rem; color: var(--muted-foreground); font-variant-numeric: tabular-nums; } .ds-linha-codigo { font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-weight: 500; letter-spacing: 0.08em; color: var(--foreground); } .ds-linha-status { grid-column: 1 / -1; margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); } .ds-interruptor { display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 48px; font-size: 1rem; font-weight: 500; cursor: pointer; } .ds-interruptor:first-child { padding-right: 12px; border-right: 1px solid var(--border); } .ds-interruptor:last-child { padding-left: 12px; } .ds-chave { position: relative; width: 32px; height: 18.4px; padding: 0; border: 1px solid transparent; border-radius: 9999px; background: var(--input); cursor: pointer; transition: all 150ms; } .ds-chave span { position: absolute; top: 0.2px; left: 0; width: 16px; height: 16px; border-radius: 9999px; background: var(--background); transition: transform 150ms; } .ds-chave[aria-checked=\"true\"] { background: var(--primary); } .ds-chave[aria-checked=\"true\"] span { transform: translateX(14px); } .ds-chave:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); border-color: var(--ring); outline: none; } @media (prefers-color-scheme: dark) { .ds-chave span { background: var(--foreground); } .ds-chave[aria-checked=\"true\"] span { background: var(--primary-foreground); } }"
+    },
+    {
+      "name": "Configurações da venda",
+      "kind": "custom",
+      "refersTo": "linha-interruptor",
+      "description": "Faixa recolhível em cartão entre os números e a lista: fechada, o estado salvo numa frase; aberta, três ajustes com rótulo, controle de 48 px e ajuda. Salvar só com mudança; a linha de interruptor não tem borda de campo.",
+      "html": "<details class=\"ds-config\" open><summary class=\"ds-config-gatilho\"><span class=\"ds-config-textos\"><span class=\"ds-config-titulo\">Configurações da venda</span><span class=\"ds-config-resumo\">R$ 50,00 por peça, 60 queijos, aceitando reservas</span></span><svg class=\"ds-config-chevron\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><div class=\"ds-config-ajustes\"><div class=\"ds-ajuste\"><label class=\"ds-ajuste-rotulo\" for=\"ds-preco\">Preço por peça</label><div class=\"ds-ajuste-linha\"><div class=\"ds-ajuste-caixa\"><span class=\"ds-prefixo\" aria-hidden=\"true\">R$</span><input id=\"ds-preco\" class=\"ds-ajuste-campo ds-com-prefixo\" inputmode=\"decimal\" value=\"50,00\" /></div><button class=\"ds-ajuste-salvar\" disabled>Salvar preço</button></div><p class=\"ds-ajuste-ajuda\">Vale para as próximas reservas. As já feitas mantêm o preço.</p></div><div class=\"ds-ajuste\"><label class=\"ds-ajuste-rotulo\" for=\"ds-total\">Total de queijos</label><div class=\"ds-ajuste-linha\"><div class=\"ds-ajuste-caixa\"><input id=\"ds-total\" class=\"ds-ajuste-campo\" inputmode=\"numeric\" value=\"60\" /></div><button class=\"ds-ajuste-salvar\" disabled>Salvar total</button></div><p class=\"ds-ajuste-ajuda\">Conte todos, inclusive os já reservados.<span class=\"ds-ajuste-previa\">Reservadas: 43 · Disponíveis: 17</span></p></div><div class=\"ds-ajuste\"><p class=\"ds-ajuste-rotulo\" id=\"ds-abertura\">Receber reservas</p><label class=\"ds-linha-interruptor\"><span aria-hidden=\"true\">Aceitando reservas</span><button role=\"switch\" aria-checked=\"true\" aria-labelledby=\"ds-abertura\" class=\"ds-chave\"><span></span></button></label><p class=\"ds-ajuste-ajuda\">A página pública mostra o formulário de reserva.</p></div></div></details>",
+      "css": ".ds-config { max-width: 960px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--card-foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-config-gatilho { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 12px 16px; border-radius: 12px; list-style: none; cursor: pointer; outline: none; transition: background-color 150ms; } .ds-config-gatilho::-webkit-details-marker { display: none; } .ds-config-gatilho:hover { background: color-mix(in oklch, var(--muted) 60%, transparent); } .ds-config-gatilho:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); } .ds-config[open] .ds-config-gatilho { border-radius: 12px 12px 0 0; } .ds-config-textos { flex: 1; min-width: 0; } .ds-config-titulo { display: block; font-size: 1rem; font-weight: 600; } .ds-config-resumo { display: block; margin-top: 2px; font-size: 0.875rem; line-height: 1.43; color: var(--muted-foreground); font-variant-numeric: tabular-nums; } .ds-config-chevron { flex-shrink: 0; color: var(--muted-foreground); transition: transform 200ms; } .ds-config[open] .ds-config-chevron { transform: rotate(180deg); } .ds-config-ajustes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 20px 16px; border-top: 1px solid var(--border); } .ds-ajuste { display: flex; flex-direction: column; gap: 6px; min-width: 0; } .ds-ajuste-rotulo { margin: 0; font-size: 1rem; line-height: 1.5; font-weight: 500; } .ds-ajuste-linha { display: flex; gap: 8px; } .ds-ajuste-caixa { position: relative; flex: 1; min-width: 0; } .ds-prefixo { position: absolute; top: 50%; left: 14px; transform: translateY(-50%); color: var(--muted-foreground); pointer-events: none; } .ds-ajuste-campo { width: 100%; height: 48px; padding: 0 14px; border: 1px solid var(--input); border-radius: 8px; background: var(--card); color: var(--foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font-size: 1rem; font-variant-numeric: tabular-nums; caret-color: var(--ring); outline: none; transition: border-color 150ms, box-shadow 150ms; } .ds-ajuste-campo.ds-com-prefixo { padding-left: 44px; } .ds-ajuste-campo:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); } .ds-ajuste-salvar { flex-shrink: 0; height: 48px; padding: 0 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--background); color: var(--foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); font: 500 1rem/1.5 var(--font-geist-sans, Geist), sans-serif; cursor: pointer; transition: all 150ms; } .ds-ajuste-salvar:hover { background: var(--muted); } .ds-ajuste-salvar:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); outline: none; } .ds-ajuste-salvar:disabled { opacity: 0.5; pointer-events: none; } .ds-ajuste-ajuda { margin: 0; font-size: 0.875rem; line-height: 1.43; color: var(--muted-foreground); font-variant-numeric: tabular-nums; } .ds-ajuste-previa { display: block; color: var(--foreground); } .ds-linha-interruptor { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 48px; margin: 0 -12px; padding: 0 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; user-select: none; transition: background-color 150ms; } .ds-linha-interruptor:hover { background: color-mix(in oklch, var(--muted) 60%, transparent); } @media (max-width: 767px) { .ds-config-ajustes { grid-template-columns: 1fr; gap: 0; padding: 20px 16px; } .ds-ajuste + .ds-ajuste { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); } } @media (prefers-reduced-motion: reduce) { .ds-config-chevron { transition: none; } } .ds-chave { position: relative; flex-shrink: 0; width: 32px; height: 18.4px; padding: 0; border: 1px solid transparent; border-radius: 9999px; background: var(--input); cursor: pointer; transition: all 150ms; } .ds-chave span { position: absolute; top: 0.2px; left: 0; width: 16px; height: 16px; border-radius: 9999px; background: var(--background); transition: transform 150ms; } .ds-chave[aria-checked=\"true\"] { background: var(--primary); } .ds-chave[aria-checked=\"true\"] span { transform: translateX(14px); } .ds-chave:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); border-color: var(--ring); outline: none; } @media (prefers-color-scheme: dark) { .ds-chave span { background: var(--foreground); } .ds-chave[aria-checked=\"true\"] span { background: var(--primary-foreground); } }"
+    },
+    {
+      "name": "Botão destrutivo suave",
+      "kind": "button",
+      "refersTo": "button-destrutivo",
+      "description": "Confirma a ação destrutiva dentro do diálogo: fundo de vermelho a 10% e texto vermelho, nunca vermelho sólido. O par na linha é o ghost destrutivo, de 44 px, só com texto vermelho.",
+      "html": "<div class=\"ds-destrutivos\"><button class=\"ds-btn-destrutivo\">Cancelar reserva</button><button class=\"ds-btn-ghost-destrutivo\">Cancelar reserva</button></div>",
+      "css": ".ds-destrutivos { display: flex; flex-wrap: wrap; gap: 8px; } .ds-btn-destrutivo, .ds-btn-ghost-destrutivo { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid transparent; border-radius: 8px; color: var(--destructive); font: 500 1rem/1.5 var(--font-geist-sans, Geist), sans-serif; cursor: pointer; transition: all 150ms; } .ds-btn-destrutivo { height: 48px; padding: 0 20px; background: color-mix(in oklch, var(--destructive) 10%, transparent); } .ds-btn-destrutivo:hover { background: color-mix(in oklch, var(--destructive) 20%, transparent); } .ds-btn-destrutivo:focus-visible { border-color: color-mix(in oklch, var(--destructive) 40%, transparent); box-shadow: 0 0 0 3px color-mix(in oklch, var(--destructive) 20%, transparent); outline: none; } .ds-btn-ghost-destrutivo { height: 44px; padding: 0 16px; background: transparent; } .ds-btn-ghost-destrutivo:hover { background: color-mix(in oklch, var(--destructive) 10%, transparent); } .ds-btn-ghost-destrutivo:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); outline: none; } .ds-btn-destrutivo:active, .ds-btn-ghost-destrutivo:active { transform: translateY(1px); } @media (prefers-color-scheme: dark) { .ds-btn-destrutivo { background: color-mix(in oklch, var(--destructive) 20%, transparent); } .ds-btn-destrutivo:hover { background: color-mix(in oklch, var(--destructive) 30%, transparent); } .ds-btn-ghost-destrutivo:hover { background: color-mix(in oklch, var(--destructive) 15%, transparent); } }"
+    },
+    {
+      "name": "Diálogo do painel",
+      "kind": "custom",
+      "refersTo": "dialogo",
+      "description": "Casca dos diálogos de Alterar quantidade, Corrigir dados e Cancelar reserva: cartão de 12 px sem sombra e sem X, título em Title, texto em Cinza de Apoio, rolagem interna até a tela menos 32 px e rodapé em faixa com botões de 48 px, empilhados no celular com a ação principal em cima.",
+      "html": "<div class=\"ds-dialogo\" role=\"dialog\" aria-labelledby=\"ds-dialogo-titulo\"><div class=\"ds-dialogo-cabeca\"><h2 id=\"ds-dialogo-titulo\">Cancelar a reserva K7P2XQ de Ana Beatriz Moura (2 peças)?</h2><p>As peças voltam para o estoque. Isso não pode ser desfeito.</p></div><p class=\"ds-dialogo-aviso\" role=\"note\">Esta reserva já foi paga. Devolva R$ 100,00 para Ana Beatriz Moura.</p><div class=\"ds-dialogo-rodape\"><button class=\"ds-dialogo-voltar\">Voltar</button><button class=\"ds-dialogo-acao\">Cancelar reserva</button></div></div>",
+      "css": ".ds-dialogo { display: grid; gap: 20px; width: 100%; max-width: 448px; max-height: calc(100dvh - 2rem); overflow-y: auto; padding: 24px; border-radius: 12px; background: var(--popover, var(--card)); color: var(--foreground); box-shadow: 0 0 0 1px color-mix(in oklch, var(--foreground) 10%, transparent); font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-dialogo-cabeca { display: flex; flex-direction: column; gap: 8px; } .ds-dialogo-cabeca h2 { margin: 0; font-size: 1.125rem; line-height: 1.375; font-weight: 600; letter-spacing: -0.025em; text-wrap: pretty; } .ds-dialogo-cabeca p { margin: 0; font-size: 1rem; line-height: 1.375; color: var(--muted-foreground); text-wrap: pretty; } .ds-dialogo-aviso { margin: 0; padding: 12px; border: 1px solid color-mix(in oklch, var(--aviso) 30%, transparent); border-radius: 8px; background: var(--aviso-fundo); font-size: 1rem; line-height: 1.375; } .ds-dialogo-rodape { display: flex; justify-content: flex-end; gap: 8px; margin: 0 -24px -24px; padding: 16px 24px; border-top: 1px solid var(--border); border-radius: 0 0 12px 12px; background: color-mix(in oklch, var(--muted) 50%, transparent); } .ds-dialogo-rodape button { height: 48px; padding: 0 20px; border-radius: 8px; font: 500 1rem/1.5 var(--font-geist-sans, Geist), sans-serif; cursor: pointer; } .ds-dialogo-voltar { border: 1px solid var(--border); background: var(--background); color: var(--foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); } .ds-dialogo-acao { border: 1px solid transparent; background: color-mix(in oklch, var(--destructive) 10%, transparent); color: var(--destructive); } @media (max-width: 639px) { .ds-dialogo { padding: 16px; } .ds-dialogo-rodape { flex-direction: column-reverse; margin: 0 -16px -16px; padding: 16px; } } @media (prefers-color-scheme: dark) { .ds-dialogo-voltar { border-color: var(--input); } .ds-dialogo-acao { background: color-mix(in oklch, var(--destructive) 20%, transparent); } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "O Checkout Bem-Feito",
+    "overview": "O sistema é o padrão da categoria executado com acabamento: a página pública se comporta como um checkout no nível do Stripe Checkout, e o painel da vendedora como os painéis do Linear e da Vercel. Não há tema, enfeite nem referência a época do ano. A personalidade está na precisão: uma régua só de cinzas, Geist bem espaçada, campos em caixa grandes, cartões de borda fina e números que se movem quando mudam.\n\nClaro e escuro seguem o aparelho de cada pessoa, sem botão de troca, e o escuro espelha a mesma régua. A cor existe para dizer alguma coisa: azul para o foco, verde para a confirmação, âmbar para aviso, vermelho para erro. O resto é tinta sobre papel neutro, com o botão principal na cor do texto.\n\nO público é qualquer pessoa, de qualquer idade, quase sempre no celular. Por isso a densidade é generosa e os pisos são fixos: toque de 44 px ou mais, texto de campo de 16 px ou mais, contraste AA no texto e bordas de campo com pelo menos 3:1 contra o fundo.",
+    "keyCharacteristics": [
+      "Régua única de cinzas sem croma, espelhada no escuro.",
+      "Claro e escuro automáticos, por `prefers-color-scheme`.",
+      "Geist em todo o texto; Geist Mono só nos códigos de reserva.",
+      "Botão principal na cor do texto: preto no claro, quase branco no escuro.",
+      "Cartões com borda fina, raio de 12 px e sombra xs; campos e botões com 8 px.",
+      "Cor só para estado: azul no foco, verde na confirmação, âmbar no aviso, vermelho no erro e na ação destrutiva.",
+      "Números com algarismos tabulares, que deslizam até o novo valor no painel."
+    ],
+    "rules": [
+      {
+        "name": "A Regra da Régua Única",
+        "body": "Todo neutro sai de uma régua de cinzas com croma 0, espelhada no escuro. Nenhum cinza ganha matiz quente ou frio.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra da Cor com Função",
+        "body": "Cor nunca é decoração. Verde só confirma, e só no comprovante. Âmbar avisa e marca poucas peças (3 ou menos). Vermelho marca erro, esgotado e ação destrutiva; na ação destrutiva fica no texto, com fundo de no máximo 20%, nunca em bloco sólido. No caso normal, o chip de disponibilidade é neutro.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra dos 3:1",
+        "body": "A borda de todo campo tem pelo menos 3:1 contra o fundo e contra o cartão, nos dois temas, para quem enxerga pouco também achar o campo.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Mono no Código",
+        "body": "Geist Mono aparece só no código da reserva: no comprovante, na linha da lista e no campo de busca. Preço, data, telefone e quantidade ficam em Geist.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra dos Algarismos Tabulares",
+        "body": "Todo número de preço, total, quantidade, telefone, data ou contagem usa algarismos tabulares, para não dançar quando muda.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra dos 16 px",
+        "body": "Texto digitado em campo nunca fica abaixo de 16 px, em nenhuma largura. O kit reduz para 14 px no desktop; o sistema desfaz essa redução.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra do Checkout",
+        "body": "No desktop, produto e resumo do pedido ficam à esquerda e o formulário à direita; no celular, tudo numa coluna, com o formulário logo depois do preço.",
+        "section": "layout"
+      },
+      {
+        "name": "A Regra dos 44 px",
+        "body": "Todo alvo de toque tem pelo menos 44 px: campos, stepper e botões principais com 48 px, botões ghost, gatilho de detalhes, ações dos detalhes da linha e interruptores no desktop com 44 px, botões dos diálogos com 48 px, e interruptores no celular e a linha de interruptor da faixa de configurações com 48 px.",
+        "section": "layout"
+      },
+      {
+        "name": "A Regra da Sombra Única",
+        "body": "Só existe a sombra xs. Nenhum elemento ganha sombra maior, sombra colorida ou elevação no hover.",
+        "section": "elevation"
+      },
+      {
+        "name": "A Regra dos Dois Raios",
+        "body": "Campo e botão com 8 px, cartão com 12 px, chip e interruptor em pílula. Nada fora dessas três formas.",
+        "section": "shapes"
+      },
+      {
+        "name": "A Regra do Cartão Único",
+        "body": "Nada de cartão dentro de cartão. Dentro do comprovante e dentro de uma linha da lista, a separação é por fio fino.",
+        "section": "shapes"
+      },
+      {
+        "name": "A Regra do Nome Constante",
+        "body": "O nome acessível do interruptor é sempre o que ele controla (\"Pago\", \"Entregue\", \"Receber reservas\") e nunca muda com o estado; a situação visível ao lado é só visual.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do tirar todo neutro da régua única de cinzas sem croma, e espelhar no escuro.",
+      "Do seguir o tema do aparelho, claro ou escuro, sem botão de troca.",
+      "Do usar o botão principal na cor do texto, com 48 px de altura.",
+      "Do desenhar campos como caixas de 48 px, borda de 1 px com pelo menos 3:1, texto de 16 px e rótulo sempre visível.",
+      "Do manter todo alvo de toque com pelo menos 44 px.",
+      "Do usar cartões com borda de 1 px, raio de 12 px e sombra xs, e 8 px em campos e botões.",
+      "Do separar o conteúdo dentro de um cartão por fio fino.",
+      "Do escrever todo número com algarismos tabulares.",
+      "Do mostrar no desktop a situação ao lado do interruptor (\"Pago\" ou \"Pendente\", \"Entregue\" ou \"A entregar\"), mantendo o nome acessível constante.",
+      "Do fazer o resumo do pedido acompanhar a quantidade e os números dos cartões deslizarem até o novo valor em 500 ms.",
+      "Do manter as transições de estado entre 150 e 200 ms e parar todo movimento com `prefers-reduced-motion`.",
+      "Do deixar o botão de salvar de um ajuste ou de um diálogo desabilitado até o campo diferir do valor salvo.",
+      "Do nomear a ação destrutiva pelo que ela atinge (\"Cancelar reserva\") e confirmar num diálogo que diz o código, o nome, as peças e a consequência.",
+      "Do manter focável a ação desabilitada por regra de negócio e mostrar a razão logo abaixo, ligada por `aria-describedby`.",
+      "Do fechar os diálogos do painel por \"Voltar\", Esc ou toque no fundo, com rodapé de botões de 48 px e rolagem interna em tela baixa."
+    ],
+    "donts": [
+      "Don't usar tema, enfeite ou qualquer referência a datas do ano.",
+      "Don't usar foto de banco de imagens nem ilustração no lugar da foto do queijo.",
+      "Don't usar verde fora da confirmação do comprovante, nem dar cor ao chip de disponibilidade no caso normal.",
+      "Don't usar Geist Mono fora dos códigos de reserva.",
+      "Don't colocar cartão dentro de cartão.",
+      "Don't colocar kicker ou eyebrow acima de títulos.",
+      "Don't usar sombra maior que xs nem elevar elementos no hover.",
+      "Don't baixar o texto de campo para menos de 16 px, nem no desktop.",
+      "Don't trocar o nome acessível do interruptor conforme o estado.",
+      "Don't dar borda de campo a uma linha de interruptor: ela é um rótulo nu de 48 px, com hover em Cinza Apagado.",
+      "Don't escrever \"Cancelar\" sozinho num botão: a ação destrutiva diz o objeto, e o botão que fecha sem fazer nada é \"Voltar\".",
+      "Don't pintar ação destrutiva em vermelho sólido: o vermelho fica no texto, com fundo de no máximo 20%."
+    ]
+  }
+}

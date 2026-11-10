@@ -57,11 +57,11 @@ temporada; 3 rotas, 1 action pública, 8 actions do painel
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-Avaliado contra a constituição v1.0.0.
+Avaliado contra a constituição v2.0.0.
 
 | Princípio | Antes da pesquisa | Depois do design | Como o plano atende |
 |-----------|-------------------|------------------|---------------------|
-| I. Simplicidade | ⚠️ | ✅ com justificativas | Um projeto Next + Supabase, sem API separada. Dependências novas: só `server-only`, Vitest e Supabase CLI (justificadas abaixo). Sonner trocado pelo toast que já existe; Playwright adiado; sem libs de data/moeda. Módulos `server/` e DTOs justificados em *Complexity Tracking*. Limpeza de dependências sem uso antes de publicar (R14). |
+| I. Simplicidade | ⚠️ | ✅ com justificativas | Um projeto Next + Supabase, sem API separada. Dependências novas: só `server-only`, Vitest e Supabase CLI (justificadas abaixo). Sonner trocado pelo toast que já existe; Playwright adiado; sem libs de data/moeda. Arquitetura MVVM com services e containers definida na própria constituição (v2.0.0). Limpeza de dependências sem uso antes de publicar (R14). |
 | II. Mobile-first | ✅ | ✅ | 360 px como referência; `inputMode="tel"`/numérico; comprovante cabe em 360×640; Open Graph; validação manual no navegador do WhatsApp (quickstart §7). |
 | III. Integridade do Estoque | ❌ admin editava `estoque_disponivel` direto | ✅ | Reservar/alterar/cancelar em functions [base]; `definir_estoque_total` com trava [novo]; `UPDATE` direto no estoque revogado; preço e abertura conferidos dentro de `criar_reserva`; teste de concorrência. Desvio justificado: preço por `UPDATE` direto (ver *Complexity Tracking*). |
 | IV. Integridade dos Valores | ✅ | ✅ | Centavos inteiros; `preco_unitario_centavos` copiado na criação; total gerado no banco; `reaisParaCentavos` sem ponto flutuante; `preco_alterado` (R5). |
@@ -99,46 +99,53 @@ specs/001-cheese-reservations/
 ```text
 app/
 ├── layout.tsx                 # lang="pt-BR", metadados/OG, provider de toast
-├── page.tsx                   # "/": casca + <Suspense> da vitrine
-├── actions.ts                 # reservar()
-├── _componentes/
-│   ├── vitrine.tsx            # Server: obter_vitrine → estado ou formulário
-│   ├── formulario-reserva.tsx # Client: RHF + zod + honeypot + chaveEnvio
-│   └── comprovante.tsx        # Client: cartão, Compartilhar, Copiar
+├── page.tsx                   # "/": casca do cartão + <Suspense> da vitrine
 └── admin/
-    ├── login/
-    │   ├── page.tsx
-    │   ├── actions.ts         # entrar(), sair()
-    │   └── formulario-login.tsx
-    ├── page.tsx               # casca + <Suspense> → exigirAdmin() → painel
-    ├── actions.ts             # 8 actions do painel
-    └── _componentes/          # resumo, configurações, busca/filtros, lista, linha da reserva
+    ├── login/page.tsx
+    └── page.tsx               # casca + <Suspense> → exigirAdmin() → painel
 
-server/                        # import 'server-only' em todos; único lugar que lê process.env
-├── supabase.ts                # clientePublico(), clienteDaSessao()
-├── auth.ts                    # exigirAdmin()
-├── vitrine.ts                 # obterVitrine() → VitrineDTO
-└── reservas.ts                # criarReserva(), listarReservas(), resumoPainel() e escritas
+components/
+├── ui/                        # shadcn existente (field, input, button, alert-dialog, toast...)
+├── vitrine/vitrine.tsx        # Server Component: lê pelo service e entrega DTO ao container
+├── formulario-reserva/
+│   ├── formulario-reserva.container.tsx
+│   ├── formulario-reserva.view.tsx
+│   ├── formulario-reserva.viewmodel.ts # estado, envio e chamada de reservar()
+│   └── formulario-reserva.model.ts     # schema do formulário, tipos, estado da vitrine
+├── comprovante/               # mesmos quatro arquivos: texto, Copiar e Compartilhar
+├── aviso-venda/, valor-animado/  # só View: peças visuais sem estado
+└── (painel)                   # formulario-login/, busca-filtros/, linha-reserva/, configuracoes-venda/, dialogo-*/ ...
+
+service/                       # único lugar que fala com o Supabase e lê process.env
+├── supabase/clientes.ts       # clientePublico(), clienteDaSessao()
+├── supabase/registrar-erro.ts # log sem dados de cliente
+├── auth/auth.service.ts       # obterAdmin(), exigirAdmin()
+├── auth/auth.actions.ts       # entrar(), sair()
+├── vitrine/vitrine.service.ts # obterVitrine() → VitrineDTO
+├── reservas/reservas.service.ts # criarReserva(), listarReservas(), resumoPainel() e escritas
+├── reservas/reservas.actions.ts # reservar() e actions de reserva do painel
+├── configuracao/configuracao.service.ts # preço, estoque total e abertura
+└── configuracao/configuracao.actions.ts # actions de configuração do painel
 
 lib/                           # funções puras, usadas no cliente, no servidor e nos testes
 ├── constantes.ts              # LIMITE_POR_RESERVA = 10
-├── schemas.ts                 # zod
+├── schemas.ts                 # campos e schemas usados pelo service e por vários componentes
+├── tipos.ts                   # DTOs entre service e componentes
+├── produto.ts                 # textos do produto e da saudação
 ├── whatsapp.ts                # normalizar, formatar (máscara), linkWhatsApp
 ├── codigo.ts                  # normalizarCodigoBusca
-├── comprovante.ts             # textoComprovante
 ├── formatacao.ts              # formatarReais, formatarDataHora
-├── dinheiro.ts                # reaisParaCentavos
+├── dinheiro.ts                # reaisParaCentavos, centavosParaCampo
 ├── erros.ts                   # traduzirErro
 ├── database.types.ts          # gerado: supabase gen types
 └── utils.ts                   # (existente)
 
-components/ui/                 # shadcn existente (field, input, button, card, alert-dialog, toast...)
 proxy.ts                       # renova sessão; protege /admin/*
 
 supabase/
 ├── config.toml
 ├── migrations/
-│   ├── <ts>_remote_schema.sql # baseline puxada do remoto
+│   ├── 20261029180*.sql       # baseline rodada no SQL Editor
 │   └── <ts>_ajustes_spec.sql  # ajustes R2
 └── seed.sql                   # só local: config, admin de teste, usuário comum
 
@@ -148,20 +155,26 @@ tests/
 
 scripts/verificar-bundle.mjs   # procura SUPABASE_* em .next/static
 .github/workflows/manter-ativo.yml
-vitest.config.ts
+vitest.config.mts
 ```
 
-**Structure Decision**: um único projeto Next.js na raiz, mantendo o layout que já existe (`app/`,
-`components/`, `lib/` sem `src/`). O que o usuário chamou de "camada de dados (ex.: src/server/)"
-vira `server/` na raiz. Pastas `_componentes` com prefixo `_` ficam fora do roteamento. Lógica
-testável fica em `lib/` (sem `server-only`), para os testes unitários não precisarem do runtime do
-Next.
+**Structure Decision**: um único projeto Next.js na raiz, sem `src/`. Componentes ficam em
+`components/<nome>/`, cada um com seus arquivos do MVVM, e toda chamada ao Supabase fica em
+`service/<domínio>/`. `lib/` guarda só o que é compartilhado entre service e componentes.
+
+**Arquitetura (MVVM com services)**, decisão do usuário em 2026-10-30, detalhada em
+[research R15](./research.md#r15-mvvm-com-services-e-containers):
+
+```text
+Leitura: Server Component → service → Supabase
+         Server Component → DTO → container
+Escrita: view → viewmodel → Server Action → service → Supabase
+```
 
 ## Complexity Tracking
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| Módulos `server/` e DTOs (Princípio I proíbe "camadas de repositório, serviço ou DTO em volta do cliente do Supabase") | São a fronteira de segurança pedida pelo usuário e recomendada pela doc do Next 16 (`data-security.md`): `server-only` faz o build falhar se um Client Component importar acesso a dados, e os DTOs evitam que linhas inteiras (com dados de clientes) cheguem ao navegador (Princípios V e VI). São funções finas, uma por consulta, sem classes, interfaces genéricas ou repositórios. | Chamar o Supabase direto em cada página/action: espalha `process.env` e clients pelo código e perde a barreira de build. Sugestão: emenda PATCH na constituição esclarecendo que módulos `server-only` de acesso a dados são permitidos. |
 | Preço por `UPDATE` direto (Princípio III pede function para ajustes de preço) | O banco já foi feito assim. Mudar o preço é um `UPDATE` atômico de uma linha, protegido por RLS e `CHECK`, que não mexe em reservas existentes (preço copiado). `criar_reserva` lê o preço sob a mesma trava e confere o preço esperado. | Criar `definir_preco()`: mais uma function sem ganho de integridade. Sugestão: emenda PATCH no Princípio III ("ajustes que dependem do estado das reservas, como o estoque, via function"). |
 | Dependências novas: `server-only`, `vitest` (dev), `supabase` CLI (dev) | `server-only`: barreira de build da fronteira servidor/cliente. Vitest: exigido pela constituição (verificação reproduzível de estoque, valores e permissões). Supabase CLI: `db pull`, migrations, banco local e tipos. | Sem testes automatizados: a constituição exige verificação reproduzível de concorrência e RLS. Sem CLI: as migrations não teriam como chegar ao repositório. |
 | Coluna `chave_envio` + parâmetro em `criar_reserva` | FR-009: um envio repetido por resposta perdida não pode virar duas reservas. | Só desabilitar o botão: não cobre a resposta perdida (R4). |

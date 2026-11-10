@@ -6,7 +6,8 @@ Interface entre o navegador e o servidor. Regras gerais:
   qualquer coisa; as do painel chamam `exigirAdmin()` antes de tocar no banco.
 - O navegador nunca recebe URL, chave ou client do Supabase, nem linhas inteiras do banco: só os
   DTOs abaixo.
-- Erros do Supabase nunca chegam crus: viram `{ ok: false, mensagem }` com texto da tabela
+- Erros do Supabase nunca chegam crus: a action devolve um código conhecido (`{ ok: false, erro }`)
+  ou `erro_inesperado`, e o ViewModel traduz com a tabela
   [Mensagens de erro](#mensagens-de-erro). No servidor, o log guarda só `code` e `message`.
 - Datas trafegam como string ISO; a formatação acontece na renderização.
 
@@ -22,7 +23,7 @@ Interface entre o navegador e o servidor. Regras gerais:
 
 | Parâmetro | Valores | Efeito |
 |-----------|---------|--------|
-| `codigo` | texto | normalizado (maiúsculas, sem espaços); busca exata |
+| `codigo` | texto | normalizado (maiúsculas, sem espaços); busca exata, em qualquer situação (ignora `situacao`, para achar também reservas canceladas) |
 | `pagamento` | `pendente` \| `pago` | filtra ativas por pagamento |
 | `entrega` | `pendente` \| `entregue` | filtra ativas por entrega |
 | `situacao` | `ativas` (padrão) \| `canceladas` \| `todas` | |
@@ -72,10 +73,10 @@ type ResumoPainelDTO = {
   reservasAbertas: boolean
 }
 
-type ResultadoAcao = { ok: true } | { ok: false; mensagem: string }
+type ResultadoAcao = { ok: true } | { ok: false; erro: string; n?: number }
 ```
 
-## Página pública — `app/actions.ts`
+## Página pública — `service/reservas/reservas.actions.ts`
 
 ### `reservar(entrada)`
 
@@ -98,26 +99,31 @@ type ResultadoReserva =
   | { ok: true; comprovante: ComprovanteDTO }
   | { ok: true; comprovante: null }                              // honeypot preenchido
   | { ok: false; erro: 'validacao'; campos: Partial<Record<'nome' | 'whatsapp' | 'quantidade' | 'endereco', string>> }
-  | { ok: false; erro: CodigoErroPublico; mensagem: string; vitrine?: VitrineDTO }
+  | { ok: false; erro: CodigoErroPublico; vitrine?: VitrineDTO }
 ```
 
+- `CodigoErroPublico`: os códigos de regra que chegam ao público (`quantidade_invalida`,
+  `venda_fechada`, `reservas_encerradas`, `preco_alterado`, `estoque_insuficiente`,
+  `codigo_indisponivel`, `dados_invalidos`) e `erro_inesperado` para qualquer outro erro
+  (mensagem genérica).
 - `vitrine` acompanha `preco_alterado`, `estoque_insuficiente`, `reservas_encerradas` e
   `venda_fechada` (lida de novo com `obter_vitrine`), para a tela se atualizar.
 - `comprovante.nome` e `comprovante.endereco` vêm da entrada já normalizada; os demais campos vêm
   do retorno de `criar_reserva`.
 - Depois de criar: `revalidatePath('/')` e `revalidatePath('/admin')`.
 
-## Login — `app/admin/login/actions.ts`
+## Login — `service/auth/auth.actions.ts`
 
 | Action | Entrada | Saída |
 |--------|---------|-------|
-| `entrar` | `{ email: string (e-mail), senha: string (mín. 1) }` | sucesso → `redirect('/admin')`; erro → `{ ok: false, mensagem: 'E-mail ou senha incorretos.' }` (mesma mensagem para qualquer falha de credencial) |
+| `entrar` | `{ email: string (e-mail), senha: string (mín. 1) }` | sucesso → `redirect('/admin')`; erro → `{ ok: false, erro: 'credenciais_invalidas' }` (mesmo código para qualquer falha de credencial); conta que não é admin → encerra a sessão e devolve `{ ok: false, erro: 'sem_acesso' }`, sem redirecionar |
 | `sair` | — | `signOut()` → `redirect('/admin/login')` |
 
-## Painel — `app/admin/actions.ts`
+## Painel — `service/reservas/reservas.actions.ts` e `service/configuracao/configuracao.actions.ts`
 
 Todas chamam `exigirAdmin()` primeiro, devolvem `ResultadoAcao` e, em sucesso, chamam
-`revalidatePath('/admin')` (e `revalidatePath('/')` quando muda vitrine).
+`revalidatePath('/admin')` (e `revalidatePath('/')` quando muda vitrine). Quando o erro é
+`estoque_abaixo_do_reservado`, `n` traz as peças reservadas.
 
 | Action | Entrada (zod) | Banco | Revalida `/` |
 |--------|---------------|-------|--------------|
@@ -140,7 +146,7 @@ volta e aparece um toast com a mensagem.
 
 ## Texto do comprovante
 
-Gerado por `textoComprovante(c: ComprovanteDTO)` em `lib/comprovante.ts` (função pura):
+Gerado por `textoComprovante(c: ComprovanteDTO)` em `components/comprovante/comprovante.model.ts` (função pura):
 
 ```text
 Reserva de queijo K7M2QX
@@ -161,7 +167,7 @@ responder com os dados para pagamento." Sem telefone nem chave Pix (FR-013/015).
 
 ## Mensagens de erro
 
-`traduzirErro(codigo)` em `lib/erros.ts`:
+`traduzirErro(codigo, n?)` em `lib/erros.ts`, chamada pelos ViewModels:
 
 | Código | Mensagem |
 |--------|----------|
@@ -175,6 +181,8 @@ responder com os dados para pagamento." Sem telefone nem chave Pix (FR-013/015).
 | `reserva_nao_encontrada` | Reserva não encontrada. |
 | `reserva_cancelada` | Esta reserva foi cancelada e não pode ser alterada. |
 | `reserva_paga` | Esta reserva já está paga. Para mudar a quantidade, marque o pagamento como pendente antes. |
-| `estoque_abaixo_do_reservado` | O total não pode ser menor que as {n} peças já reservadas. (`n` lido de `totais_venda` pela action, FR-035) |
+| `estoque_abaixo_do_reservado` | O total não pode ser menor que as {n} peças já reservadas. (`n` lido de `totais_venda` pela action e devolvido ao ViewModel, FR-035) |
 | `nao_autorizado` | Sua sessão expirou. Entre de novo. |
+| `credenciais_invalidas` | E-mail ou senha incorretos. Confira e tente de novo. |
+| `sem_acesso` | Esta conta não tem acesso ao painel. (também mostrada em `/admin/login?erro=sem-acesso`, quando `exigirAdmin()` encontra uma sessão que não é de admin) |
 | (qualquer outro) | Algo deu errado. Tente de novo em instantes. |

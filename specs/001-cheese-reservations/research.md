@@ -146,6 +146,9 @@ isso, ler `cookies()` ou buscar dados sem cache fora de um `<Suspense>` é erro 
   por `searchParams`, lidos dentro do mesmo limite.
 - `/admin/login`: formulário estático; a action faz o login.
 - Mutações: Server Actions com `revalidatePath('/')` e/ou `revalidatePath('/admin')`.
+- `exigirAdmin()` chama `connection()` antes de `getClaims()`: o `getClaims` compara a hora atual com a
+  expiração do token, e com `partialPrefetching` ler `cookies()` não basta para tirar esse trecho da
+  pré-renderização (o Next acusa `Date.now()` em desenvolvimento). Achado na Phase 4.
 - Plano B, se algum trecho brigar com a validação de navegação instantânea:
   `export const instant = false` na página (previsto na doc de migração).
 
@@ -160,7 +163,7 @@ desligar `cacheComponents` — descartado sem necessidade, já está configurado
 
 ## R7. Clientes do Supabase, sessão e checagem de admin (só no servidor)
 
-**Decision**: `server/supabase.ts` (com `import 'server-only'`) exporta duas fábricas:
+**Decision**: `service/supabase/clientes.ts` (com `import 'server-only'`) exporta duas fábricas:
 
 - `clientePublico()`: `createClient` do `supabase-js` com a chave publishable e
   `auth: { persistSession: false, autoRefreshToken: false }`, sem cookies. Usado em
@@ -170,10 +173,10 @@ desligar `cacheComponents` — descartado sem necessidade, já está configurado
   `setAll` em `try/catch`, porque Server Components não gravam cookies). Usado no painel e no
   login.
 
-`server/auth.ts` exporta `exigirAdmin()`: `supabase.auth.getClaims()` (valida o JWT) → sem
+`service/auth/auth.service.ts` exporta `exigirAdmin()`: `supabase.auth.getClaims()` (valida o JWT) → sem
 usuário, `redirect('/admin/login')`; com usuário, confere se é admin. Para a conferência, usa o
-helper que as políticas da baseline já usam (se existir e for executável por `authenticated`) ou
-uma function nova `eh_admin()` (`SECURITY DEFINER`, retorna `boolean`) na migration de ajustes.
+helper que as políticas da baseline já usam: `is_admin()`, executável por `authenticated`
+(confirmado na verificação da baseline).
 Toda Server Action do painel chama `exigirAdmin()` antes de qualquer coisa.
 
 `proxy.ts` (raiz, `matcher: ['/admin/:path*']`): renova a sessão (padrão `updateSession` do
@@ -196,7 +199,7 @@ checar admin só no `proxy.ts` — descartado (a doc do Next pede checagem perto
 navegador.
 
 **Decision**: renomear para `SUPABASE_URL` e `SUPABASE_PUBLISHABLE_KEY` (local, Vercel e secrets
-do GitHub). Só `server/supabase.ts` lê `process.env`. `.env*` já está no `.gitignore`. Depois do
+do GitHub). Só `service/supabase/clientes.ts` lê `process.env`. `.env*` já está no `.gitignore`. Depois do
 build, `scripts/verificar-bundle.mjs` procura os dois valores em `.next/static` e falha se
 encontrar.
 
@@ -244,7 +247,7 @@ troca fica restrita ao provider e às chamadas de toast.
 **Decision**:
 
 - O comprovante é um estado do próprio formulário em `/` (não há rota pública por código, FR-016).
-- O texto vem de `lib/comprovante.ts` (função pura), no formato definido em
+- O texto vem de `components/comprovante/comprovante.model.ts` (função pura), no formato definido em
   [contracts/server-actions.md](./contracts/server-actions.md#texto-do-comprovante): "1 peça" /
   "N peças", linha "Entrega" só com endereço e data "29/10/2026 às 15:02" (montada com
   `Intl.DateTimeFormat(...).formatToParts`, fuso `America/Sao_Paulo`).
@@ -253,6 +256,11 @@ troca fica restrita ao provider e às chamadas de toast.
   cópia falhar, um toast pede para tirar print.
 - Card pensado para 360×640: código em destaque com `font-mono` (Geist Mono, já carregada no
   layout).
+- O componente cliente fica sempre montado e decide entre formulário, aviso e comprovante. Se o
+  servidor trocasse o formulário pelo aviso, reservar a última peça desmontaria o componente na
+  atualização da página e o comprovante sumiria.
+- A cópia é confirmada no próprio botão ("Copiado!"). Um toast cobriria "Fazer outra reserva" e
+  apareceria no print.
 
 **Rationale**: a spec pede os dois botões (FR-012); o texto do usuário dizia que o botão "vira
 Copiar". Ficou assim: "Copiar" sempre e "Compartilhar" quando houver suporte, o que cobre as duas
@@ -319,3 +327,94 @@ leituras.
   de remover.
 - `app/layout.tsx`: `lang="pt-BR"` e metadados (título, descrição e Open Graph com uma imagem
   estática em `public/`, se houver foto do queijo).
+
+---
+
+## R15. MVVM com services e containers
+
+**Decision** (usuário, 2026-10-30): adotar MVVM com uma camada de service e um container por
+componente, mantendo a leitura em Server Components e nenhum acesso ao Supabase no navegador.
+
+```text
+Leitura: Server Component → service → Supabase
+         Server Component → DTO → container
+Escrita: view → viewmodel → Server Action → service → Supabase
+```
+
+- **Service** (`service/<domínio>/<domínio>.service.ts`): `server-only`, único lugar que chama o
+  Supabase. `service/supabase/` guarda os clients e o log de erros.
+- **Server Action** (`service/<domínio>/<domínio>.actions.ts`): a ponte entre o ViewModel, que
+  roda no navegador, e o service, que não pode rodar lá. Valida com zod, confere o admin e chama
+  o service. Devolve dados ou um código de erro conhecido, nunca o erro cru do Supabase.
+- **Model** (`<nome>.model.ts`): tipos, schema do formulário e funções puras exclusivas do
+  componente. O que o service ou outro componente também usa fica em `lib/`, para o service não
+  depender da pasta de um componente.
+- **ViewModel** (`<nome>.viewmodel.ts`): hook sem JSX. Concentra a lógica da tela, é o único que
+  chama Server Actions e traduz os códigos de erro em mensagens. Devolve os grupos `dados`,
+  `campos` e `acoes`.
+- **View** (`<nome>.view.tsx`): só recebe props e desenha. Não importa `react-hook-form`: o
+  ViewModel liga os campos com `useController` e entrega valor, eventos e erro prontos.
+- **Container** (`<nome>.container.tsx`): Client Component que desestrutura os grupos do ViewModel
+  e os passa como props para a View.
+- **Componente sem estado:** só o arquivo `.view.tsx` (ex.: `aviso-venda`, `selo`).
+- **Campo-armadilha:** fora do formulário controlado. O ViewModel lê o valor do DOM no envio, com
+  `FormData`, porque robôs costumam preencher o campo sem disparar os eventos que o React observa.
+
+**Rationale**: separa acesso a dados, lógica de tela e desenho, sem abrir mão da fronteira de
+segurança. A constituição foi emendada para a v2.0.0, porque o Princípio I proibia camadas de
+serviço e de DTO.
+
+**Alternatives considered**: marcar os services com `'use server'`, para o ViewModel importá-los
+direto — descartado, porque toda função exportada viraria um endpoint público, sem barreira
+separada de validação; concentrar todos os schemas nos models — descartado, porque faria o
+service depender de `components/`. Testar os hooks diretamente exigiria `@testing-library/react`
+e `jsdom`; por ora os ViewModels são cobertos pelo roteiro no navegador, e a lógica pura segue
+testada em `lib/` e nos models.
+
+---
+
+## Resultado da verificação da baseline
+
+**Data**: 2026-10-30. **Baseline**: os arquivos que o usuário rodou no SQL Editor, colocados em
+`supabase/migrations/` (`20261029180000_tabelas.sql`, `20261029180100_funcoes.sql`,
+`20261029180200_rls_e_permissoes.sql`), no lugar do `db pull`.
+
+**Conferência contra o remoto (T006, 2026-10-30)**: `db diff --linked --schema public`, com a
+migration de ajustes fora da pasta durante a comparação (ela ainda não foi aplicada, então o diff
+nunca sairia vazio com ela presente). O resultado listou só `CREATE OR REPLACE` das 6 functions,
+nada de tabelas, policies ou grants. A diferença é de quebra de linha: os arquivos estão em CRLF
+e o `pg-delta` acusa isso nos corpos. O hash (md5, sem CR) dos 6 corpos é igual nos arquivos e no
+remoto. Consulta direta no remoto confirmou RLS nas 3 tabelas, 4 policies, nenhum grant de `anon`
+em tabelas ou views e `EXECUTE` de `anon` só em `obter_vitrine` e `criar_reserva`. O remoto tinha
+0 reservas, 1 linha em `configuracao` e 1 em `admins`. As 3 migrations foram registradas como
+aplicadas com `migration repair`. Daqui em diante, um `db diff` com esse mesmo ruído de CR nos
+corpos das functions não indica divergência real.
+
+| # | Item | Resultado |
+|---|------|-----------|
+| V1 | RLS | ✅ habilitada em `configuracao`, `reservas` e `admins`; `admins` sem nenhuma policy |
+| V2 | Grants do `anon` | ✅ `revoke all` nas tabelas e na view para `anon` e `authenticated`; `anon` só executa `obter_vitrine` e `criar_reserva` |
+| V3 | `EXECUTE` padrão | ✅ revogado de `public`, `anon` e `authenticated` antes dos grants; `gerar_codigo_reserva` sem grant |
+| V4 | `SECURITY DEFINER` | ✅ todas com `SET search_path = ''` e nomes qualificados (`gerar_codigo_reserva` é `invoker`, também com `search_path` fixo) |
+| V5 | Admin | ✅ policies e functions do painel usam `public.is_admin()` |
+| V6 | Estoque atômico | ✅ `UPDATE ... WHERE estoque_disponivel >= quantidade` em `criar_reserva` e `alterar_quantidade`; `alterar`/`cancelar` travam a reserva com `FOR UPDATE`; `CHECK (estoque_disponivel >= 0)` |
+| V7 | Limite | ✅ `v_limite = 10`; fora de 1–10 → `quantidade_invalida` |
+| V8 | Dados do cliente | ✅ `CHECK`s: `nome` 2–80 (`char_length`), `whatsapp ~ '^[0-9]{10,11}$'`, `endereco` 1–200 ou nulo, `codigo ~ '^[A-Z0-9]{6}$'`. A function apara o nome e o endereço e tira os não dígitos do WhatsApp; dado inválido estoura o `CHECK` cru (sem `dados_invalidos`), o que a migration de ajustes corrige |
+| V9 | Cancelada só leitura | ✅ policy "admin atualiza status de reservas ativas": `USING (is_admin() and cancelada_em is null)` |
+| V10 | Tipos | ✅ `reservas.id uuid`; status em `text` + `CHECK`; `configuracao.id smallint = 1` |
+
+Anotações para os ajustes:
+
+- `obter_vitrine()` e `criar_reserva(text, text, integer, text)` têm grant para `anon` e
+  `authenticated`; `criar_reserva` tem `p_endereco text default null`.
+- `is_admin()` já existe e é executável por `authenticated`: a `eh_admin()` prevista no plano
+  não é criada.
+- `configuracao` tem `grant update (preco_centavos, estoque_disponivel)` para `authenticated`:
+  a admin consegue sobrescrever o estoque disponível direto (o risco descrito em R3). A
+  migration de ajustes troca por `(preco_centavos, reservas_abertas)`.
+- `reservas` tem `grant update (status_pagamento, status_entrega)`: falta acrescentar `nome`,
+  `whatsapp` e `endereco` (FR-040).
+- `totais_venda` (`security_invoker`) devolve `bigint`; `pecas_reservadas` segue o mesmo tipo.
+- Os `CHECK`s de V8 já existem; não é preciso acrescentar nenhum.
+- `config.toml` gerado pelo `supabase init` usa Postgres 17; o `db diff` do T006 confirma se o
+  remoto é da mesma versão.
