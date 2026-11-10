@@ -1,0 +1,28 @@
+# Uma chamada por dia ao banco, para o projeto do plano gratuito do Supabase
+# não ser pausado por inatividade (research R14). Usa só a função pública
+# obter_vitrine, a mesma que a página chama: não lê nem altera reservas.
+name: manter-ativo
+
+on:
+  schedule:
+    - cron: "17 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  chamar-banco:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Chamar obter_vitrine
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+        # -f falha o job se a resposta não for 2xx; a saída não é impressa.
+        run: |
+          curl -fsS -o /dev/null -X POST "$SUPABASE_URL/rest/v1/rpc/obter_vitrine" \
+            -H "apikey: $SUPABASE_PUBLISHABLE_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{}'
