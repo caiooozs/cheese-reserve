@@ -1,3 +1,4 @@
+import { BotaoAtualizar } from "@/components/botao-atualizar/botao-atualizar.container";
 import { BuscaFiltros } from "@/components/busca-filtros/busca-filtros.container";
 import { ConfiguracoesVenda } from "@/components/configuracoes-venda/configuracoes-venda.container";
 import { ListaReservas } from "@/components/lista-reservas/lista-reservas";
@@ -44,9 +45,15 @@ export async function Painel({
       <ResumoPainel resumo={resumo} />
       <ConfiguracoesVenda resumo={resumo} />
       <section aria-labelledby="titulo-reservas" className="flex flex-col gap-3">
-        <h2 id="titulo-reservas" className="text-lg font-semibold tracking-tight">
-          Reservas
-        </h2>
+        <div className="-my-1.5 flex items-center justify-between gap-3">
+          <h2 id="titulo-reservas" className="text-lg font-semibold tracking-tight">
+            Reservas
+          </h2>
+          {/* Traz reservas novas sem recarregar a página nem perder os filtros. */}
+          <div className="-mr-3">
+            <BotaoAtualizar />
+          </div>
+        </div>
         {/* A chave recria a busca quando a URL muda, para o campo refletir o filtro. */}
         <BuscaFiltros key={JSON.stringify(filtros)} filtros={filtros} />
         <ListaReservas

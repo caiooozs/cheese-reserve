@@ -385,7 +385,7 @@ Grandes, diretos, sem ornamento.
 - **Prefixo de moeda:** "R$" em Cinza de Apoio, 16 px, dentro da caixa à esquerda; o texto digitado começa a 44 px da borda.
 
 ### Navigation
-O painel tem só um cabeçalho de 64 px em Cartão com fio inferior: "Painel da venda" em Title, o nome do produto em Nota abaixo e o botão ghost Sair à direita. A página pública não tem navegação.
+O painel tem só um cabeçalho de 64 px em Cartão com fio inferior: "Painel da venda" em Title, o nome do produto em Nota abaixo e o botão ghost Sair à direita. A página pública não tem navegação. Ao lado do título "Reservas" fica o botão ghost "Atualizar" (44 px, ícone de setas), que busca de novo os totais e a lista sem recarregar a página nem perder filtros; enquanto busca, o ícone gira (parado com `prefers-reduced-motion`) e o texto vira "Atualizando…".
 
 ### Resumo do pedido
 O cartão fixo da coluna esquerda no desktop: "Resumo do pedido" em 1rem 600, o produto com a conta ("2 peças × R$ 50,00") em Nota, um fio e o Total em Headline. No celular o mesmo total aparece num bloco de Cinza Apagado acima do botão Reservar.
