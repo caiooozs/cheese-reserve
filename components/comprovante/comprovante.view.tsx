@@ -80,8 +80,30 @@ export function ComprovanteView({ dados, acoes }: ComprovanteViewProps) {
             <Linha rotulo="Entrega" empilhar={dados.entregaLonga}>
               {dados.entrega}
             </Linha>
-            <Linha rotulo="Pagamento">A combinar</Linha>
             <Linha rotulo="Feita em">{dados.feitaEm}</Linha>
+            {/* Chave Pix da vendedora (provisória: lib/pagamento.ts). */}
+            <div className="flex items-center justify-between gap-3 py-0.5">
+              <dt className="shrink-0 text-muted-foreground">Pix ({dados.pix.tipo})</dt>
+              <dd className="flex min-w-0 items-center gap-1">
+                <span className="font-semibold tabular-nums">{dados.pix.chave}</span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Copiar chave Pix"
+                  onClick={acoes.copiarPix}
+                  className="-mr-2.5 size-11 text-muted-foreground hover:text-foreground"
+                >
+                  {dados.pixCopiado ? (
+                    <CheckIcon aria-hidden className="size-5" />
+                  ) : (
+                    <CopyIcon aria-hidden className="size-5" />
+                  )}
+                </Button>
+                <span role="status" className="sr-only">
+                  {dados.pixCopiado ? "Chave Pix copiada." : ""}
+                </span>
+              </dd>
+            </div>
           </dl>
         </div>
 
@@ -110,8 +132,7 @@ export function ComprovanteView({ dados, acoes }: ComprovanteViewProps) {
         </div>
 
         <p className="text-base leading-snug text-pretty text-muted-foreground">
-          Envie este comprovante para a vendedora pelo WhatsApp. Ela vai responder com os
-          dados para pagamento.
+          Faça o Pix e envie este comprovante para a vendedora pelo WhatsApp.
         </p>
 
         <Button
