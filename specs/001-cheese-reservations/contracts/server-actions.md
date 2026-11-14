@@ -23,7 +23,7 @@ Interface entre o navegador e o servidor. Regras gerais:
 
 | Parâmetro | Valores | Efeito |
 |-----------|---------|--------|
-| `codigo` | texto | normalizado (maiúsculas, sem espaços); busca exata, em qualquer situação (ignora `situacao`, para achar também reservas canceladas) |
+| `busca` | texto | nome ou código, como digitado (espaços extras removidos, até 80 caracteres). Só preenche o campo: a lista filtra no navegador, a cada tecla, sem diferenciar acentos nem maiúsculas e aceitando pedaços; soma com os outros filtros (2026-11-14, substitui o antigo `codigo`) |
 | `pagamento` | `pendente` \| `pago` | filtra ativas por pagamento |
 | `entrega` | `pendente` \| `entregue` | filtra ativas por entrega |
 | `situacao` | `ativas` (padrão) \| `canceladas` \| `todas` | |

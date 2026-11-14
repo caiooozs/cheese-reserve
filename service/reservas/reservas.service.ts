@@ -59,10 +59,7 @@ export async function listarReservas(
     .select(COLUNAS_PAINEL)
     .order("created_at", { ascending: false });
 
-  // O código é único: acha a reserva mesmo cancelada (ela aparece marcada).
-  if (filtros.codigo) {
-    consulta = consulta.eq("codigo", filtros.codigo);
-  } else if (filtros.situacao === "ativas") {
+  if (filtros.situacao === "ativas") {
     consulta = consulta.is("cancelada_em", null);
   } else if (filtros.situacao === "canceladas") {
     consulta = consulta.not("cancelada_em", "is", null);
@@ -76,6 +73,8 @@ export async function listarReservas(
     throw error;
   }
 
+  // A busca por nome ou código (filtros.busca) não entra aqui: o painel filtra no
+  // navegador, a cada tecla, sobre a lista que já tem.
   return data.map((r) => ({
     id: r.id,
     codigo: r.codigo,

@@ -43,34 +43,48 @@ function Selecao({
 }
 
 // Busca e filtros vivem na URL. No celular os filtros abrem por um botão;
-// no desktop ficam sempre à mostra, na mesma linha da busca.
+// no desktop ficam sempre à mostra, na mesma linha da busca, e somam com ela.
 export function BuscaFiltrosView({ dados, campos, acoes }: BuscaFiltrosViewProps) {
   return (
     <div className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-end">
       <form role="search" onSubmit={acoes.buscar} className="flex flex-col gap-1.5 md:min-w-72 md:flex-1">
-        <label htmlFor="busca-codigo" className="text-sm font-medium">
-          Buscar pelo código
+        <label htmlFor="busca-reservas" className="text-sm font-medium">
+          Buscar por nome ou código
         </label>
-        <div className="flex gap-2">
-          <div className="relative flex-1">
+        {/* A lista filtra a cada tecla; a lupa vira o indicador quando um filtro busca no servidor. */}
+        <div className="relative">
+          {dados.atualizando ? (
+            <Spinner
+              aria-hidden
+              className="pointer-events-none absolute top-1/2 left-3.5 size-5 -translate-y-1/2 text-muted-foreground"
+            />
+          ) : (
             <SearchIcon
               aria-hidden
               className="pointer-events-none absolute top-1/2 left-3.5 size-5 -translate-y-1/2 text-muted-foreground"
             />
-            <Input
-              {...campos.codigo}
-              id="busca-codigo"
-              autoComplete="off"
-              autoCapitalize="characters"
-              spellCheck={false}
-              enterKeyHint="search"
-              className={cn(CAMPO, "pl-11 font-mono tracking-[0.12em] uppercase")}
-            />
-          </div>
-          <Button type="submit" variant="outline" className="h-12 px-4 text-base shadow-xs">
-            {dados.atualizando && <Spinner aria-hidden className="size-5" />}
-            Buscar
-          </Button>
+          )}
+          <Input
+            {...campos.busca}
+            id="busca-reservas"
+            inputMode="search"
+            autoComplete="off"
+            spellCheck={false}
+            enterKeyHint="search"
+            className={cn(CAMPO, "pl-11", dados.temBusca && "pr-12")}
+          />
+          {dados.temBusca && (
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              aria-label="Limpar busca"
+              onClick={acoes.limparBusca}
+              className="absolute top-0.5 right-0.5 size-11 text-muted-foreground hover:text-foreground"
+            >
+              <XIcon aria-hidden className="size-5" />
+            </Button>
+          )}
         </div>
       </form>
 

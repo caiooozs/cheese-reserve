@@ -12,6 +12,7 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { COLUNAS_RESERVA } from "@/lib/estilos";
+import type { FiltrosPainel } from "@/lib/schemas";
 import type { ReservaPainelDTO } from "@/lib/tipos";
 import { cn } from "@/lib/utils";
 
@@ -20,13 +21,15 @@ export function ListaReservas({
   reservas,
   hoje,
   filtrando,
-  buscaPorCodigo,
+  buscando,
+  situacao,
   disponivel,
 }: {
   reservas: ReservaPainelDTO[];
   hoje: string;
   filtrando: boolean;
-  buscaPorCodigo: boolean;
+  buscando: boolean;
+  situacao: FiltrosPainel["situacao"];
   // Peças livres agora: limite para aumentar a quantidade de uma reserva.
   disponivel: number;
 }) {
@@ -39,8 +42,10 @@ export function ListaReservas({
           </EmptyMedia>
           <EmptyTitle className="text-lg font-semibold">Nenhuma reserva encontrada.</EmptyTitle>
           <EmptyDescription className="text-base text-muted-foreground">
-            {buscaPorCodigo
-              ? "Confira o código digitado no comprovante."
+            {buscando
+              ? situacao === "ativas"
+                ? "Nenhuma reserva ativa com esse nome ou código. Para incluir as canceladas, escolha Situação: Ativas e canceladas."
+                : "Nenhuma reserva com esse nome ou código."
               : filtrando
                 ? "Nenhuma reserva combina com esses filtros."
                 : "Quando alguém reservar pela página, a reserva aparece aqui."}
