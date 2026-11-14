@@ -114,19 +114,23 @@ describe("schemaReservaFormulario", () => {
 describe("schemaFiltrosPainel", () => {
   it("sem parâmetros mostra só as ativas", () => {
     expect(schemaFiltrosPainel.parse({})).toEqual({
-      codigo: undefined,
+      busca: undefined,
       pagamento: undefined,
       entrega: undefined,
       situacao: "ativas",
     });
   });
 
-  it("normaliza o código digitado", () => {
-    expect(schemaFiltrosPainel.parse({ codigo: " k7p 2xq " }).codigo).toBe("K7P2XQ");
+  it("guarda a busca como foi digitada, sem espaços sobrando", () => {
+    expect(schemaFiltrosPainel.parse({ busca: "  Heloísa   Prado " }).busca).toBe("Heloísa Prado");
   });
 
-  it("código só com espaços vira busca vazia", () => {
-    expect(schemaFiltrosPainel.parse({ codigo: "   " }).codigo).toBeUndefined();
+  it("busca só com espaços vira busca vazia", () => {
+    expect(schemaFiltrosPainel.parse({ busca: "   " }).busca).toBeUndefined();
+  });
+
+  it("corta buscas longas em 80 caracteres", () => {
+    expect(schemaFiltrosPainel.parse({ busca: "a".repeat(200) }).busca).toHaveLength(80);
   });
 
   it("combina pagamento, entrega e situação", () => {

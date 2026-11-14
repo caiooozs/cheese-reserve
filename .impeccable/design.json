@@ -548,10 +548,6 @@
         "displayName": "Código",
         "purpose": "Código da reserva no comprovante."
       },
-      "codigo-busca": {
-        "displayName": "Código de busca",
-        "purpose": "Texto digitado em \"Buscar pelo código\", em maiúsculas."
-      },
       "codigo-linha": {
         "displayName": "Código de linha",
         "purpose": "Código da reserva em cada linha da lista."
@@ -754,7 +750,7 @@
       },
       {
         "name": "A Regra do Mono no Código",
-        "body": "Geist Mono aparece só no código da reserva: no comprovante, na linha da lista e no campo de busca. Preço, data, telefone e quantidade ficam em Geist.",
+        "body": "Geist Mono aparece só no código da reserva: no comprovante e na linha da lista. Preço, data, telefone e quantidade ficam em Geist.",
         "section": "typography"
       },
       {

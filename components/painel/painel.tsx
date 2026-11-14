@@ -1,10 +1,8 @@
 import { BotaoAtualizar } from "@/components/botao-atualizar/botao-atualizar.container";
-import { BuscaFiltros } from "@/components/busca-filtros/busca-filtros.container";
 import { ConfiguracoesVenda } from "@/components/configuracoes-venda/configuracoes-venda.container";
-import { ListaReservas } from "@/components/lista-reservas/lista-reservas";
+import { ReservasFiltradas } from "@/components/reservas-filtradas/reservas-filtradas.container";
 import { ResumoPainel } from "@/components/resumo-painel/resumo-painel.view";
 import { MENSAGEM_GENERICA } from "@/lib/erros";
-import { estaFiltrando } from "@/lib/filtros";
 import { diaDe } from "@/lib/formatacao";
 import { schemaFiltrosPainel } from "@/lib/schemas";
 import type { ReservaPainelDTO, ResumoPainelDTO } from "@/lib/tipos";
@@ -38,8 +36,6 @@ export async function Painel({
   // exigirAdmin() já adiou tudo para a hora da visita: "Hoje" é o dia de agora.
   const hoje = diaDe(new Date().toISOString());
 
-  const filtrando = estaFiltrando(filtros);
-
   return (
     <>
       <ResumoPainel resumo={resumo} />
@@ -54,13 +50,11 @@ export async function Painel({
             <BotaoAtualizar />
           </div>
         </div>
-        {/* A chave recria a busca quando a URL muda, para o campo refletir o filtro. */}
-        <BuscaFiltros key={JSON.stringify(filtros)} filtros={filtros} />
-        <ListaReservas
+        {/* A busca por nome ou código filtra no navegador; os filtros, no servidor. */}
+        <ReservasFiltradas
+          filtros={filtros}
           reservas={reservas}
           hoje={hoje}
-          filtrando={filtrando}
-          buscaPorCodigo={Boolean(filtros.codigo)}
           disponivel={resumo.disponivel}
         />
       </section>

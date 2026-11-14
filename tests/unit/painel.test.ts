@@ -38,20 +38,23 @@ describe("urlDosFiltros", () => {
     expect(urlDosFiltros({ situacao: "canceladas" })).toBe("/admin?situacao=canceladas");
   });
 
-  it("leva o código da busca", () => {
-    expect(urlDosFiltros({ codigo: "K7P2XQ" })).toBe("/admin?codigo=K7P2XQ");
+  it("leva a busca, junto com os filtros", () => {
+    expect(urlDosFiltros({ busca: "Heloísa" })).toBe("/admin?busca=Helo%C3%ADsa");
+    expect(urlDosFiltros({ busca: "k7p", pagamento: "pago" })).toBe(
+      "/admin?busca=k7p&pagamento=pago",
+    );
   });
 });
 
 describe("contarFiltros", () => {
-  it("não conta a situação padrão nem o código", () => {
-    expect(contarFiltros({ situacao: "ativas", codigo: "K7P2XQ" })).toBe(0);
+  it("não conta a situação padrão nem a busca", () => {
+    expect(contarFiltros({ situacao: "ativas", busca: "Heloísa" })).toBe(0);
   });
 
   it("conta pagamento, entrega e situação diferente de ativas", () => {
     expect(
       contarFiltros({
-        codigo: undefined,
+        busca: undefined,
         pagamento: "pago",
         entrega: "pendente",
         situacao: "todas",
@@ -61,16 +64,16 @@ describe("contarFiltros", () => {
 });
 
 describe("rotuloLimpar e estaFiltrando", () => {
-  const padrao = { codigo: undefined, situacao: "ativas" } as const;
+  const padrao = { busca: undefined, situacao: "ativas" } as const;
 
   it("sem busca nem filtro não está filtrando", () => {
     expect(estaFiltrando(padrao)).toBe(false);
   });
 
   it("nomeia o que vai limpar", () => {
-    expect(rotuloLimpar({ ...padrao, codigo: "K7P2XQ" })).toBe("Limpar busca");
+    expect(rotuloLimpar({ ...padrao, busca: "Heloísa" })).toBe("Limpar busca");
     expect(rotuloLimpar({ ...padrao, pagamento: "pago" })).toBe("Limpar filtros");
-    expect(rotuloLimpar({ ...padrao, codigo: "K7P2XQ", situacao: "todas" })).toBe(
+    expect(rotuloLimpar({ ...padrao, busca: "Heloísa", situacao: "todas" })).toBe(
       "Limpar busca e filtros",
     );
   });

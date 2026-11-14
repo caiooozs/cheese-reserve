@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { normalizarCodigoBusca } from "@/lib/codigo";
+import { limparBusca } from "@/lib/busca";
 import { LIMITE_POR_RESERVA } from "@/lib/constantes";
 import { reaisParaCentavos } from "@/lib/dinheiro";
 import { normalizarWhatsapp, whatsappValido } from "@/lib/whatsapp";
@@ -56,10 +56,11 @@ const primeiro = (valor: unknown) => (Array.isArray(valor) ? valor[0] : valor);
 
 // Filtros vêm da URL, que qualquer um pode editar: valor estranho é ignorado.
 export const schemaFiltrosPainel = z.object({
-  codigo: z
+  // Nome ou código, como a vendedora digitou; a comparação ignora acentos e maiúsculas.
+  busca: z
     .preprocess(primeiro, z.string().optional())
     .catch(undefined)
-    .transform((valor) => (valor ? normalizarCodigoBusca(valor) || undefined : undefined)),
+    .transform((valor) => (valor ? limparBusca(valor) || undefined : undefined)),
   pagamento: z.preprocess(primeiro, z.enum(PAGAMENTOS).optional()).catch(undefined),
   entrega: z.preprocess(primeiro, z.enum(ENTREGAS).optional()).catch(undefined),
   situacao: z.preprocess(primeiro, z.enum(SITUACOES)).catch("ativas"),

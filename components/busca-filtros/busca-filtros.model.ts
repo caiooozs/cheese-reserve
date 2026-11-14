@@ -24,7 +24,7 @@ export const OPCOES_SITUACAO: Opcao<(typeof SITUACOES)[number]>[] = [
 // Monta a URL do painel só com o que foge do padrão.
 export function urlDosFiltros(filtros: Partial<FiltrosPainel>) {
   const parametros = new URLSearchParams();
-  if (filtros.codigo) parametros.set("codigo", filtros.codigo);
+  if (filtros.busca) parametros.set("busca", filtros.busca);
   if (filtros.pagamento) parametros.set("pagamento", filtros.pagamento);
   if (filtros.entrega) parametros.set("entrega", filtros.entrega);
   if (filtros.situacao && filtros.situacao !== "ativas") {
@@ -45,10 +45,12 @@ export type DadosBusca = {
   // Nulo quando não há busca nem filtro para limpar.
   rotuloLimpar: string | null;
   atualizando: boolean;
+  // Mostra o X dentro do campo.
+  temBusca: boolean;
 };
 
 export type CamposBusca = {
-  codigo: {
+  busca: {
     value: string;
     onChange: (evento: ChangeEvent<HTMLInputElement>) => void;
   };
@@ -59,6 +61,7 @@ export type CamposBusca = {
 
 export type AcoesBusca = {
   buscar: (evento: FormEvent<HTMLFormElement>) => void;
+  limparBusca: () => void;
   alternarFiltros: () => void;
   limpar: () => void;
 };

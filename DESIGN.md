@@ -82,12 +82,6 @@ typography:
     fontWeight: 600
     lineHeight: 1.11
     letterSpacing: "0.14em"
-  codigo-busca:
-    fontFamily: "Geist Mono, monospace"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: "0.12em"
   codigo-linha:
     fontFamily: "Geist Mono, monospace"
     fontSize: "0.875rem"
@@ -303,11 +297,10 @@ Uma régua neutra de croma zero, mais quatro cores com função fixa. Os valores
 - **Nota** (400, 0.875rem, 1.43): ajudas sob o campo, mensagens de erro, metadados das linhas e a contagem de reservas do dia.
 - **Rótulo do painel** (500, 0.875rem, 1.43): rótulos da busca e dos filtros, rótulos dos cartões de número, cabeçalho de colunas e o chip de disponibilidade.
 - **Código** (mono 600, 2.25rem, 1.11, 0.14em): o código da reserva no comprovante.
-- **Código de busca** (mono 400, 1rem, 0.12em, maiúsculas): o que se digita em "Buscar pelo código".
 - **Código de linha** (mono 500, 0.875rem, 0.08em): o código em cada linha da lista, na cor do texto, ao lado do resumo em Cinza de Apoio.
 
 ### Named Rules
-**A Regra do Mono no Código.** Geist Mono aparece só no código da reserva: no comprovante, na linha da lista e no campo de busca. Preço, data, telefone e quantidade ficam em Geist.
+**A Regra do Mono no Código.** Geist Mono aparece só no código da reserva: no comprovante e na linha da lista. Preço, data, telefone e quantidade ficam em Geist.
 
 **A Regra dos Algarismos Tabulares.** Todo número de preço, total, quantidade, telefone, data ou contagem usa algarismos tabulares, para não dançar quando muda.
 
@@ -380,7 +373,7 @@ Grandes, diretos, sem ornamento.
 - **Error:** borda em vermelho com anel de vermelho a 20%, e a mensagem em Nota vermelha abaixo do campo.
 - **Stepper de quantidade:** uma caixa só, do tamanho dos botões, com dois botões ghost de 48 px e o número no meio (64 px, 1.125rem em 600), separados por fios. O foco do número acende a caixa inteira. É o mesmo no formulário público e no diálogo "Alterar quantidade" do painel.
 - **Select:** select nativo com a mesma caixa de 48 px, seta de 20 px à direita.
-- **Busca:** a caixa leva a lupa de 20 px à esquerda e o texto em Código de busca.
+- **Busca:** "Buscar por nome ou código", em Body, com a lupa de 20 px à esquerda (vira o indicador de carregamento quando um filtro busca no servidor) e, com texto, um botão ghost de 44 px com X à direita, que limpa a busca. A lista filtra no navegador a cada tecla, sem acento nem maiúsculas fazerem diferença e aceitando pedaços ("helo prado", "k7p"); a busca soma com os filtros e fica na URL sem navegar. O botão "Limpar…" abaixo só aparece quando há filtro.
 - **Senha:** a caixa reserva 48 px à direita para o botão ghost de 44 px.
 - **Prefixo de moeda:** "R$" em Cinza de Apoio, 16 px, dentro da caixa à esquerda; o texto digitado começa a 44 px da borda.
 
