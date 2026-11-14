@@ -30,7 +30,7 @@ Organizar a venda de queijos de fim de ano: um único produto, vendido por peça
 - Formulário com exatamente quatro campos visíveis: nome, WhatsApp, quantidade e endereço de entrega (opcional).
 - Até 10 peças por reserva no formulário público. Reserva é confirmada na hora, com código de 6 caracteres.
 - Estados públicos: ainda não abriram, encerradas, esgotou, formulário e comprovante.
-- Nenhum telefone, chave Pix ou dado de pagamento da vendedora na parte pública.
+- Nenhum telefone, chave Pix ou dado de pagamento da vendedora na parte pública. Exceção provisória (pedido do responsável em 2026-11-14): o comprovante mostra a chave Pix da vendedora (`lib/pagamento.ts`), para o cliente pagar logo depois de reservar.
 - Interface em português do Brasil, com linguagem simples; valores em R$; datas no horário de Brasília.
 - Uso de 360 px de largura para cima, com alvos de toque de pelo menos 44 px.
 - Fora do escopo: pagamento online, múltiplos produtos, conta de cliente, notificações automáticas, gráficos.

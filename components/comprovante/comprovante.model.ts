@@ -23,10 +23,14 @@ export type DadosComprovante = {
   entregaLonga: boolean;
   copiado: boolean;
   podeCompartilhar: boolean;
+  // Chave Pix da vendedora, já formatada (provisória: lib/pagamento.ts).
+  pix: { chave: string; tipo: string };
+  pixCopiado: boolean;
 };
 
 export type AcoesComprovante = {
   copiar: () => void;
+  copiarPix: () => void;
   compartilhar: () => void;
   novaReserva: () => void;
 };
