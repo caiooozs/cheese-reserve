@@ -38,7 +38,7 @@ Organizar a venda de queijos de fim de ano: um único produto, vendido por peça
 
 ## Brand Commitments
 
-Nenhuma marca, logotipo ou paleta existente. Por escolha do responsável (2026-11-02), o visual segue o padrão da categoria, executado no nível de acabamento do Stripe Checkout (formulário) e do Linear e da Vercel (painel): simples, sem tema e sem nenhuma referência a fim de ano. Tema claro e escuro automático, seguindo o aparelho de cada pessoa. Substitui a identidade anterior de cartão de Boas Festas.
+Logo (2026-11-15): um Queijo do Reino cortado, com casca vermelha, massa amarela e uma fatia puxada (`app/icon.svg`), usada só como ícone do site; não tem nome da venda nem paleta própria fora do ícone. Por escolha do responsável (2026-11-02), o visual segue o padrão da categoria, executado no nível de acabamento do Stripe Checkout (formulário) e do Linear e da Vercel (painel): simples, sem tema e sem nenhuma referência a fim de ano. Tema claro e escuro automático, seguindo o aparelho de cada pessoa. Substitui a identidade anterior de cartão de Boas Festas.
 
 ## Evidence on Hand
 

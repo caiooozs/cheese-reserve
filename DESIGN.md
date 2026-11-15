@@ -377,6 +377,9 @@ Grandes, diretos, sem ornamento.
 - **Senha:** a caixa reserva 48 px à direita para o botão ghost de 44 px.
 - **Prefixo de moeda:** "R$" em Cinza de Apoio, 16 px, dentro da caixa à esquerda; o texto digitado começa a 44 px da borda.
 
+### Ícone do site
+A logo é um Queijo do Reino cortado: disco de massa amarela (#F2C14E) com olhos em amarelo escuro (#DDA42A), casca de parafina vermelha (#C1272D) e uma fatia puxada para fora. Vive em `app/icon.svg` (navegadores modernos), `app/favicon.ico` (16, 32 e 48 px) e `app/apple-icon.png` (180 px, fundo #fafafa). O vermelho e o amarelo ficam só no ícone: a interface continua na régua de cinzas, com cor apenas para estado.
+
 ### Navigation
 O painel tem só um cabeçalho de 64 px em Cartão com fio inferior: "Painel da venda" em Title, o nome do produto em Nota abaixo e o botão ghost Sair à direita. A página pública não tem navegação. Ao lado do título "Reservas" fica o botão ghost "Atualizar" (44 px, ícone de setas), que busca de novo os totais e a lista sem recarregar a página nem perder filtros; enquanto busca, o ícone gira (parado com `prefers-reduced-motion`) e o texto vira "Atualizando…".
 
